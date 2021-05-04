@@ -1,2 +1,9 @@
 import React from 'react';
-import {} from ''
+import CuentaStack from './CuentaStack';
+
+
+export default function Navegacion() {
+return(
+    <CuentaStack/>
+    )
+}
