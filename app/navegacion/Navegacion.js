@@ -6,9 +6,9 @@ import {NavigationContainer} from '@react-navigation/native'
 export default function Navegacion() {
 return(
     <NavigationContainer>
-    <HomeStack/>
+    
         <CuentaStack/>
-    <HomeStack/>
+    
     </NavigationContainer>
     )
 }

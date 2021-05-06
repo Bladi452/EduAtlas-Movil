@@ -2,11 +2,11 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import {View, Text} from 'react-native'
 
-export default function Seleccion (){
+export default function Home (){
     return(
     <ScrollView>
         <View>
-            <Text>Home</Text>
+            <Text>maldita pobreza</Text>
         </View>
     </ScrollView>
 )
