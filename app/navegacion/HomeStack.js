@@ -22,7 +22,7 @@ function HomeScreen() {
 export default function HomeStack () {
     return(
 <Tab.Navigator
-     
+       
         >
 <Tab.Screen
     name="Home"

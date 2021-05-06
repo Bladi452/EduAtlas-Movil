@@ -8,14 +8,24 @@ import Login from '../screens/Cuenta/Login'
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import InfoSelect from '../screens/Inscripcion/InfoSelect';
 import Espera from '../screens/Inscripcion/Espera';
-
+import Home from '../screens/Home'
 
 const Stack = createStackNavigator();
 
 export default function CuentaStack() {
  
     return(
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+           headerStyle:{
+          backgroundColor:'#009387'
+        },
+        headerTintColor:
+          '#fff',
+        headerTitleStyle:{
+          fontWeight:'bold'
+        
+        },
+        }}>
             <Stack.Screen
             name="Cuenta"
             component={Cuenta}
@@ -49,6 +59,14 @@ export default function CuentaStack() {
         name="Espera"
         component={Espera}
         options={{title:"Espera"}}
+        />
+         
+         <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{title:"Home",
+       
+        }}
         />
         
         

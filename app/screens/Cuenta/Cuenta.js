@@ -1,13 +1,15 @@
 import React from 'react';
-import { ScrollView, View,Text } from 'react-native';
+import { ScrollView, View,Text,StyleSheet,Dimensions } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Login from './Login';
+import {Button} from 'react-native-elements'
+const {width: WIDTH} = Dimensions.get('window')
 export default function Cuenta() {
    return (
-       <ScrollView>
-    <View>
+      <ScrollView style={styles.container}>
+
         <Registrar/>
-    </View>
+    
 </ScrollView>
     )
 }
@@ -17,15 +19,35 @@ function Registrar () {
     const navigation = useNavigation();
     return(
     
-    <Text>
-        <Text
+    <View>
+        <Button style={styles.sesion}
         onPress={()=>navigation.navigate("Login")}
-        >Iniciar Sesion   </Text>
+        title='Iniciar sesion'  />
+ <View/>
  
-        <Text
+        <Button style={styles.sesion}
         onPress={()=>navigation.navigate("Registro")}
-        >Registrate </Text>
+        title='Registrate'
+        Registrate />
     
-    </Text>
+    </View>
     )
 }
+const styles = StyleSheet.create({
+  sesion: {
+    width: WIDTH -55,
+    height: 45,
+     borderRadius: 25,
+ 
+     justifyContent:'center',
+     marginTop:20
+
+
+  },
+  container:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
+  }
+  
+})

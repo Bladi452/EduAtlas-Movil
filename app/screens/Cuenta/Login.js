@@ -17,9 +17,12 @@ export default function Login (){
             
          <TextInput  style={styles.input} 
           placeholder= "Password"
+                 
           secureTextEntry={true}
-           />
-        
+           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
+          underlineColorAndroid='transparent'/>
+         
+          
             <BotonForm/>
             
         </View>
