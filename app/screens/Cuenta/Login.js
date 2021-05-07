@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text, TextInput, StyleSheet,Dimensions} from 'react-native'
+import {View,Text, TextInput, StyleSheet,Dimensions,Image} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import {Button} from 'react-native-elements'
 
@@ -8,7 +8,10 @@ const {width: WIDTH} = Dimensions.get('window')
 export default function Login (){
     return (
         <View style={styles.container}>
-      
+      <Image source={require('../../../assets/avatar.svg')}
+      style={styles.logo}
+            resizeMode="stretch"
+      />
          <TextInput  style={styles.input}
           placeholder= "Username"
           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
@@ -40,6 +43,8 @@ const navigate = useNavigation();
 
     )
 }
+const {height} = Dimensions.get("screen");
+const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   input: {
     
@@ -70,5 +75,9 @@ marginHorizontal: 25
      marginTop:20
 
 
-  }
+  },
+  logo: {
+      width: height_logo,
+      height: height_logo
+  },
 });
