@@ -1,15 +1,14 @@
 import React from 'react';
 import { ScrollView, View,Text,StyleSheet,Dimensions } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Login from './Login';
 import {Button} from 'react-native-elements'
 const {width: WIDTH} = Dimensions.get('window')
 export default function Cuenta() {
    return (
       <ScrollView style={styles.container}>
-
+  <View>
         <Registrar/>
-    
+        </View>
 </ScrollView>
     )
 }
@@ -46,8 +45,8 @@ const styles = StyleSheet.create({
   },
   container:{
     flex:1,
-    justifyContent:"center",
-    alignItems:"center"
+//    justifyContent:"center",
+//    alignItems:"center"
   }
   
 })

@@ -92,11 +92,8 @@ marginHorizontal: 25
     width: WIDTH -55,
     height: 45,
      borderRadius: 25,
- 
-     justifyContent:'center',
+      justifyContent:'center',
      alignItems: "center",
      marginTop:20
-
-
   }
 });
