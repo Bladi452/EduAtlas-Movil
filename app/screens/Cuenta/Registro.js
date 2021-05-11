@@ -10,7 +10,7 @@ export default function Login (){
     return (
       <KeyboardAvoidingView behavior= "padding">
         <ScrollView style={styles.container}>
-      
+      <View>
          <TextInput  style={styles.input}
           placeholder= "Nombres"
           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
@@ -50,7 +50,7 @@ export default function Login (){
            />
         
             <BotonForm/>
-            
+            </View>
         </ScrollView>
          </KeyboardAvoidingView>
     )
@@ -85,15 +85,15 @@ marginHorizontal: 25
     flex:1,
     width: null,
     height: null,
-    justifyContent: "center",
-    alignItems: "center"
+ //   justifyContent: "center",
+ //   alignItems: "center"
   },
   btnlogin:{
     width: WIDTH -55,
     height: 45,
      borderRadius: 25,
-      justifyContent:'center',
-     alignItems: "center",
+ //     justifyContent:'center',
+ //    alignItems: "center",
      marginTop:20
   }
 });
