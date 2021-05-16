@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
-import {View,Text, TextInput, StyleSheet, TouchableOpacity,KeyboardAvoidingView,ScrollView,Platform} from 'react-native'
+import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
-import {Button} from 'react-native-elements'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Input } from 'react-native-elements/dist/input/Input';
 
 export default function Registro (){
 
+  const navigate = useNavigation();
   return(
-<ScrollView>    
-    <View style={styles.vista}>
+    
+<ScrollView style={styles.vista}>
+    <View>
+      
+  <View>
+    <Fotos/>
+    <Text style={styles.text}>Estudiantes</Text>
+  </View>
+
+
       <TextInput style={styles.Input}
       placeholder = "Nombre"
     
@@ -30,6 +37,17 @@ export default function Registro (){
   )
 
 }
+
+function Fotos (){
+  return(
+      <View >
+    <Image source={require('../../../assets/undraw_Scrum_board_re_wk7v.png')}
+        style={styles.logo}
+              resizeMode="contain"
+        />
+      </View>
+    )
+  }
 
 
 function Calendario () {
@@ -59,7 +77,7 @@ function Calendario () {
       < TouchableOpacity
           onPress={showDatepicker} 
           style={[styles.sesion, {
-            backgroundColor:"#EFAF4F"
+            backgroundColor:"#F9D44F"
           }]}
           >
   
@@ -77,6 +95,17 @@ function Calendario () {
           onChange={onChange}
         />
       )}
+   < TouchableOpacity
+        onPress={()=>navigate.navigate("Seleccion")} 
+          style={[styles.sesionC, {
+            backgroundColor:"#FA9A60"
+          }]}
+          >
+  
+  <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
+    Continua
+    </Text>
+          </TouchableOpacity>
     </View>
   )
 }
@@ -84,27 +113,48 @@ function Calendario () {
 const styles = StyleSheet.create({
  Input:{
    backgroundColor:"#ffffff",
-   borderColor:"#000000",
+   borderColor:"#777777",
    borderWidth:1,
    marginTop:40,
    alignSelf:"center",
-   width:300,
-   height:30,
-    borderRadius:10
+   width:341,
+   height:28.3,
+    borderRadius:4,
   },
 
   sesion:{
     alignItems:"center",
     height:45,
-    width:300,
+    width:200,
     borderRadius:8,
     alignSelf:"center",
     marginTop:15
   },
+
+  sesionC:{
+    alignItems:"center",
+    height:45,
+    width:200,
+    borderRadius:8,
+    alignSelf:"center",
+    marginTop:15
+  },
+
+  logo: {
+    marginTop:0, 
+    width: 170,
+    height: 170,
+    alignSelf :"center",
+  },
   vista:{
     backgroundColor:"#08D5B9"
-  }
-  
+  },
+  text:{
+    textAlign:"center",
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
 })
 
 /*
