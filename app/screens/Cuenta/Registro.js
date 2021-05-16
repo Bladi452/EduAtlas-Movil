@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
+const navigate = useNavigation();
 
 export default function Registro (){
 
-  const navigate = useNavigation();
   return(
     
 <ScrollView style={styles.vista}>
