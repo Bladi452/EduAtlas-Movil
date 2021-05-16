@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import Registro from '../screens/Cuenta/Registro'
 import Cuenta from '../screens/Cuenta/Cuenta'
 import Login from '../screens/Cuenta/Login'
+import RegistroC from '../screens/Cuenta/RegistroC' 
 
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import InfoSelect from '../screens/Inscripcion/InfoSelect';
@@ -42,7 +43,11 @@ export default function CuentaStack() {
             component={Registro}
             options={{title:"Registro"}}
         />
- 
+         <Stack.Screen
+            name="RegistroC"
+            component={RegistroC}
+            options={{title:"Registro"}}
+        />
         <Stack.Screen
             name="Seleccion"
             component={Seleccion}
