@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-const navigate = useNavigation();
+
+  const navigation = useNavigation();
 
 export default function Registro (){
 
@@ -32,6 +33,18 @@ export default function Registro (){
     
     />
   <Calendario/>
+  < TouchableOpacity
+        onPress={()=>navigations.navigate("Seleccion")} 
+          style={[styles.sesionC, {
+            backgroundColor:"#FA9A60"
+          }]}
+          >
+  
+  <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
+    Continua
+    </Text>
+          </TouchableOpacity>
+
     </View>
     </ScrollView>
   )
@@ -95,17 +108,6 @@ function Calendario () {
           onChange={onChange}
         />
       )}
-   < TouchableOpacity
-        onPress={()=>navigate.navigate("Seleccion")} 
-          style={[styles.sesionC, {
-            backgroundColor:"#FA9A60"
-          }]}
-          >
-  
-  <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
-    Continua
-    </Text>
-          </TouchableOpacity>
     </View>
   )
 }
