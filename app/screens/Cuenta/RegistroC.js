@@ -3,7 +3,6 @@ import {useNavigation} from '@react-navigation/native';
 import { View, Picker, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 
 const RegistroC = () => {
-
   const [selectedValue, setSelectedValue] = useState("java");
   return (
     <View style={styles.vista } >
