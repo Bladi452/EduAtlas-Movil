@@ -36,23 +36,23 @@ function Registrar () {
     return(
     
     <View style={styles.inferior}>
-  <Text style={styles.textsec} >¿Estas Registrado?</Text>
+  <Text style={styles.textsec} >¿Estás Registrado?</Text>
   <TouchableOpacity
         onPress={()=>navigation.navigate("Login")}
         style={[styles.sesion, {
           backgroundColor:"#EFAF4F"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continua tu aventura</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continúa tu aventura</Text>
       </TouchableOpacity>
      <View/>
  
-  <Text style= {styles.textsec} >¿Aun no lo haces?</Text>
+  <Text style= {styles.textsec} >¿Aún no lo haces?</Text>
   <TouchableOpacity
         onPress={()=>navigation.navigate("Registro")}
         style={[styles.sesion, {
           backgroundColor:"#3C5A9C"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Comenza tu aventura</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Comienza tu aventura</Text>
       </TouchableOpacity>  
     </View>
     )

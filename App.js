@@ -11,7 +11,7 @@ export default function App() {
   
   return (
       <NavigationContainer>
-        <Seleccion/>
+        <CuentaStack/>
  
     </NavigationContainer>
   );

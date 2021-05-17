@@ -1,61 +1,58 @@
-import React from 'react'
-import {View, Text, ScrollView, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import React, {useState} from 'react'
+import {View, Text, StatusBar,ScrollView, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import {useNavigation} from '@react-navigation/native';
 
-export default function Seleccion (){
-    return(
-
-        <View style={styles.Vista}>
-
-<Text style={[styles.letero, {   fontSize:80,
-      }]}>EduAtlas</Text> 
-
-<Text style={[styles.letero,{ fontSize:15, marginTop:20
-}]}>Aqui tenemos las escuelas para ti</Text>
-
-           <TouchableOpacity
-           style={styles.Molde}
-           >
-               <Image source="../../../assets/Grupo.png" style={styles.logo} />
-    <Text style={styles.let}>Politecnico Max Henriquez</Text>
-           </TouchableOpacity>
-
-
-        </View>
-    )
-}
-
-
-
-const styles = StyleSheet.create({
-
-    Molde:{
-        backgroundColor:"#EBEBEB",
-     width:"90%",
-     height:40,
-     borderRadius:11,
-     alignItems: "center",
-     marginLeft:20,
-     marginTop:12
-    },
-
-    Vista:{
-        height:"100%",
-  backgroundColor:"#08D5B9"        
-    },
-  
-    letero:{
-        fontWeight:"bold",
-        color:"#ffffff",
-        textAlign:"center"
-    },
-  
-    let:{
-        marginTop:9
-    },
-    logo:{    
-        marginTop:0, 
-        width: 5,
-        height: 5,
-        alignSelf :"center",}
+export default function Seleccion () {
+        
+    const navigation = useNavigation();
     
-})
+    return(
+        
+        <View style={styles.container}>
+      <Text style={styles.textsec}>Elige tu institución</Text>
+    
+      <TouchableOpacity
+            onPress={()=>navigation.navigate("Union")}
+    style={styles.sesion}>
+            <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Politécnico Max Henríquez Ureña</Text>
+          </TouchableOpacity>
+         <View/>
+     
+      <TouchableOpacity
+            onPress={()=>navigation.navigate("Minaya")}
+            style={styles.sesion}>
+            <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Virgilio Casilla Minaya</Text>
+          </TouchableOpacity>  
+
+          <TouchableOpacity
+    onPress={()=>navigation.navigate("Juan")}
+    style={styles.sesion}>
+    <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Juan Ramón Nuñez Castillo</Text>
+  </TouchableOpacity>  
+</View>
+        )
+    }
+
+    const styles = StyleSheet.create({
+  
+        container: {
+          width:"100%",
+          height:"100%",
+        },
+        textsec:{
+          alignSelf:"center",
+          marginTop:11,
+          marginBottom:20,
+          fontWeight:"bold",
+          fontSize:18,
+        },
+        sesion:{
+        backgroundColor:"#009387",
+        alignItems:"center",
+          height:45,
+          width:"90%",
+          borderRadius:8,
+          marginTop: 13 ,
+        alignSelf:"center"    
+        }
+      })

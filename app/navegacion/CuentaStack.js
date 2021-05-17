@@ -7,7 +7,9 @@ import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
 
 import Seleccion from '../screens/Inscripcion/Seleccion';
-import InfoSelect from '../screens/Inscripcion/InfoSelect';
+import JuanRamon from '../screens/Inscripcion/InfoSelect/JuanRamon';
+import MaxHenriquez from '../screens/Inscripcion/InfoSelect/MaxHenriquez';
+import Minaya from '../screens/Inscripcion/InfoSelect/Minaya';
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home'
 
@@ -55,10 +57,22 @@ export default function CuentaStack() {
         />
 
             <Stack.Screen
-            name="Info"
-            component={InfoSelect}
+            name="Juan"
+            component={JuanRamon}
             options={{title:"Informacion de la escuela"}}
         />
+        
+        <Stack.Screen
+            name="Union"
+            component={MaxHenriquez}
+            options={{title:"Informacion de la escuela"}}
+        />
+        <Stack.Screen
+            name="Minaya"
+            component={Minaya}
+            options={{title:"Informacion de la escuela"}}
+        />
+
 
         <Stack.Screen
         name="Espera"
