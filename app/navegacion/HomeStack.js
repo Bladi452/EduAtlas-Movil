@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 
@@ -11,8 +11,15 @@ const Tab = createBottomTabNavigator()
 function HomeScreen() {
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>polque!</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
+    <View style={styles.Vista}>
+      <Text style={styles.titulo}>Reglas de los documentos</Text>
+      <Text>polque a la banquera le da tanta hambre</Text>
+      <Text>no te impoltaa</Text>
+      <Text>No e obligao rapai</Text>
+      <Text>Polquee</Text>
+      <Text>La creta e tu mama</Text>
+    </View>
     </View>
   );
 }
@@ -71,3 +78,23 @@ function screenOptions(route, color) {
     <Icon type="material-community" name={iconName} size={22} color={color} />
   );
 }
+
+const styles = StyleSheet.create({
+titulo:{
+  fontSize:25,
+  width:"90%",
+  color:"black",
+  alignSelf:"center",
+  fontWeight:"bold",
+  marginBottom:2,
+  textAlign:"center"
+},
+
+Vista:{
+    height:300,
+    width: "80%",
+    backgroundColor:"#cdcdcd",
+    alignSelf:"center",
+    borderRadius:10
+}
+})
