@@ -53,7 +53,7 @@ export default function MaxHenriquez (){
     <TouchableOpacity
         onPress={()=>navigation.navigate("Espera")}
         style={[styles.sesion, {
-          backgroundColor:"#EFAF4F"
+          backgroundColor:"#FCAD6D"
         }]}>
         <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Enviar Solicitud</Text>
       </TouchableOpacity>
