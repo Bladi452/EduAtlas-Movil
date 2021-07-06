@@ -1,9 +1,45 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {signup} from "../../../api";
 
 export default function Registro (){
+
+  const handleChange = (name, value) => setData({...data, [name]: value});
+
+  const [data,  setData] = useState({
+    Nombre: '',
+    Apellido: '',
+    Email: '',
+    
+  })
+
+  const Registrar = (()=>{ 
+
+
+    const Regis = async () => {
+      await signup(data)
+    }
+  
+    const navigation = useNavigation();
+  
+    return(
+    
+    <View>
+  <TouchableOpacity
+        onPress={Regis}
+        style={[styles.sesion, {
+          backgroundColor:"#EFAF4F"
+        }]}>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continua</Text>
+      </TouchableOpacity>
+     <View/>
+    </View>
+    )
+  }
+  )
+
 
   return(
     
@@ -18,42 +54,31 @@ export default function Registro (){
 
       <TextInput style={styles.Input}
       placeholder = "Nombre"
-    
+      onChangeText = {(text) => handleChange('Nombre', text)}
+      value ={data.Nombre}
     />
 
       <TextInput style={styles.Input}
       placeholder = "Apellidos"
-    
+      onChangeText = {(text) => handleChange('Apellidos', text)}
+      value = {data.Apellido}
     />
 
       <TextInput style={styles.Input}
       placeholder = "Email"
+      onChangeText = {(text) => handleChange('Email', text)}
+      value={data.Email}
     
     />
+
+
+
   <Calendario/>
 <Registrar/>
     </View>
     </ScrollView>
   )
 
-}
-function Registrar () {
-
-  const navigation = useNavigation();
-
-  return(
-  
-  <View>
-<TouchableOpacity
-      onPress={()=>navigation.navigate("RegistroC")}
-      style={[styles.sesion, {
-        backgroundColor:"#EFAF4F"
-      }]}>
-      <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continua</Text>
-    </TouchableOpacity>
-   <View/>
-  </View>
-  )
 }
 
 
