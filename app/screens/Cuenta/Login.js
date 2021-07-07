@@ -1,29 +1,61 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, TextInput, StyleSheet,Dimensions,Image} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import {Button} from 'react-native-elements'
-
+import {signIn} from '../../../api'
 
 const {width: WIDTH} = Dimensions.get('window')
+
 export default function Login (){
-    return (
+
+  const handleChange = (name, value) => setData({...data, [name]: value});
+
+  const [data, setData] = useState({
+    Matricula: '',
+    password: ''
+  })
+
+  const BotonForm = (()=>{
+    const navigate = useNavigation();
+        return(
+          
+            <Button style={styles.btnlogin}
+            title="Login"
+            onPress={validar}
+
+        />
+    
+        )
+    })
+    
+    const validar =( async()=>{
+      await signIn(data)
+      console.log(data)
+    })
+
+  return (
         <View style={styles.container}>
       <Image source={require('../../../assets/avatar.png')}
       style={styles.logo}
             resizeMode="stretch"
       />
          <TextInput  style={styles.input}
-          placeholder= "Usuario"
+          placeholder= "Matricula"
           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-          underlineColorAndroid='transparent'/>
+          underlineColorAndroid='transparent'
+          onChangeText ={(text)=> handleChange('Matricula', text)}
+          value = {data.Matricula}
+/>
             
             
          <TextInput  style={styles.input} 
           placeholder= "contraseña"
-                 
           secureTextEntry={true}
            placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-          underlineColorAndroid='transparent'/>
+          underlineColorAndroid='transparent'
+          onChangeText = {(text) => handleChange('password', text)}
+          value = {data.password}
+/>
          
           
             <BotonForm/>
@@ -32,17 +64,6 @@ export default function Login (){
     )
 }
 
-function BotonForm(){
-const navigate = useNavigation();
-    return(
-      
-        <Button style={styles.btnlogin}
-        title="Login"
-        onPress={()=>navigate.navigate("Seleccion")}
-    />
-
-    )
-}
 
 const {height} = Dimensions.get("screen");
 const height_logo = height * 0.28;

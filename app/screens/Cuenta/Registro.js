@@ -10,16 +10,71 @@ export default function Registro (){
 
   const [data,  setData] = useState({
     Nombre: '',
-    Apellido: '',
+    Apellidos: '',
     Email: '',
-    
+    password: '',
+    nivel: '1',
+    date: ''
   })
+
+
+  const Calendario = (()=> {
+
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+    
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate || date;
+      setShow(Platform.OS === 'ios');
+      setDate(currentDate);
+    };
+    
+    const showMode = (currentMode) => {
+      setShow(true);
+      setMode(currentMode);
+    };
+    
+    const showDatepicker = () => {
+      showMode('date');
+    };
+    return(
+  <View>
+        <View>
+        < TouchableOpacity
+            onPress={showDatepicker} 
+            style={[styles.sesion, {
+              backgroundColor:"#F9D44F"
+            }]}
+            >
+    
+    <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
+      Fecha de Nacimiento
+      </Text>
+            </TouchableOpacity>
+        </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={ data.date = date}
+            mode={mode}
+            display="default"
+            onChange = {onChange}
+            onChangeText = {(text) => handleChange('date', text)}
+
+            />
+        )}
+      </View>
+    )
+  }
+)
 
   const Registrar = (()=>{ 
 
 
     const Regis = async () => {
-      await signup(data)
+     await signup(data)
+      console.log(data)
     }
   
     const navigation = useNavigation();
@@ -61,13 +116,20 @@ export default function Registro (){
       <TextInput style={styles.Input}
       placeholder = "Apellidos"
       onChangeText = {(text) => handleChange('Apellidos', text)}
-      value = {data.Apellido}
+      value = {data.Apellidos}
     />
 
       <TextInput style={styles.Input}
       placeholder = "Email"
       onChangeText = {(text) => handleChange('Email', text)}
       value={data.Email}
+    
+    />
+
+<TextInput style={styles.Input}
+      placeholder = "Contraseña"
+      onChangeText = {(text) => handleChange('password', text)}
+      value={data.password}
     
     />
 
@@ -94,54 +156,6 @@ function Fotos (){
   }
 
 
-function Calendario () {
-
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
-  
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-  };
-  
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-  
-  const showDatepicker = () => {
-    showMode('date');
-  };
-    
-  return(
-<View>
-      <View>
-      < TouchableOpacity
-          onPress={showDatepicker} 
-          style={[styles.sesion, {
-            backgroundColor:"#F9D44F"
-          }]}
-          >
-  
-  <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
-    Fecha de Nacimiento
-    </Text>
-          </TouchableOpacity>
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          display="default"
-          onChange={onChange}
-        />
-      )}
-    </View>
-  )
-}
 
 const styles = StyleSheet.create({
  Input:{
