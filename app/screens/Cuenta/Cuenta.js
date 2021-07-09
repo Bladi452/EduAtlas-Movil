@@ -32,7 +32,7 @@ return(
 
 function Registrar () {
 
-    const navigation = useNavigation();
+   const navigation = useNavigation();
     return(
     
     <View style={styles.inferior}>

@@ -15,7 +15,7 @@ import Home from '../screens/Home'
 
 const Stack = createStackNavigator();
 
-export default function CuentaStack() {
+export default function CuentaStack({navigation}) {
  
     return(
         <Stack.Navigator screenOptions={{

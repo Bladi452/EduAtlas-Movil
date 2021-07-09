@@ -1,22 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {View, TextInput, StyleSheet,Dimensions,Image} from 'react-native'
-import {useNavigation} from '@react-navigation/native'
 import {Button} from 'react-native-elements'
-import {signIn} from '../../../api'
+import {useNavigation} from '@react-navigation/native'
 
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
+  const API = 'http://10.0.0.14:3000'
+
+const navigation = useNavigation()
 
   const handleChange = (name, value) => setData({...data, [name]: value});
-
   const [data, setData] = useState({
     Matricula: '',
     password: ''
   })
 
-  const BotonForm = (()=>{
-    const navigate = useNavigation();
+  var tokenG
+var nuevo = 0 
+  
+const BotonForm = (()=>{
         return(
           
             <Button style={styles.btnlogin}
@@ -27,11 +30,74 @@ export default function Login (){
     
         )
     })
-    
-    const validar =( async()=>{
-      await signIn(data)
-      console.log(data)
+
+
+const verificar = token =>{
+  
+      fetch(`${API}/auth/private`,{
+          method: 'GET',
+          headers:{
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`, 
+          },
+          
+      }).then(async res =>{
+  
+          try {
+              if (res.status === 200 || res.status === 304) {
+                  const jsonRes = await res.json();
+                  nuevo = 1
+                  tokenG = token
+                  console.log(jsonRes)
+              }
+          } catch (err) {
+            nuevo = 0
+          };
+      }).catch(err =>{
+        console.log(err)
+      })
+  }
+
+
+    const signIn = async (newdata) =>{
+
+      await  fetch(`${API}/auth/login`,{
+              method: 'POST',
+              headers:{
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(newdata),
+          }).then(async res =>{
+        try {
+            const jsonRes = await res.json();
+            if (res.status !==200) {
+              nuevo = 0
+              console.log('no existe')
+            }else{
+              verificar(jsonRes.token);
+            }
+        } catch (err) {
+            console.log(err)
+        };
+      })
+      .catch(err =>{
+          console.log(err)
+      })
+  }
+
+   const validar =( async()=>{
+await signIn(data);
+console.log(data)
+  if (nuevo == 1) {
+   navigation.navigate('Seleccion')
+  nuevo = 0
+ }else{
+   console.log(nuevo)
+ }
     })
+
+
 
   return (
         <View style={styles.container}>
