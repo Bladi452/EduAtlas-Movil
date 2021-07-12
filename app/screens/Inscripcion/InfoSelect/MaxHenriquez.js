@@ -1,13 +1,27 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { ScrollView } from 'react-native'
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import MapView,{Marker} from 'react-native-maps'
+import {getSchool} from '../../../../api'
 
-export default function MaxHenriquez (){
+export default function MaxHenriquez ({route}){
    const navigation = useNavigation()
+    
+   const [data, setData] = useState(initialState)
+   const [task, setTask] = useState([])
 
- return(
+const traer = ( async()=>{
+  const task = await getSchool(route.params.id)
+  setTask(task[0]);
+  console.log(task[0].Nombre)
+})
+
+useEffect(() => {
+traer()
+}, [])
+
+return(
     <ScrollView style={styles.container}>
         <View>
 
@@ -23,20 +37,15 @@ export default function MaxHenriquez (){
     color:"#ffffff",
     marginTop:11,
     marginBottom:20,
-}]}>Politécnico Max Henriquez Ureña</Text>
+}]}>{task.Nombre}</Text>
     
     <Text style={[styles.textsec,{
       fontSize:14,
       marginTop:11,
       marginBottom:20,
-    }]}>El centro se encuentra operando desde el año 2000, nos enfocamos en dar excelencia en nuestros estudiantes capacitandolos en las siguientes areas Tecnicas:</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Electricidad.</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Refrigeracion.</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Informatica.</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Logistica.</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Contabilidad.</Text>
-            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>Electronica.</Text>
-            
+    }]}>{task.Descripcion}</Text>
+            <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>{task.Modalidad}</Text>
+
         <Text style={[styles.textsec,{
       color:"#000000",
       fontSize:18,
