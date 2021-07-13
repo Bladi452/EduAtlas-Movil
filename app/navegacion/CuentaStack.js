@@ -29,11 +29,6 @@ export default function CuentaStack({navigation}) {
         
         }}>
         
-        <Stack.Screen
-            name="Seleccion"
-            component={Seleccion}
-            options={{title:"Elige la escuela"}}
-        />
             <Stack.Screen
             name="Cuenta"
             component={Cuenta}
@@ -45,6 +40,11 @@ export default function CuentaStack({navigation}) {
             options={{title:"Login"}}
         />
  
+ <Stack.Screen
+            name="Seleccion"
+            component={Seleccion}
+            options={{title:"Elige la escuela"}}
+        />
         <Stack.Screen
             name="Registro"
             component={Registro}

@@ -16,8 +16,7 @@ const navigation = useNavigation()
     password: ''
   })
 
-  var tokenG
-var nuevo = 0 
+var nuevo = 0
   
 const BotonForm = (()=>{
         return(
@@ -27,7 +26,7 @@ const BotonForm = (()=>{
             onPress={validar}
 
         />
-    
+
         )
     })
 
@@ -48,7 +47,6 @@ const verificar = token =>{
                   const jsonRes = await res.json();
                   nuevo = 1
                   tokenG = token
-                  console.log(jsonRes)
               }
           } catch (err) {
             nuevo = 0
@@ -88,9 +86,8 @@ const verificar = token =>{
 
    const validar =( async()=>{
 await signIn(data);
-console.log(data)
   if (nuevo == 1) {
-   navigation.navigate('Seleccion')
+   navigation.navigate('Seleccion', {id : data.Matricula})
   nuevo = 0
  }else{
    console.log(nuevo)

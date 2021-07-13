@@ -1,20 +1,36 @@
 import React,{useState, useEffect} from 'react'
 import { ScrollView } from 'react-native'
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {Picker} from '@react-native-community/picker'
 import {useNavigation} from '@react-navigation/native'
 import MapView,{Marker} from 'react-native-maps'
-import {getSchool} from '../../../../api'
+import {getSchool, solicitud} from '../../../../api'
 
-export default function MaxHenriquez ({route}){
-   const navigation = useNavigation()
-    
-   const [data, setData] = useState(initialState)
+export default function MaxHenriquez ({route }){
+  const navigation = useNavigation()
+
+  const handleChange = (name, value) => setstate({...state, [name] : value});
+
+   const [state, setstate] = useState({
+     Fecha: new Date(),
+     Estatus: 'null',
+     Id_escuelas : route.params.id,
+     id_Usu : route.params.usu,
+     id_curso : '1'
+   })
+
+
    const [task, setTask] = useState([])
 
 const traer = ( async()=>{
   const task = await getSchool(route.params.id)
   setTask(task[0]);
-  console.log(task[0].Nombre)
+})
+
+const unir =(async()=>{  
+ await solicitud(state)
+ navigation.navigate('Espera', {id_Usu : route.params.id})
+
 })
 
 useEffect(() => {
@@ -58,9 +74,27 @@ return(
   coordinate={{ latitude : 18.525286036836068 , longitude : -70.05256742347363 }} title="Max Henriquez"
 />
     </MapView>
-  
+    <Text style={{ marginTop:11, marginBottom:12, fontWeight:"bold" ,fontSize: 15, color: '#EFAF4F'}}>
+            Selecciona el curso al que aplicaras
+        </Text>
+
+        <Picker
+        selectedValue={state.id_curso}
+        style={{ height: 50, width: 150 }}
+        onValueChange ={(itemValue)=> handleChange('id_curso', itemValue)}
+>
+        <Picker.Item label="Primero" value="1" />
+        <Picker.Item label="Segundo" value="2" />
+        <Picker.Item label="Tercero" value="3" />
+        <Picker.Item label="Cuarto" value="4" />
+        <Picker.Item label="Quinto" value="5" />
+        <Picker.Item label="Sexto" value="6" />
+
+      </Picker>
+      <Text>{state.id_curso}</Text>
+    
     <TouchableOpacity
-        onPress={()=>navigation.navigate("Espera")}
+        onPress={unir}
         style={[styles.sesion, {
           backgroundColor:"#FCAD6D"
         }]}>
@@ -119,5 +153,20 @@ logo: {
     alignSelf:"center",
     fontWeight:"bold",
     marginBottom:2
-  }
+  },
+
+text:{
+  textAlign:"center",
+  color: "#08D5B9",
+  fontWeight: "bold",
+  fontSize: 30,
+},
+sesion:{
+  alignItems:"center",
+  height:45,
+  width:200,
+  borderRadius:8,
+  alignSelf:"center",
+  marginTop:15
+}
 })

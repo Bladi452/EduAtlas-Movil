@@ -8,7 +8,8 @@ import {getSchools} from '../../../api';
 
 import Item from './Item'
 
-export const List = () =>{
+export const List = (id) =>{
+
 
 const [task, setTasks] = useState([]);
 
@@ -25,7 +26,7 @@ useEffect(() => {
 }, [isFocused])
 
 const renderItem =({item}) =>{
-    return <Item task = {item} />
+    return <Item task = {item} id_Usu = {id} />
 };
 
 return(
