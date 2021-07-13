@@ -7,6 +7,11 @@ export const getSchools = async () =>{
     return await res.json()
 }
 
+export const getUser = async (id) =>{
+    const res = await fetch (`${API}/navegacion/${id}`);
+    return await res.json();
+}
+
 export const getSchool = async (id) =>{
     const res = await fetch (`${API}/school/${id}`);
     return await res.json();
