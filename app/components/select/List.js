@@ -33,7 +33,7 @@ return(
 <FlatList
     style={{ width: '100%'}}
 data ={task}
-keyExtractor= {item => item.Id_Escuelas + ''}
+keyExtractor= {item => item.Codigo_Escuelas + ''}
 renderItem={renderItem}
 />
     )

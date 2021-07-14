@@ -11,12 +11,12 @@ const navegation = useNavigation()
 const selectAcept = (async()=>{
    const rows = await getUser(id)
    
-   if (rows[0].Id_Escuelas = null) {
+   if (rows[0].Codigo_Escuelas = null) {
        return(
-        navegation.navigate('Seleccion',  {id: rows[0].Id_Escuelas})
+        navegation.navigate('Seleccion',  {id: rows[0].Codigo_Escuelas})
        )
    } else if (condicion) {
-       
+       navegation.navigate('')
    }
 })
 

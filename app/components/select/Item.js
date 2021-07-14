@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
     return (
       <View style={styles.itemContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Union", { id: task.Id_Escuelas, usu : id_Usu.id })}
+          onPress={() => navigation.navigate("Union", { id: task.Codigo_Escuelas, usu : id_Usu.id })}
         >
           <Text style={styles.itemTitle}>{task.Nombre}</Text>
          

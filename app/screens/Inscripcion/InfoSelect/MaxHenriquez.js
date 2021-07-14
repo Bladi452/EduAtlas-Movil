@@ -14,7 +14,7 @@ export default function MaxHenriquez ({route }){
    const [state, setstate] = useState({
      Fecha: new Date(),
      Estatus: 'null',
-     Id_escuelas : route.params.id,
+     Codigo_Escuelas : route.params.id,
      id_Usu : route.params.usu,
      id_curso : '1'
    })
