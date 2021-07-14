@@ -14,7 +14,7 @@ export const getUser = async (id) =>{
 
 export const getSchool = async (id) =>{
     const res = await fetch (`${API}/school/${id}`);
-    return await res.json();
+    return res.json();
 }
 
 export const signup =  async(newdata) =>{
@@ -37,4 +37,9 @@ export const solicitud = async (newdata) =>{
         },
         body: JSON.stringify(newdata),
     });
+}
+
+export const Getsolicitud = async(id) =>{
+    const res = await fetch(`${API}/navegacion/${id}`)
+    return res.json()
 }
