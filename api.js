@@ -39,7 +39,7 @@ export const solicitud = async (newdata) =>{
     });
 }
 
-export const Getsolicitud = async(id) =>{
-    const res = await fetch(`${API}/navegacion/${id}`)
+export const getSolicitud = async(id) =>{
+    const res = await fetch(`${API}/navegacionSel/${id}`)
     return res.json()
 }

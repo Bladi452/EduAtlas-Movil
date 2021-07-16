@@ -11,11 +11,6 @@ export default function Seleccion (){
             source={require("../../../assets/Meditar.png")}/>
             
             <Text style={styles.text}>Tu solicitud ya fue enviada, espera con paciencia tu respuesta, aun la solicitud esta pendiente</Text>
-             
-             <Button
-            title="Home"
-            onPress={()=>navigate.navigate("Home")}
-            />
         </View>
     </ScrollView>
     )
@@ -36,8 +31,8 @@ const styles = StyleSheet.create({
         marginTop:50,
         marginBottom:40,
         textAlign:"center",
-        fontSize:20,
+        fontSize:28,
         fontWeight:"bold",
-        color:"#fc9d00"
+        color:"#0C99E6"
     }
 })

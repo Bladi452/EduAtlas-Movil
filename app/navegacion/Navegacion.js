@@ -1,53 +1,31 @@
-import React from 'react';
+import {useIsFocused } from '@react-navigation/native';
+import React,{ useState, useEffect} from 'react';
+import {View, Text} from 'react-native'
+import Cuenta from '../screens/Cuenta/Cuenta'
+import Selec from '../components/navegacion/Selec'
 
-import {useNavigation} from '@react-navigation/native'
-import CuentaStack from './CuentaStack';
-import {getUser, Getsolicitud} from '../../api'
+const Navegacion = (({route})=>{
 
-const Navegacion = ((id)=>{
+    const [Mat, setMat] = useState(true)
 
-const navegation = useNavigation()
+    const isFocused = useIsFocused()
 
-const solicAcept =(async()=>{
-    const rows = await Getsolicitud(id)
+useEffect(() => {
+    verificar()
+},[isFocused])
 
-    if (rows[0].length < 0) {
-        return(
-            navegation.navigate('Seleccion',  {id: rows[0].Matricula})
-           )
-    }
-    else if(rows[0].Estatus == 'Aceptado'){
-        return(
-        navegation.navigate('Home',  {id: rows[0].Matricula})
-        )
-    }
-    else if(rows[0].Estatus == 'Denegado'){
-        return(
-            navegation.navigate('Seleccion',  {id: rows[0].Matricula})
-           )
+
+const verificar = (()=>{
+if ( route.params === undefined ) {
+    setMat(true)
+}else{
+    setMat(false)
     }
 })
 
-const selectAcept = (async()=>{
-   const rows = await getUser(id)
-   
-   if (rows[0].Codigo_Escuelas = null) {
-       return(
-        navegation.navigate('Seleccion',  {id: rows[0].Matricula})
-       )
-   } else{
-    solicAcept()
-   }
-})
-
-
-    if(id.length < 0){
-    return(
-        <CuentaStack/>
+return(
+    (Mat ? <Cuenta/> : <Selec id ={route.params.id}/> )
     )
-}else if(id.length > 0){
-    selectAcept()
-}
 
 })
 

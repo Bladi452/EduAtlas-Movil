@@ -1,8 +1,8 @@
 import React from 'react'
 import {List} from '../../components/select/List'
-export default function Seleccion ({route}) {
+export default function Seleccion ({id}) {
 
   return(
-  <List id = {route.params.id}/>
+  <List id = {id}/>
   )
     }

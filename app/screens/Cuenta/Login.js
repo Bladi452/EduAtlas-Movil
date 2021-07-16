@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {View, TextInput, StyleSheet,Dimensions,Image} from 'react-native'
 import {Button} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
-
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
@@ -16,7 +15,7 @@ const navigation = useNavigation()
     password: ''
   })
 
-var nuevo = 0
+var nuevo
   
 const BotonForm = (()=>{
         return(
@@ -30,31 +29,6 @@ const BotonForm = (()=>{
         )
     })
 
-
-const verificar = token =>{
-  
-      fetch(`${API}/auth/private`,{
-          method: 'GET',
-          headers:{
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`, 
-          },
-          
-      }).then(async res =>{
-  
-          try {
-              if (res.status === 200 || res.status === 304) {
-                  const jsonRes = await res.json();
-                  nuevo = 1
-                  tokenG = token
-              }
-          } catch (err) {
-            nuevo = 0
-          };
-      }).catch(err =>{
-        console.log(err)
-      })
-  }
 
 
     const signIn = async (newdata) =>{
@@ -73,7 +47,8 @@ const verificar = token =>{
               nuevo = 0
               console.log('no existe')
             }else{
-              verificar(jsonRes.token);
+              nuevo = 1
+              console.log('existe')
             }
         } catch (err) {
             console.log(err)
@@ -87,7 +62,7 @@ const verificar = token =>{
    const validar =( async()=>{
 await signIn(data);
   if (nuevo == 1) {
-   navigation.navigate('Seleccion', {id : data.Matricula})
+   navigation.navigate('Navegacion', {id : data.Matricula})
   nuevo = 0
  }else{
    console.log(nuevo)

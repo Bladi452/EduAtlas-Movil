@@ -6,9 +6,9 @@ import {useNavigation} from '@react-navigation/native'
 import MapView,{Marker} from 'react-native-maps'
 import {getSchool, solicitud} from '../../../../api'
 
-export default function MaxHenriquez ({route }){
+export default function MaxHenriquez ({route}){
   const navigation = useNavigation()
-
+console.log(route.params.usu)
   const handleChange = (name, value) => setstate({...state, [name] : value});
 
    const [state, setstate] = useState({
@@ -29,8 +29,7 @@ const traer = ( async()=>{
 
 const unir =(async()=>{  
  await solicitud(state)
- navigation.navigate('Espera', {id_Usu : route.params.id})
-
+ navigation.navigate('vali', {id: state.id_Usu})
 })
 
 useEffect(() => {

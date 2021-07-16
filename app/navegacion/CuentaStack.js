@@ -10,7 +10,9 @@ import Seleccion from '../screens/Inscripcion/Seleccion';
 import MaxHenriquez from '../screens/Inscripcion/InfoSelect/MaxHenriquez';
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home'
-
+import Navegacion from './Navegacion'
+import CheckEstatus from '../components/navegacion/CheckEstatus'
+import Valid from '../components/navegacion/Valid'
 const Stack = createStackNavigator();
 
 export default function CuentaStack({navigation}) {
@@ -28,7 +30,21 @@ export default function CuentaStack({navigation}) {
         },
         
         }}>
-        
+            
+ <Stack.Screen
+            name="Navegacion"
+            component={Navegacion}
+        />        
+        <Stack.Screen
+            name="vali"
+            component={Valid}
+            options={{title:"Home"}}
+/>
+ 
+        <Stack.Screen
+            name="check"
+            component={CheckEstatus}
+        />
             <Stack.Screen
             name="Cuenta"
             component={Cuenta}
@@ -40,7 +56,8 @@ export default function CuentaStack({navigation}) {
             options={{title:"Login"}}
         />
  
- <Stack.Screen
+
+         <Stack.Screen
             name="Seleccion"
             component={Seleccion}
             options={{title:"Elige la escuela"}}
