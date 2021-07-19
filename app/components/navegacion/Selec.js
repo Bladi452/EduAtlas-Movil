@@ -22,7 +22,7 @@ const Solid = async()=>{
 
     if(user[0].Codigo_Escuelas == null){
         setEscu(true)
-    }else if (user[0].Codigo_Escuelas == !isNanN()){
+    }else{
         setEscu(false)
     }
 }
