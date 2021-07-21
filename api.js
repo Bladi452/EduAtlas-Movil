@@ -39,6 +39,27 @@ export const solicitud = async (newdata) =>{
     });
 }
 
+export const getMessage = async(id)=>{
+    const res = await fetch(`${API}/chat/message/${id}`)
+    return res.json()
+}
+
+export const getChat = async(id)=>{
+    const res = await fetch(`${API}/chat/${id}`)
+    return res.json()
+}
+
+export const sendMessage = async (newdata) =>{
+    await fetch(`${API}/chat`,{
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(newdata),
+    });
+}
+
 export const getSolicitud = async(id) =>{
     const res = await fetch(`${API}/navegacionSel/${id}`)
     return res.json()

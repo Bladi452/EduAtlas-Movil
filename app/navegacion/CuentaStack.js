@@ -13,9 +13,11 @@ import Home from '../screens/Home'
 import Navegacion from './Navegacion'
 import CheckEstatus from '../components/navegacion/CheckEstatus'
 import Valid from '../components/navegacion/Valid'
+import Chat from '../screens/Chat'
+import Chatne from './ChatStack'
 const Stack = createStackNavigator();
 
-export default function CuentaStack({navigation}) {
+export default function CuentaStack() {
  
     return(
         <Stack.Navigator screenOptions={{
@@ -40,7 +42,14 @@ export default function CuentaStack({navigation}) {
             component={Valid}
             options={{title:"Home"}}
 />
+
+<Stack.Screen
+            name="Chatne"
+            component={Chatne}
+            options={{title:"Lista de chat"}}
+/>
  
+
         <Stack.Screen
             name="check"
             component={CheckEstatus}
@@ -83,16 +92,19 @@ export default function CuentaStack({navigation}) {
         component={Espera}
         options={{title:"Espera"}}
         />
-         
+                 <Stack.Screen
+        name="chat"
+        component={Chat}
+        options={({route}) => ({
+            title: route.params.userName,
+            headerBackTitleVisible: false,
+          })}        />
          <Stack.Screen
         name="Home"
         component={Home}
         options={{title:"Home",
-       
         }}
         />
-        
-        
         </Stack.Navigator>
         )
 }

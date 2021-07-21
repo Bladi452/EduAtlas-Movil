@@ -2,46 +2,39 @@ import React from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
+import {useNavigation} from '@react-navigation/native'
 
 import Docs from './DocsStack'
 
-import Chat from './ChatStack'
+import Chatne from './ChatStack'
 
 const Tab = createBottomTabNavigator()
-function HomeScreen() {
-
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
-    <View style={styles.Vista}>
-      <Text style={styles.titulo}>Reglas de los documentos</Text>
-      <Text>polque a la banquera le da tanta hambre</Text>
-      <Text>no te impoltaa</Text>
-      <Text>No e obligao rapai</Text>
-      <Text>Polquee</Text>
-      <Text>La creta e tu mama</Text>
-    </View>
-    </View>
-  );
-}
 
 
+export default function HomeStack (route) {
 
 
+  const navigation = useNavigation()
 
-export default function HomeStack () {
-    return(
+return(
 <Tab.Navigator
     initialRouteName="Home"
       tabBarOptions={{
         inactiveTintColor:"#646464",
         activeTintColor: "#00a680"
       }}
-      screenOptions={({route})=>({
+      screenOptions={({route})=> 
+      ({
         tabBarIcon: ({color}) => screenOptions(route, color),
       })}
+
     >
 
-<Tab.Screen name="Chat" component={Chat} />
+<Tab.Screen 
+  name="Chat" 
+  component={Chatne}
+   
+/>
 
 <Tab.Screen
     name="Home"
@@ -56,6 +49,22 @@ export default function HomeStack () {
         </Tab.Navigator>
 
   )
+}
+
+function HomeScreen() {
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
+    <View style={styles.Vista}>
+      <Text style={styles.titulo}>Reglas de los documentos</Text>
+      <Text>polque a la banquera le da tanta hambre</Text>
+      <Text>no te impoltaa</Text>
+      <Text>No e obligao rapai</Text>
+      <Text>Polquee</Text>
+      <Text>La creta e tu mama</Text>
+    </View>
+    </View>
+  );
 }
 
 function screenOptions(route, color) {
@@ -75,7 +84,7 @@ function screenOptions(route, color) {
       break;
   }
   return (
-    <Icon type="material-community" name={iconName} size={22} color={color} />
+    <Icon type="material-community" name={iconName} size={22} color={color} id = {route.id} />
   );
 }
 
