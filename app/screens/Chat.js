@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import {getMessage} from '../../api'
@@ -17,24 +16,18 @@ useEffect(() => {
   }
 
 const correr = ()=>{
-  return setMess
-  let setMess =([ {
-    _id: messages.Matricula,
-    text: messages.mensaje,
-    createdAt:new Date(),
-    user:{
-      _id: messages.Matricula,
-    } 
-  },
-])
-}
+  console.log(messages.Matricula)
+  return [messages].Matricula
+  }
 
 correr()
-const regresar = messages.map(correr)
-console.log(regresar)
 
+const ne = messages.map(correr)
+console.log(ne)
 const new1 =[]
-    const onSend = useCallback((messages = []) => {
+
+
+const onSend = useCallback((messages = []) => {
       setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
     }, [])
   
