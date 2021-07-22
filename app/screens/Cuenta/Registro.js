@@ -95,7 +95,6 @@ export default function Registro (){
   }
   )
 
-
   return(
     
 <ScrollView style={styles.vista}>

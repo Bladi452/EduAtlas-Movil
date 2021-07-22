@@ -13,9 +13,7 @@ const Tab = createBottomTabNavigator()
 
 export default function HomeStack (route) {
 
-
   const navigation = useNavigation()
-
 return(
 <Tab.Navigator
     initialRouteName="Home"
@@ -33,13 +31,14 @@ return(
 <Tab.Screen 
   name="Chat" 
   component={Chatne}
-   
+  initialParams={route}
 />
 
 <Tab.Screen
     name="Home"
     component={HomeScreen}
     options={{title:"Home"}}
+    initialParams={route}
 />
 
 <Tab.Screen name="Docs" component={Docs} />

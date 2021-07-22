@@ -27,7 +27,7 @@ const Solid = async()=>{
     }
 }
 
-console.log(Escu)
+
     return(
         (Escu ? <CheckEstatus id = {id}/> : <Home id = {id} />  )
     )

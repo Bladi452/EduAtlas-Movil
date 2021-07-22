@@ -1,37 +1,49 @@
+
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
+import {getMessage} from '../../api'
 
-export default function Chat (){
+export default function Chat ({route}){
     const [messages, setMessages] = useState([]);
 
-    useEffect(() => {
-      setMessages([
-        {
-          _id: 1,
-          text: 'Hello developer',
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
-          },
-        },
-      ])
+useEffect(() => {
+  getMess()
     }, [])
 
-    
+  const getMess = async()=>{
+   const messages = await getMessage(route.params.Id_sala_User);
+   setMessages(messages)
+ correr()
+  }
 
+const correr = ()=>{
+  return setMess
+  let setMess =([ {
+    _id: messages.Matricula,
+    text: messages.mensaje,
+    createdAt:new Date(),
+    user:{
+      _id: messages.Matricula,
+    } 
+  },
+])
+
+}
+const regresar = messages.map(correr)
+console.log(regresar)
+
+const new1 =[]
     const onSend = useCallback((messages = []) => {
       setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
     }, [])
   
-
-    return (
+ 
+return (
         <GiftedChat
-          messages={messages}
-          onSend={messages => onSend(messages)}
+          messages={new1}
+          onSend={(new1) => onSend(new1)}
           user={{
-            _id: 1,
+            _id: 20211013,
           }}
         />
       )

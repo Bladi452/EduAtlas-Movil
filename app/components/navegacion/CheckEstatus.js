@@ -12,7 +12,6 @@ const isFocused = useIsFocused()
     
 const [solicitud, setSolicitud] = useState()
 
-    console.log(id)
 useEffect(()=>{
         Solic();
     }, [isFocused]);

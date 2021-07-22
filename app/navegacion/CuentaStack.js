@@ -96,7 +96,7 @@ export default function CuentaStack() {
         name="chat"
         component={Chat}
         options={({route}) => ({
-            title: route.params.userName,
+            title: route.params.Id,
             headerBackTitleVisible: false,
           })}        />
          <Stack.Screen

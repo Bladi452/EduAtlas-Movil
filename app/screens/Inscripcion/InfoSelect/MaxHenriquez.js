@@ -8,7 +8,7 @@ import {getSchool, solicitud} from '../../../../api'
 
 export default function MaxHenriquez ({route}){
   const navigation = useNavigation()
-console.log(route.params.usu)
+
   const handleChange = (name, value) => setstate({...state, [name] : value});
 
    const [state, setstate] = useState({

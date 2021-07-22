@@ -14,45 +14,44 @@ import { Container,
   import {useNavigation} from '@react-navigation/native'
   import { getChat } from '../../api.js';
   
-export default function Chatne(props) {
+export default function Chatne({route}) {
 
-console.log(props)
-
+  useEffect(() => {
+    newChat()
+  },[])
   const navigation = useNavigation()
   
   const [Chat, setChat] = useState([])
   
-  useEffect(() => {
-    
-  },)
+ 
   
     const newChat = async ()=>{
-       const chats = await getChat()
-       console.log()
+       const chats = await getChat(route.params.id)
+       setChat(chats)
     }
   
   return (
     <Container>
     <FlatList 
       data={Chat}
-      keyExtractor={item=>item.id}
+      keyExtractor={item => item.Id.toString()}
       renderItem={({item}) => (
-        <Card onPress={() => navigation.navigate('chat', {userName: item.userName})}>
+        <Card onPress={() => navigation.navigate('chat', {Id_sala_User: item.Id, Matricula: item.Matricula})}>
           <UserInfo>
             <UserImgWrapper>
               <UserImg source={item.userImg} />
             </UserImgWrapper>
             <TextSection>
               <UserInfoText>
-                <UserName>{item.userName}</UserName>
-                <PostTime>{item.messageTime}</PostTime>
+                <UserName>{item.Id}</UserName>
+                <PostTime>{item.Id_Sala}</PostTime>
               </UserInfoText>
-              <MessageText>{item.messageText}</MessageText>
+              <MessageText>{item.Matricula}</MessageText>
             </TextSection>
           </UserInfo>
         </Card>
       )}
     />
-  </Container>
+    </Container>
     );
 };
