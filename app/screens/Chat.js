@@ -13,7 +13,7 @@ useEffect(() => {
   const getMess = async()=>{
    const messages = await getMessage(route.params.Id_sala_User);
    setMessages(messages)
- correr()
+ 
   }
 
 const correr = ()=>{
@@ -27,8 +27,9 @@ const correr = ()=>{
     } 
   },
 ])
-
 }
+
+correr()
 const regresar = messages.map(correr)
 console.log(regresar)
 
