@@ -26,7 +26,7 @@ export default function Chatne({route}) {
  
   
     const newChat = async ()=>{
-       const chats = await getChat(route.params.id)
+       const chats = await getChat(route.params.id);
        setChat(chats)
     }
   
