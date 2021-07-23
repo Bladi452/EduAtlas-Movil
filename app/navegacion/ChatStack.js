@@ -36,7 +36,7 @@ export default function Chatne({route}) {
       data={Chat}
       keyExtractor={item => item.Id.toString()}
       renderItem={({item}) => (
-        <Card onPress={() => navigation.navigate('chat', {Id_sala_User: item.Id, Matricula: item.Matricula})}>
+        <Card onPress={() => navigation.navigate('chat', {Id_sala_User: item.Id_Sala, Matricula: item.Matricula})}>
           <UserInfo>
             <UserImgWrapper>
               <UserImg source={item.userImg} />
