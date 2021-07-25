@@ -1,17 +1,18 @@
 import React from 'react';
-import {Text,ListItem,List,Content,Right ,Icon,Button,Body,Header,Container, StyleSheet} from 'react-native'
+import {Text,Button,View, StyleSheet,FlatList } from 'react-native'
 import DocumentPicker from 'react-native-document-picker'
-const DocsEstatus = () =>{
+
+const uploadFile = () =>{
 
  const chooseFile = async()=>{
 
-try {
+  try {
     const res = await DocumentPicker.pick({
-      type: [DocumentPicker.types.allFiles],
+      type: [DocumentPicker.types.images],
     });
     console.log(
       res.uri,
-      res.type,
+      res.type, // mime type
       res.name,
       res.size
     );
@@ -22,31 +23,22 @@ try {
       throw err;
     }
   }
-    }
-
-return (
-    <Container>
-        <Header>
-            <Body style ={{flex: 1, alignItems: 'center'}}>
-                <Title>Upload Files & Render In Component</Title>
-            </Body>
-            <Right style={{flex: 0.2}}>
-<Button transparent onPress={} >
-    <Icon name="cloud-upload" type="MaterialIcons" />
-</Button>
-            </Right>
-        </Header>
-    <Content>
-        <List>
-            <ListItem>
-                <Text>List Item 1</Text>
-            </ListItem>
-        </List>
-    </Content>
-</Container>
-
-)
-const styler = StyleSheet({})
 }
 
-export default DocsEstatus
+return (
+    <View>
+      <Text>Upload Files & Render In Component</Text>
+    <View>
+      <Button
+      onPress={chooseFile}
+      title="Upload"/>
+            <FlatList/>
+                <Text>List Item 1</Text>
+    </View>
+</View>
+
+)
+const style = StyleSheet({})
+}
+
+export default uploadFile

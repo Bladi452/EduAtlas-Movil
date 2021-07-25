@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 
-import Docs from './DocsStack'
+import uploadFile from '../screens/Docs/DocsEstatus'
 
 import Chatne from './ChatStack'
 
@@ -41,7 +41,10 @@ return(
     initialParams={route}
 />
 
-<Tab.Screen name="Docs" component={Docs} />
+<Tab.Screen 
+  name="Docs" 
+  component={uploadFile} 
+  />
 
 
 
