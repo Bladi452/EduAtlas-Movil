@@ -2,8 +2,8 @@ import React from 'react';
 import {Text,Button,View, StyleSheet,FlatList } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 
-const uploadFile = () =>{
-
+const uploadFile = ({route}) =>{
+console.log(route)
  const chooseFile = async()=>{
   let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -14,7 +14,10 @@ const uploadFile = () =>{
 
   let pickerResult = await ImagePicker.launchImageLibraryAsync();
   console.log(pickerResult);
+  uploadImg(pickerResult);
  }
+
+
 return (
     <View>
       <Text>Upload Files & Render In Component</Text>

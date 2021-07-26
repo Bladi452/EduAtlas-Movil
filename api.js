@@ -64,3 +64,24 @@ export const getSolicitud = async(id) =>{
     const res = await fetch(`${API}/navegacionSel/${id}`)
     return res.json()
 }
+
+export const uploadImg = async(obj) =>{
+    const res = await fetch(`${API}/document/${obj.id}/${obj.escu}`,{
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(obj),
+    });
+}
+
+export const ConecCargo = async() =>{
+    const res = await fetch(`${API}/auth/conec/`,{
+    method: "POST",
+    headers:{
+        Accept: 'application/json',
+        "Content-Type": 'application/json',
+    },    
+})
+}

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {signup} from "../../../api";
+import {signup, ConecCargo} from "../../../api";
 
 export default function Registro (){
 
@@ -74,6 +74,7 @@ export default function Registro (){
 
     const Regis = async () => {
      await signup(data)
+     ConecCargo()
       console.log(data)
     }
   
