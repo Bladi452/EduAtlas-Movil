@@ -18,15 +18,12 @@ useEffect(()=>{
 
     const Solic = async()=>{
         const user = await getSolicitud(id)
-        if(user[0].length <= 0 || user[0].Estatus == 'Denegado'){
+        if(user.length === 0 || user[0].Estatus === 'Denegado'){
             setSolicitud(true)
         } else if(user[0].Estatus === 'null'){
             setSolicitud(false)
         }
      }
-
-    
-       
 
     return (
         (solicitud ? <Seleccion id = {id}/> : <Espera/>)

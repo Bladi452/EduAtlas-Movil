@@ -30,7 +30,7 @@ const Valid = ({route}) => {
 
 
     return (
-        (sol ? <Espera id = {id}/> : <Home id = {route.params.id} />)
+        (sol ? <Espera id = {route.params.id}/> : <Home id = {route.params.id} />)
         )
 }
 
