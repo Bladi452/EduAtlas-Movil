@@ -27,10 +27,10 @@ const traer = ( async()=>{
   setTask(task[0]);
 })
 
-const unir =(async()=>{  
+const unir =async()=>{  
  await solicitud(state)
  navigation.navigate('vali', {id: state.id_Usu})
-})
+}
 
 useEffect(() => {
 traer()

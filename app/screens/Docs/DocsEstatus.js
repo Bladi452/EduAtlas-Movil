@@ -1,30 +1,20 @@
 import React from 'react';
 import {Text,Button,View, StyleSheet,FlatList } from 'react-native'
-import DocumentPicker from 'react-native-document-picker'
+import * as ImagePicker from 'expo-image-picker';
 
 const uploadFile = () =>{
 
  const chooseFile = async()=>{
+  let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-  try {
-    const res = await DocumentPicker.pick({
-      type: [DocumentPicker.types.images],
-    });
-    console.log(
-      res.uri,
-      res.type, // mime type
-      res.name,
-      res.size
-    );
-  } catch (err) {
-    if (DocumentPicker.isCancel(err)) {
-      // User cancelled the picker, exit any dialogs or menus and move on
-    } else {
-      throw err;
-    }
+  if (permissionResult.granted === false) {
+    alert("Permission to access camera roll is required!");
+    return;
   }
-}
 
+  let pickerResult = await ImagePicker.launchImageLibraryAsync();
+  console.log(pickerResult);
+ }
 return (
     <View>
       <Text>Upload Files & Render In Component</Text>
