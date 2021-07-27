@@ -29,7 +29,7 @@ const traer = ( async()=>{
 
 const unir =async()=>{  
  await solicitud(state)
- navigation.navigate('vali', {id: state.id_Usu})
+ navigation.navigate('vali', {id: state.id_Usu, id_escu: state.Codigo_Escuelas })
 }
 
 useEffect(() => {

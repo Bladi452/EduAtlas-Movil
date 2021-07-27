@@ -6,6 +6,7 @@ import Selec from '../components/navegacion/Selec'
 
 const Navegacion = (({route})=>{
 
+    console.log()
     const [Mat, setMat] = useState(true)
 
     const isFocused = useIsFocused()

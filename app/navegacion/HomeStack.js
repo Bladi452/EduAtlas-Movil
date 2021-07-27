@@ -44,9 +44,8 @@ return(
 <Tab.Screen 
   name="Docs" 
   component={uploadFile} 
+  initialParams={route}
   />
-
-
 
         </Tab.Navigator>
 
