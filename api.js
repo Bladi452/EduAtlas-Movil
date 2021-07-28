@@ -70,7 +70,7 @@ export const uploadImg = async(obj) =>{
         method: "POST",
         headers:{
             Accept: 'application/json',
-            "Content-Type": 'application/json',
+            "Content-Type": 'multipart/form-data',
         },
         body: JSON.stringify(obj.pick),
     });

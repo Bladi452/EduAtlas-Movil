@@ -2,10 +2,14 @@ import React,{useState, useEffect} from 'react';
 import {Text,Button,View, StyleSheet,FlatList,Platform } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import { uploadImg, getUser } from '../../../api';
+const API = 'http://10.0.0.11:3000'
 
 const uploadFile = ({route}) =>{
   
   const [state, setstate] = useState()
+  
+  const [docsImage, setdocsImage] = useState('');
+ 
 
   useEffect(() => {
     getUs()
@@ -14,6 +18,7 @@ const uploadFile = ({route}) =>{
   const getUs = async()=>{
   
    const [row] = await getUser(route.params.id)
+   
     setstate(row)
   }
 
@@ -28,16 +33,17 @@ const uploadFile = ({route}) =>{
   }
 
   let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
+  setdocsImage(pickerResult.uri)
+
   const path = await normalizePath(pickerResult.uri)
+
   console.log(pickerResult)
   console.log(path);
-const obj ={
-  escu: state.Codigo_Escuelas ,
-  id: state.Matricula,
-  pick: path
+
+  
+ 
 }
-  uploadImg(obj);
- }
 
  async function normalizePath(path){
    if(Platform.OS==='ios' || Platform.OS==='android'){
@@ -53,6 +59,35 @@ const obj ={
    }
    return path
  }
+ 
+ const uploadImage = async () => {
+  const formData = new FormData();
+  formData.append('docs', {
+    name: new Date() + '_docs',
+    uri: docsImage,
+    type: 'image/jpg',
+  });
+ 
+
+ try {
+  const obj ={
+    escu: state.Codigo_Escuelas ,
+    id: state.Matricula
+    
+  }
+  
+  const res = await fetch(`${API}/document/${obj.id}/${obj.escu}`,formData,{
+    method: "POST",
+    headers:{
+        Accept: 'application/json',
+        "Content-Type": 'multipart/form-data',
+    },
+  
+});
+ } catch (error) {
+   console.log(error);
+ }
+}
 
 return (
     <View>
@@ -60,9 +95,12 @@ return (
     <View>
       <Button
       onPress={chooseFile}
-      title="Upload"/>
+      title="choose"/>
             <FlatList/>
                 <Text>List Item 1</Text>
+                <Button
+                onPress={uploadImage}
+                title="upload"/>
     </View>
 </View>
 
