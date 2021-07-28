@@ -2,12 +2,14 @@ import React,{useState, useEffect} from 'react';
 import {Text,Button,View, StyleSheet,FlatList,Platform } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import { uploadImg, getUser } from '../../../api';
+import axios from'axios';
+
 const API = 'http://10.0.0.11:3000'
 
 const uploadFile = ({route}) =>{
   
   const [state, setstate] = useState()
-  
+//aqui se guarda la uri
   const [docsImage, setdocsImage] = useState('');
  
 
@@ -59,7 +61,7 @@ const uploadFile = ({route}) =>{
    }
    return path
  }
- 
+ //el formData llega dentro del req
  const uploadImage = async () => {
   const formData = new FormData();
   formData.append('docs', {
@@ -76,7 +78,7 @@ const uploadFile = ({route}) =>{
     
   }
   
-  const res = await fetch(`${API}/document/${obj.id}/${obj.escu}`,formData,{
+  const res = await axios.post(`${API}/document/${obj.id}/${obj.escu}`,formData,{
     method: "POST",
     headers:{
         Accept: 'application/json',
