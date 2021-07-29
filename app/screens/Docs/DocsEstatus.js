@@ -65,7 +65,7 @@ const uploadFile = ({route}) =>{
  const uploadImage = async () => {
   const formData = new FormData();
   formData.append('docs', {
-    name: new Date() + '_docs',
+    name: new Date() + '.jpg',
     uri: docsImage,
     type: 'image/jpg',
   });
