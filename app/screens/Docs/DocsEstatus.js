@@ -1,10 +1,15 @@
 import React,{useState, useEffect} from 'react';
-import {Text,Button,View, StyleSheet,FlatList,Platform } from 'react-native'
+import {Text,Button,View, StyleSheet,FlatList,Platform,TouchableOpacity } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
+import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
 import axios from'axios';
 
 const API = 'http://10.0.0.11:3000'
+
+const documentos ={
+
+}
 
 const uploadFile = ({route}) =>{
   
@@ -95,19 +100,82 @@ return (
     <View>
       <Text>Upload Files & Render In Component</Text>
     <View>
-      <Button
+    <Picker
+        selectedValue={state.id_curso}
+        style={{ height: 50, width: 150 }}
+        onValueChange ={(itemValue)=> handleChange('id_curso', itemValue)}
+>
+        <Picker.Item label="Acta de nacimiento" value="1" />
+        <Picker.Item label="Record de nota" value="2" />
+        <Picker.Item label="Fotos 2x2" value="3" />
+        <Picker.Item label="Certificado Medico" value="4" />
+        <Picker.Item label="Cedula de los padres" value="5" />
+        <Picker.Item label="Documentos especificados por la escuela" value="6" />
+
+      </Picker>
+      <TouchableOpacity
       onPress={chooseFile}
-      title="choose"/>
-            <FlatList/>
-                <Text>List Item 1</Text>
-                <Button
-                onPress={uploadImage}
-                title="upload"/>
+      title="choose"
+      style={styles.uploadBtnContainer}>
+{profileImage ? (
+            <Image
+              source={{ uri: profileImage }}
+              style={{ width: '100%', height: '100%' }}
+            />
+          ) : (
+            <Text style={styles.uploadBtn}>Upload Profile Image</Text>
+          )}
+        </TouchableOpacity>
+
+{profileImage ? (
+          <Text
+            onPress={uploadImage}
+            style={[
+              styles.skip,
+              { backgroundColor: 'green', color: 'white', borderRadius: 8 },
+            ]}
+          >
+            Upload
+          </Text>
+        ) : null}
+
+
+
     </View>
 </View>
 
 )
-const style = StyleSheet({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  uploadBtnContainer: {
+    height: 125,
+    width: 125,
+    borderRadius: 125 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderStyle: 'dashed',
+    borderWidth: 1,
+    overflow: 'hidden',
+  },
+  uploadBtn: {
+    textAlign: 'center',
+    fontSize: 16,
+    opacity: 0.3,
+    fontWeight: 'bold',
+  },
+  skip: {
+    textAlign: 'center',
+    padding: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    letterSpacing: 2,
+    opacity: 0.5,
+  },
+})
 }
-
 export default uploadFile
