@@ -5,23 +5,24 @@ import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
 import axios from'axios';
 
-const API = 'http://10.0.0.11:3000'
+const API = 'http://10.0.0.3:3000'
 
 const documentos ={
 
 }
 
 const uploadFile = ({route}) =>{
-  
+
   const [picker, setpicker] = useState({
-    Nombre:''
+    Nombre:'1'
   })
 
   const [state, setstate] = useState()
 //aqui se guarda la uri
   const [docsImage, setdocsImage] = useState('');
  
-  const handleChange = (name, value) => setstate({...state, [name] : value});
+  const handleChange = (name, value) => setpicker({...state, [name] : value});
+
   useEffect(() => {
     getUs()
   },[])
@@ -76,7 +77,7 @@ const uploadFile = ({route}) =>{
   formData.append('docs', {
     name: new Date() + '.jpg',
     uri: docsImage,
-    type: 'image/jpg',
+    type: 'image/jpg'
   });
  
 
@@ -86,8 +87,8 @@ const uploadFile = ({route}) =>{
     id: state.Matricula
     
   }
-  
-  const res = await axios.post(`${API}/document/${obj.id}/${obj.escu}`,formData,picker,{
+
+  const res = await axios.post(`${API}/document/${obj.id}/${obj.escu}/${picker.Nombre}`,formData ,{
     method: "POST",
     headers:{
         Accept: 'application/json',
