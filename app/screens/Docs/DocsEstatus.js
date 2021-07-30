@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {Text,Button,View, StyleSheet,FlatList,Platform,TouchableOpacity } from 'react-native'
+import {Text,Button,View, StyleSheet,FlatList,Platform,TouchableOpacity, Image } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
@@ -21,7 +21,7 @@ const uploadFile = ({route}) =>{
 //aqui se guarda la uri
   const [docsImage, setdocsImage] = useState('');
  
-
+  const handleChange = (name, value) => setstate({...state, [name] : value});
   useEffect(() => {
     getUs()
   },[])
@@ -87,13 +87,13 @@ const uploadFile = ({route}) =>{
     
   }
   
-  const res = await axios.post(`${API}/document/${obj.id}/${obj.escu}`,formData,{
+  const res = await axios.post(`${API}/document/${obj.id}/${obj.escu}`,formData,picker,{
     method: "POST",
     headers:{
         Accept: 'application/json',
         "Content-Type": 'multipart/form-data',
     },
-    body: JSON.stringify(picker)
+    
   
 });
  } catch (error) {
@@ -122,9 +122,9 @@ return (
       onPress={chooseFile}
       title="choose"
       style={styles.uploadBtnContainer}>
-{profileImage ? (
+{docsImage ? (
             <Image
-              source={{ uri: profileImage }}
+              source={{ uri: docsImage }}
               style={{ width: '100%', height: '100%' }}
             />
           ) : (
@@ -132,7 +132,7 @@ return (
           )}
         </TouchableOpacity>
 
-{profileImage ? (
+{docsImage ? (
           <Text
             onPress={uploadImage}
             style={[
@@ -149,7 +149,7 @@ return (
     </View>
 </View>
 
-)
+)}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -182,5 +182,5 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 })
-}
+
 export default uploadFile
