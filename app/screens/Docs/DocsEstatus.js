@@ -13,6 +13,10 @@ const documentos ={
 
 const uploadFile = ({route}) =>{
   
+  const [picker, setpicker] = useState({
+    Nombre:''
+  })
+
   const [state, setstate] = useState()
 //aqui se guarda la uri
   const [docsImage, setdocsImage] = useState('');
@@ -89,6 +93,7 @@ const uploadFile = ({route}) =>{
         Accept: 'application/json',
         "Content-Type": 'multipart/form-data',
     },
+    body: JSON.stringify(picker)
   
 });
  } catch (error) {
@@ -101,16 +106,16 @@ return (
       <Text>Upload Files & Render In Component</Text>
     <View>
     <Picker
-        selectedValue={state.id_curso}
+        selectedValue={picker.Nombre}
         style={{ height: 50, width: 150 }}
-        onValueChange ={(itemValue)=> handleChange('id_curso', itemValue)}
+        onValueChange ={(itemValue)=> handleChange('Nombre', itemValue)}
 >
-        <Picker.Item label="Acta de nacimiento" value="1" />
-        <Picker.Item label="Record de nota" value="2" />
-        <Picker.Item label="Fotos 2x2" value="3" />
-        <Picker.Item label="Certificado Medico" value="4" />
-        <Picker.Item label="Cedula de los padres" value="5" />
-        <Picker.Item label="Documentos especificados por la escuela" value="6" />
+        <Picker.Item label="Acta de nacimiento" value="Acta de nacimiento" />
+        <Picker.Item label="Record de nota" value="Record de nota" />
+        <Picker.Item label="Fotos 2x2" value="Fotos 2x2" />
+        <Picker.Item label="Certificado Medico" value="Certificado Medico" />
+        <Picker.Item label="Cedula de los padres" value="Cedula de los padres" />
+        <Picker.Item label="Documentos especificados por la escuela" value="Documentos especificados por la escuela" />
 
       </Picker>
       <TouchableOpacity
