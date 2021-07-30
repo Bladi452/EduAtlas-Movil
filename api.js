@@ -76,6 +76,11 @@ export const uploadImg = async(obj) =>{
     });
 }
 
+export const getDocs = async(id) =>{
+    const res = await fetch(`${API}/document/:mat${id}`)
+    return res.json()
+}
+
 export const ConecCargo = async() =>{
     const res = await fetch(`${API}/auth/conec/`,{
     method: "POST",
