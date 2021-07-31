@@ -5,6 +5,7 @@ import Registro from '../screens/Cuenta/Registro'
 import Cuenta from '../screens/Cuenta/Cuenta'
 import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
+import SendDocs from '../screens/Docs/SendDocs'
 
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import MaxHenriquez from '../screens/Inscripcion/InfoSelect/MaxHenriquez';
@@ -49,6 +50,11 @@ export default function CuentaStack() {
             options={{title:"Lista de chat"}}
 />
  
+<Stack.Screen
+            name="SendDocs"
+            component={SendDocs}
+            options={{title:"Lista de Documentos"}}
+/>
 
         <Stack.Screen
             name="check"

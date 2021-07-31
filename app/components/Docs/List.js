@@ -18,6 +18,7 @@ const isFocused = useIsFocused();
 
 const loadSchool = async()=>{
     const task = await getDocs(id);
+    console.log(task)
     setTasks(task);
 }
 

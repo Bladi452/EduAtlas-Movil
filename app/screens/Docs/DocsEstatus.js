@@ -4,12 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
 import axios from'axios';
-
+import {useNavigation} from '@react-navigation/native'
 const API = 'http://10.0.0.3:3000'
-
-const documentos ={
-
-}
 
 const uploadFile = ({route}) =>{
 
@@ -27,6 +23,7 @@ const uploadFile = ({route}) =>{
     getUs()
   },[])
 
+  const navigation = useNavigation()
   const getUs = async()=>{
   
    const [row] = await getUser(route.params.id)
@@ -51,10 +48,7 @@ const uploadFile = ({route}) =>{
   const path = await normalizePath(pickerResult.uri)
 
   console.log(pickerResult)
-  console.log(path);
-
-  
- 
+  console.log(path); 
 }
 
  async function normalizePath(path){
@@ -145,8 +139,11 @@ return (
           </Text>
         ) : null}
 
-
-
+            <TouchableOpacity
+            onPress={() => navigation.navigate("SendDocs", { id: route.params.id })}
+            >
+              <Text>Ver documentos subidos</Text>
+            </TouchableOpacity>
     </View>
 </View>
 
