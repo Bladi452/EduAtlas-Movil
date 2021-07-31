@@ -15,7 +15,6 @@ import {useNavigation} from '@react-navigation/native';
 
           <TouchableOpacity
         style={{ backgroundColor: "#ee5253", padding: 7, borderRadius: 5 }}
-        onPress={() => getDownload(task.id)}
       >
         <Text style={{ color: "#fff" }}>Delete</Text>
       </TouchableOpacity>

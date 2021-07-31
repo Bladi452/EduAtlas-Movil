@@ -8,8 +8,7 @@ import {getDocs} from '../../../api';
 
 import Item from './Item'
 
-export const List = (id) =>{
-
+export const List = (route) =>{
 
 const [task, setTasks] = useState([]);
 
@@ -17,7 +16,7 @@ const isFocused = useIsFocused();
 
 
 const loadSchool = async()=>{
-    const task = await getDocs(id);
+    const task = await getDocs(route.id);
     console.log(task)
     setTasks(task);
 }

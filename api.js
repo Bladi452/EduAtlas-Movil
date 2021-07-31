@@ -77,7 +77,7 @@ export const uploadImg = async(obj) =>{
 }
 
 export const getDocs = async(id) =>{
-    const res = await fetch(`${API}/document/:mat${id}`)
+    const res = await fetch(`${API}/document/descarga/${id}`)
     return res.json()
 }
 
