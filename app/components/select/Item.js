@@ -13,12 +13,8 @@ import {useNavigation} from '@react-navigation/native';
         >
           <Text style={styles.itemTitle}>{task.Nombre}</Text>
          
-          <Text style={{ color: "#8395a7" }}>{task.Estado}</Text>
+          <Text style={{ color: "#8395a7" }}>{task.Tanda}</Text>
           
-          <TouchableOpacity>
-          <Text>Descargar</Text>            
-          </TouchableOpacity>
-
         </TouchableOpacity>
       </View>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
+import {getDownload} from '../../../api'
 import {useNavigation} from '@react-navigation/native';
 
 
@@ -8,12 +8,18 @@ import {useNavigation} from '@react-navigation/native';
     const navigation = useNavigation()
     return (
       <View style={styles.itemContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Union", { id: task.Codigo_Escuelas, usu : id_Usu.id })}
-        >
+        <TouchableOpacity>
           <Text style={styles.itemTitle}>{task.Nombre}</Text>
          
-          <Text style={{ color: "#8395a7" }}>{task.Tanda}</Text>
+          <Text style={{ color: "#8395a7" }}>{task.Estado}</Text>
+
+          <TouchableOpacity
+        style={{ backgroundColor: "#ee5253", padding: 7, borderRadius: 5 }}
+        onPress={() => getDownload(task.id)}
+      >
+        <Text style={{ color: "#fff" }}>Delete</Text>
+      </TouchableOpacity>
+
         </TouchableOpacity>
       </View>
     );
