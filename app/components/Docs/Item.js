@@ -4,7 +4,7 @@ import {getDownload} from '../../../api'
 import {useNavigation} from '@react-navigation/native';
 
 
- const Item =({task, id_Usu})=>{
+ const Item =({task})=>{
     const navigation = useNavigation()
     return (
       <View style={styles.itemContainer}>
@@ -14,9 +14,10 @@ import {useNavigation} from '@react-navigation/native';
           <Text style={{ color: "#8395a7" }}>{task.Estado}</Text>
 
           <TouchableOpacity
-        style={{ backgroundColor: "#ee5253", padding: 7, borderRadius: 5 }}
+        style={{ backgroundColor: "#00bb2d", padding: 7, borderRadius: 5 }}
+        onPress={() => getDownload(task.Id_documentos)}
       >
-        <Text style={{ color: "#fff" }}>Delete</Text>
+        <Text style={{ color: "#fff" }}>Descargar</Text>
       </TouchableOpacity>
 
         </TouchableOpacity>

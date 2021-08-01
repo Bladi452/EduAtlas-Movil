@@ -26,7 +26,7 @@ useEffect(() => {
 }, [isFocused])
 
 const renderItem =({item}) =>{
-    return <Item task = {item} id_Usu = {id} />
+    return <Item task = {item} />
 };
 
 return(
