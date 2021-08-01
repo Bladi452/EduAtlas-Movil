@@ -65,25 +65,13 @@ export const getSolicitud = async(id) =>{
     return res.json()
 }
 
-export const uploadImg = async(obj) =>{
-    const res = await fetch(`${API}/document/${obj.id}/${obj.escu}`,{
-        method: "POST",
-        headers:{
-            Accept: 'application/json',
-            "Content-Type": 'multipart/form-data',
-        },
-        body: JSON.stringify(obj.pick),
-    });
+export const getDocs = async (id) =>{
+    const res = await fetch (`${API}/document/${id}`);
+    return res.json();
 }
-
-export const getDocs = async(id) =>{
-    const res = await fetch(`${API}/document/descarga/${id}`)
-    return res.json()
-}
-
-export const getDownload = async(id)=>{
-    const res = await fetch(`${API}/document/${id}`)
-    return res.json()
+export const getDownload = async (id) =>{
+    const res = await fetch (`${API}/document/descarga/${id}`);
+    return res.json();
 }
 
 export const ConecCargo = async() =>{
