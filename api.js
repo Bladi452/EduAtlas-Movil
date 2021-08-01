@@ -71,7 +71,7 @@ export const getDocs = async (id) =>{
 }
 export const getDownload = async (id) =>{
     const res = await fetch (`${API}/document/descarga/${id}`);
-    return res.json();
+    return res;
 }
 
 export const ConecCargo = async() =>{
