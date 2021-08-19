@@ -2,10 +2,11 @@ import React, {useState} from 'react'
 import {View, TextInput, StyleSheet,Dimensions,Image} from 'react-native'
 import {Button} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
+import { showMessage, hideMessage } from "react-native-flash-message";
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
-  const API = 'http://10.0.0.3:3000'
+  const API = 'http://10.0.0.23:19000'
 
 const navigation = useNavigation()
 
@@ -22,7 +23,14 @@ const BotonForm = (()=>{
           
             <Button style={styles.btnlogin}
             title="Login"
-            onPress={validar}
+            onPress={()=>{
+              validar
+              showMessage({
+                message: "Hello World",
+                description: "This is our second message",
+                type: "success",
+              });
+            }}
 
         />
 
@@ -62,7 +70,7 @@ const BotonForm = (()=>{
    const validar =( async()=>{
 await signIn(data);
   if (nuevo == 1) {
-   navigation.navigate('Navegacion', {id : data.Matricula})
+    navigation.navigate('Navegacion', {id : data.Matricula})
   nuevo = 0
  }else{
    console.log(nuevo)
@@ -91,7 +99,7 @@ await signIn(data);
           secureTextEntry={true}
            placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
           underlineColorAndroid='transparent'
-          onChangeText = {(text) => handleChange('password', text)}
+          onChangeTbext = {(text) => handleChange('password', text)}
           value = {data.password}
 />
          

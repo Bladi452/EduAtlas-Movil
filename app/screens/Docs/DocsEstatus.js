@@ -5,7 +5,7 @@ import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
 import axios from'axios';
 import {useNavigation} from '@react-navigation/native'
-const API = 'http://10.0.0.3:3000'
+const API = 'http://10.0.0.23:19000'
 
 const uploadFile = ({route}) =>{
 
