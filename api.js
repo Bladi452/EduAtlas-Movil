@@ -1,4 +1,4 @@
-const API = 'http://10.0.0.23:19000'
+const API = 'http://10.0.0.12:19000'
 
 //School
 

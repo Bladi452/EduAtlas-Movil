@@ -6,7 +6,7 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
-  const API = 'http://10.0.0.23:19000'
+  const API = 'http://10.0.0.12:19000'
 
 const navigation = useNavigation()
 

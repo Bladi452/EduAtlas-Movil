@@ -68,7 +68,9 @@ export default function CuentaStack() {
         <Stack.Screen
             name="Login"
             component={Login}
-            options={{title:"Login"}}
+            options={{title:"Login", headerLeft: null}
+            
+           }
         />
  
 
@@ -96,7 +98,7 @@ export default function CuentaStack() {
         <Stack.Screen
         name="Espera"
         component={Espera}
-        options={{title:"Espera"}}
+        options={{title:"Espera",headerLeft: null}}
         />
                  <Stack.Screen
         name="chat"
@@ -109,6 +111,7 @@ export default function CuentaStack() {
         name="Home"
         component={Home}
         options={{title:"Home",
+        headerLeft: null
         }}
         />
         </Stack.Navigator>

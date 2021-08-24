@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,} from 'react-native'
+import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {signup, ConecCargo} from "../../../api";
@@ -14,7 +14,8 @@ export default function Registro (){
     Email: '',
     password: '',
     nivel: '1',
-    date: ''
+    date: '',
+    confirmpassword:''
   })
 
 
@@ -72,10 +73,17 @@ export default function Registro (){
   const Registrar = (()=>{ 
 
 
-    const Regis = async () => {
-     await signup(data)
-     ConecCargo()
-      console.log(data)
+    const handleSubmit = async () => {
+      const {password, confirmpassword} = data
+      if (password !== confirmpassword) {
+        Alert.alert('ponla bien rptm')
+      } else {
+        await signup(data)
+        navigation.navigate('Login')
+        ConecCargo()
+         console.log(data)
+      }
+    
     }
   
     const navigation = useNavigation();
@@ -84,11 +92,13 @@ export default function Registro (){
     
     <View>
   <TouchableOpacity
-        onPress={Regis}
+  disabled={!data.Nombre,!data.Apellidos,!data.Email,!data.password}
+        onPress={handleSubmit}
         style={[styles.sesion, {
           backgroundColor:"#EFAF4F"
         }]}>
         <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continua</Text>
+        
       </TouchableOpacity>
      <View/>
     </View>
@@ -128,10 +138,20 @@ export default function Registro (){
 
 <TextInput style={styles.Input}
       placeholder = "Contraseña"
+      secureTextEntry={true}
       onChangeText = {(text) => handleChange('password', text)}
       value={data.password}
     
     />
+
+<TextInput style={styles.Input}
+      placeholder = "Confirmar contraseña"
+      secureTextEntry={true}
+      onChangeText = {(text) => handleChange('confirmpassword', text)}
+      value={data.confirmpassword}
+    
+    />
+
 
 
 
