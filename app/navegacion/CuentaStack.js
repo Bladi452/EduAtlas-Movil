@@ -41,7 +41,7 @@ export default function CuentaStack() {
         <Stack.Screen
             name="vali"
             component={Valid}
-            options={{title:"Home"}}
+            options={{title:"", headerLeft: null}}
 />
 
 <Stack.Screen

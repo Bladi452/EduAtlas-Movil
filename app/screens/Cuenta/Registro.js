@@ -70,7 +70,7 @@ export default function Registro (){
   }
 )
 
-  const Registrar = (()=>{ 
+  const Registrar = ()=>{ 
 
 
     const handleSubmit = async () => {
@@ -104,7 +104,7 @@ export default function Registro (){
     </View>
     )
   }
-  )
+  
 
   return(
     
