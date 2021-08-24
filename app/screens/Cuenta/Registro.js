@@ -79,6 +79,7 @@ export default function Registro (){
         Alert.alert('ponla bien rptm')
       } else {
         await signup(data)
+        Alert.alert('Usuario creado')
         navigation.navigate('Login')
         ConecCargo()
          console.log(data)

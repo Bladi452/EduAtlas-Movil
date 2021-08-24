@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {Text,Button,View, StyleSheet,FlatList,Platform,TouchableOpacity, Image } from 'react-native'
+import {Text,Button,View, StyleSheet,FlatList,Platform,TouchableOpacity, Image,Alert } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
@@ -91,6 +91,7 @@ const uploadFile = ({route}) =>{
     
   
 });
+Alert.alert(`Se subio el ${picker.Nombre}`)
  } catch (error) {
    console.log(error);
  }
@@ -98,8 +99,25 @@ const uploadFile = ({route}) =>{
 
 return (
     <View>
-      <Text>Upload Files & Render In Component</Text>
+      <Text style={
+              styles.skip
+             
+            }>Subir documentos </Text>
     <View>
+    <TouchableOpacity
+      onPress={chooseFile}
+      title="choose"
+      style={styles.uploadBtnContainer}>
+{docsImage ? (
+            <Image
+              source={{ uri: docsImage }}
+              style={{ width: '100%', height: '100%' }}
+            />
+          ) : (
+            <Text style={styles.uploadBtn}>Selecciona la imagen</Text>
+          )}
+        </TouchableOpacity>
+
     <Picker
         selectedValue={picker.Nombre}
         style={{ height: 50, width: 150 }}
@@ -113,36 +131,28 @@ return (
         <Picker.Item label="Documentos especificados por la escuela" value="Documentos especificados por la escuela" />
 
       </Picker>
-      <TouchableOpacity
-      onPress={chooseFile}
-      title="choose"
-      style={styles.uploadBtnContainer}>
-{docsImage ? (
-            <Image
-              source={{ uri: docsImage }}
-              style={{ width: '100%', height: '100%' }}
-            />
-          ) : (
-            <Text style={styles.uploadBtn}>Upload Profile Image</Text>
-          )}
-        </TouchableOpacity>
+      
 
 {docsImage ? (
           <Text
             onPress={uploadImage}
             style={[
               styles.skip,
-              { backgroundColor: 'green', color: 'white', borderRadius: 8 },
+              { backgroundColor: '#00a680', color: 'white', borderRadius: 8 },
             ]}
           >
-            Upload
+            Subir documento
           </Text>
         ) : null}
 
             <TouchableOpacity
+            
             onPress={() => navigation.navigate("SendDocs", { id: route.params.id })}
             >
-              <Text>Ver documentos subidos</Text>
+              <Text   style={[
+              styles.skip,
+              { backgroundColor: 'teal', color: 'white', borderRadius: 8, marginTop: 10},
+            ]}>Ver documentos subidos</Text>
             </TouchableOpacity>
     </View>
 </View>
@@ -155,14 +165,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   uploadBtnContainer: {
-    height: 125,
-    width: 125,
-    borderRadius: 125 / 2,
+    height: 225,
+    width: 225,
     justifyContent: 'center',
     alignItems: 'center',
     borderStyle: 'dashed',
     borderWidth: 1,
     overflow: 'hidden',
+    alignSelf :"center",
   },
   uploadBtn: {
     textAlign: 'center',
@@ -177,7 +187,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 2,
-    opacity: 0.5,
+    
+    justifyContent: 'center'
   },
 })
 
