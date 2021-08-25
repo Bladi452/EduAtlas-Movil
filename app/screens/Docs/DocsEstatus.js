@@ -5,7 +5,7 @@ import {Picker} from '@react-native-community/picker'
 import { uploadImg, getUser } from '../../../api';
 import axios from'axios';
 import {useNavigation} from '@react-navigation/native'
-const API = 'http://10.0.0.12:3000'
+const API = 'http://10.0.0.37:3000'
 
 const uploadFile = ({route}) =>{
 
@@ -37,7 +37,7 @@ const uploadFile = ({route}) =>{
   let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
   if (permissionResult.granted === false) {
-    alert("Permission to access camera roll is required!");
+    alert("La aplicacion necesita acceso a camara y a galeria para subir imagenes");
     return;
   }
 
@@ -120,7 +120,7 @@ return (
 
     <Picker
         selectedValue={picker.Nombre}
-        style={{ height: 50, width: 150 }}
+        style={styles.picker}
         onValueChange ={(itemValue)=> handleChange('Nombre', itemValue)}
 >
         <Picker.Item label="Acta de nacimiento" value="Acta de nacimiento" />
@@ -187,9 +187,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 2,
-    
     justifyContent: 'center'
   },
+  picker:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70, 
+    width: 250,
+    alignSelf :"center",
+    textAlign: "center",
+    marginBottom: 20,
+    marginTop: 10,
+
+  }
 })
 
 export default uploadFile

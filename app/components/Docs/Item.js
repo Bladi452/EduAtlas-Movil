@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import {getDownload} from '../../../api'
 import {useNavigation} from '@react-navigation/native';
 
 
@@ -12,13 +11,6 @@ import {useNavigation} from '@react-navigation/native';
           <Text style={styles.itemTitle}>{task.Nombre}</Text>
          
           <Text style={{ color: "#8395a7" }}>{task.Estado}</Text>
-
-          <TouchableOpacity
-        style={{ backgroundColor: "#00bb2d", padding: 7, borderRadius: 5 }}
-        onPress={() => getDownload(task.Id_documentos)}
-      >
-        <Text style={{ color: "#fff" }}>Descargar</Text>
-      </TouchableOpacity>
 
         </TouchableOpacity>
       </View>

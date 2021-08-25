@@ -23,7 +23,6 @@ export default function Chatne({route}) {
   
   const [Chat, setChat] = useState([])
   
- 
   
     const newChat = async ()=>{
        const chats = await getChat(route.params.id);
@@ -43,8 +42,8 @@ export default function Chatne({route}) {
             </UserImgWrapper>
             <TextSection>
               <UserInfoText>
-                <UserName>{item.Id}</UserName>
-                <PostTime>{item.Id_Sala}</PostTime>
+                <UserName>{item.Nombre}</UserName>
+                <PostTime>{item.Fecha}</PostTime>
               </UserInfoText>
               <MessageText>{item.Matricula}</MessageText>
             </TextSection>
