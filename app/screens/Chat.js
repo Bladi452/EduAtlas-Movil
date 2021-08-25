@@ -6,13 +6,12 @@ export default function Chat ({route}){
   const [messagesOrigin, setMessagesOrigin] = useState([]);
   const [messages, setMessage] = useState([]);
 
-console.log(route)
 useEffect(() => {
   getMess()
     }, [])
 
   class object {
-    constructor(id, text, fecha ,id2) {
+    constructor(id, text, fecha ,id2, nameV) {
 
       let fechaN = new Date(fecha);
 
@@ -21,21 +20,26 @@ useEffect(() => {
         this.createdAt = fechaN,
         this.user = {
           _id: id2,
+          name: nameV
         };
     }
   }
-
+console.log(route.params.Matricula)
   const getMess = async()=>{
-   const messages = await getMessage(route.params.Id_sala_User);
-   let i = 0
+
+    const message = await getMessage(route.params.Id_sala_User);
+   console.log(message)
+    let i = 0
    let messagesArray = []
     let messagesArrayCom =[]
-while(i < messages.length){
-  let id =  messages[i].id;
-  let text = messages[i].mensaje;
-  let fecha = messages[i].fecha;
-  let user = messages[i++].Matricula;
-    let messagesArrayCom = new object(id, text, fecha ,user  )
+while(i < message.length){
+  let id =  message[i].id;
+  let text = message[i].mensaje;
+  let fecha = message[i].fecha;
+  let nameV = message[i].NomCom;
+  let user = message[i++].Matricula;
+    let messagesArrayCom = new object(id, text, fecha ,user, nameV )
+console.log(messagesArrayCom)
     messagesArray.push(messagesArrayCom)
   }
   setMessage(messagesArray)
@@ -44,8 +48,8 @@ while(i < messages.length){
 const sendMess = async(newMessage)=>{
   let convert = [{
     mensaje: newMessage[0].text,
-    id_Sala: route.params.Id_sala_User,
     Matricula: newMessage[0].user._id,
+    id_Sala: route.params.Id_sala_User,
     fecha: newMessage[0].createdAt
   }]
   const row = await sendMessage(convert[0])
@@ -59,13 +63,13 @@ const onSend = useCallback((messagess = []) => {
  getMess();  
 }, [])
   
- 
 return (
         <GiftedChat
           messages={messages}
           onSend={(messagess) => onSend(messagess)}
-         user={{
-            _id: route.params.Matricula
+          renderUsernameOnMessage={true}
+          user={{
+            _id: parseInt(route.params.Matricula)
           }}
         />
       )

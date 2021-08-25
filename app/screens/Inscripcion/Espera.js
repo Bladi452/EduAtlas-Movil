@@ -1,9 +1,27 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import {Image, StyleSheet,Button,ScrollView , View, Text} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
+import { AdMobInterstitial } from 'expo-ads-admob';
+
+const interstial = async () =>{
+  await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712'); // Test ID, Replace with your-admob-unit-id
+
+  try {
+    await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+    await AdMobInterstitial.showAdAsync(); 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
 export default function Seleccion (){
    const navigate = useNavigation()
     
+   useEffect(()=>{
+    interstial();
+      },[])
+
     return(
     <ScrollView style={styles.vista}>
         <View>

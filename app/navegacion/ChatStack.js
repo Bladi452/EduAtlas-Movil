@@ -28,14 +28,14 @@ export default function Chatne({route}) {
        const chats = await getChat(route.params.id);
        setChat(chats)
     }
-  
+  console.log(Chat)
   return (
     <Container>
     <FlatList 
       data={Chat}
       keyExtractor={item => item.Id.toString()}
       renderItem={({item}) => (
-        <Card onPress={() => navigation.navigate('chat', {Id_sala_User: item.Id_Sala, Matricula: item.Matricula})}>
+        <Card onPress={() => navigation.navigate('chat', {Id_sala_User: item.id_Sala, Matricula: route.params.id})}>
           <UserInfo>
             <UserImgWrapper>
               <UserImg source={item.userImg} />

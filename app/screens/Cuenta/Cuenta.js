@@ -1,15 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View,Text,StyleSheet, Image,TouchableOpacity } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+import {AdMobInterstitial } from 'expo-ads-admob';
+
+const interstial = async () =>{
+  await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712'); // Test ID, Replace with your-admob-unit-id
+
+  try {
+    await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+    await AdMobInterstitial.showAdAsync(); 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default function Cuenta() {
+
+  useEffect(()=>{
+interstial();
+  },[])
 
   return (
 
 <View style={[styles.container]}>
       <View style={{ flex: 3, backgroundColor:"#03BFD3",
 }}>
+
         <Fotos/>
       </View>
       <View style={{flex:2, backgroundColor:"#03BFD3",}}>
