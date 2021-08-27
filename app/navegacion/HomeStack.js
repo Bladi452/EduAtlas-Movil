@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
@@ -12,8 +12,8 @@ const Tab = createBottomTabNavigator()
 
 
 export default function HomeStack (route) {
-
-  const navigation = useNavigation()
+  const [matricula, setMatricula] = useState({matricula : ''})
+  setMatricula(route.id)
 return(
 <Tab.Navigator
     initialRouteName="Home"
@@ -58,7 +58,7 @@ function HomeScreen() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
     <View style={styles.Vista}>
       <Text style={styles.titulo}>Reglas de los documentos</Text>
-      
+      <Text>{matricula}</Text>
     </View>
     </View>
   );

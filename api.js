@@ -17,16 +17,6 @@ export const getSchool = async (id) =>{
     return res.json();
 }
 
-export const signup =  async(newdata) =>{
-    await fetch(`${API}/auth/regis`,{
-        method: "POST",
-        headers: {
-            Accept: 'application/json',
-            "Content-Type": 'application/json',
-        },
-        body: JSON.stringify(newdata),
-    });
-};
 
 export const solicitud = async (newdata) =>{
     await fetch(`${API}/school/req`,{
@@ -80,6 +70,6 @@ export const ConecCargo = async() =>{
     headers:{
         Accept: 'application/json',
         "Content-Type": 'application/json',
-    },    
+    },
 })
 }

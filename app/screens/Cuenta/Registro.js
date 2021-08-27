@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {signup, ConecCargo} from "../../../api";
+import {ConecCargo} from "../../../api";
 
+const API = 'http://10.0.0.37:3000'
 export default function Registro (){
 
   const handleChange = (name, value) => setData({...data, [name]: value});
-
+  const [Message, setMessage] = useState([]);
   const [data,  setData] = useState({
     Nombre: '',
     Apellidos: '',
@@ -18,6 +19,28 @@ export default function Registro (){
     confirmpassword:''
   })
 
+const signup =  async(newdata) =>{
+    await fetch(`${API}/auth/regis`,{
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(newdata),
+    })    .then(async res => { 
+      try {
+          const jsonRes = await res.json();
+          if (res.status === 200) {
+              setMessage(jsonRes.message);
+          }
+      } catch (err) {
+          console.log(err);
+      };
+  })
+  .catch(err => {
+      console.log(err);
+  });
+};
 
   const Calendario = (()=> {
 
@@ -79,7 +102,7 @@ export default function Registro (){
         Alert.alert('Clave incorrecta')
       } else {
         await signup(data)
-        Alert.alert('Usuario creado')
+        Alert.alert(`${Message}`)
         navigation.navigate('Login')
         ConecCargo()
          console.log(data)
