@@ -58,11 +58,7 @@ function HomeScreen() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
     <View style={styles.Vista}>
       <Text style={styles.titulo}>Reglas de los documentos</Text>
-      <Text>polque a la banquera le da tanta hambre</Text>
-      <Text>no te impoltaa</Text>
-      <Text>No e obligao rapai</Text>
-      <Text>Polquee</Text>
-      <Text>La creta e tu mama</Text>
+      
     </View>
     </View>
   );

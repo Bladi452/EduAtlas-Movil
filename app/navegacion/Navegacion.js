@@ -5,24 +5,11 @@ import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home';
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import {getUser, getSolicitud} from '../../api'
-/*function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
-
-ReactDOM.render(
-  // Intentar cambiando isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-); */
 
 const Navegacion = (({route})=>{  
     const [Escu, setEscu] = useState(false)
-    const [solicitud, setSolicitud] = useState(true)
-
+    const [solicitud, setSolicitud] = useState(false)
+    const [Dene, setDene] = useState(false)
     const isFocused = useIsFocused()
 
 
@@ -40,7 +27,10 @@ const Solid = async()=>{
     const user = await getSolicitud(route.params.id)
     if(user.length === 0){
         setSolicitud(true)
-    } else{
+    }else if(user[0].Estatus === 'Denegado'){
+        setDene(true)
+    }
+    else{
         setSolicitud(false)
     }
  }
@@ -49,7 +39,7 @@ const Solid = async()=>{
 
 return(
     (Escu ?  <Home id = {route.params.id}/> :
-    solicitud ? <Seleccion id = {route.params.id}/>: <Espera/>
+    solicitud ? <Seleccion id = {route.params.id}/>: <Espera denegado={Dene} id = {route.params.id}/>
     )
 )
 

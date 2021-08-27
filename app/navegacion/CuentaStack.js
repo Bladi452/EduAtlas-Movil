@@ -42,6 +42,7 @@ export default function CuentaStack() {
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}
+            options={{title:''}}
         />        
         <Stack.Screen
             name="vali"
@@ -105,7 +106,7 @@ export default function CuentaStack() {
         name="chat"
         component={Chat}
         options={({route}) => ({
-            title: route.params.Id,
+            title: 'Admisiones',
             headerBackTitleVisible: false,
           })}        />
          <Stack.Screen

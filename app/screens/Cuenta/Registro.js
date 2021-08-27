@@ -76,7 +76,7 @@ export default function Registro (){
     const handleSubmit = async () => {
       const {password, confirmpassword} = data
       if (password !== confirmpassword) {
-        Alert.alert('ponla bien rptm')
+        Alert.alert('Clave incorrecta')
       } else {
         await signup(data)
         Alert.alert('Usuario creado')
@@ -98,7 +98,7 @@ export default function Registro (){
         style={[styles.sesion, {
           backgroundColor:"#EFAF4F"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continua</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continúa</Text>
         
       </TouchableOpacity>
      <View/>

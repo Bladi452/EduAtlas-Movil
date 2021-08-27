@@ -22,7 +22,8 @@ const BotonForm = (()=>{
         return(
           
             <Button style={styles.btnlogin}
-            title="Login"
+            title="Iniciar sesión
+            "
             onPress={
               validar
               
@@ -71,7 +72,7 @@ await signIn(data);
     navigation.navigate('Navegacion', {id : data.Matricula})
   nuevo = 0
  }else{
-   Alert.alert('Usuario o contrasena son invalidos')
+   Alert.alert('Usuario o contraseña inválidos')
    console.log(nuevo)
  }
  
@@ -86,7 +87,7 @@ await signIn(data);
             resizeMode="stretch"
       />
          <TextInput  style={styles.input}
-          placeholder= "Matricula"
+          placeholder= "matrícula"
           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
           underlineColorAndroid='transparent'
           onChangeText ={(text)=> handleChange('Matricula', text)}

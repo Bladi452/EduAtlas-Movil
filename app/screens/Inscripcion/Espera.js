@@ -15,20 +15,33 @@ const interstial = async () =>{
 }
 
 
-export default function Seleccion (){
-   const navigate = useNavigation()
+export default function Seleccion (route){
+console.log(route)
+  const navigation = useNavigation()
     
    useEffect(()=>{
     interstial();
       },[])
-
+      
     return(
     <ScrollView style={styles.vista}>
         <View>
             <Image style={styles.logo} 
             source={require("../../../assets/Meditar.png")}/>
             
-            <Text style={styles.text}>Tu solicitud ya fue enviada, espera con paciencia tu respuesta, aun la solicitud esta pendiente</Text>
+            
+            {route.denegado
+          ?           <Text
+          onPress={() => navigation.navigate("Seleccion", {id : route.id})}
+          style={[
+            styles.skip,
+            { backgroundColor: '#00a680', color: 'white', borderRadius: 8 },
+          ]}
+        >
+          Tu solicitud fue denegada, presiona aqui y envia otra a una escuela diferente
+        </Text>
+          : <Text style={styles.text}>Tu solicitud ya fue enviada, espera con paciencia tu respuesta, aún  la solicitud está pendiente</Text>}
+
         </View>
     </ScrollView>
     )
@@ -44,6 +57,16 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf :"center",
+    },
+    skip: {
+      marginTop:50,
+      textAlign: 'center',
+      padding: 10,
+      fontSize: 16,
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      letterSpacing: 2,
+      justifyContent: 'center'
     },
     text:{
         marginTop:50,
