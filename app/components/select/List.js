@@ -23,7 +23,7 @@ const loadSchool = async()=>{
 
 useEffect(() => {
     loadSchool();
-}, [isFocused])
+}, [])
 
 const renderItem =({item}) =>{
     return <Item task = {item} id_Usu = {id} />

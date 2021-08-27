@@ -35,6 +35,11 @@ export default function CuentaStack() {
         }}>
             
  <Stack.Screen
+            name="Cuenta"
+            component={Cuenta}
+        />
+
+ <Stack.Screen
             name="Navegacion"
             component={Navegacion}
         />        
@@ -59,10 +64,6 @@ export default function CuentaStack() {
         <Stack.Screen
             name="check"
             component={CheckEstatus}
-        />
-            <Stack.Screen
-            name="Cuenta"
-            component={Cuenta}
         />
  
         <Stack.Screen
