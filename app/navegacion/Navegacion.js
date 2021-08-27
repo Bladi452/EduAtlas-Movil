@@ -46,30 +46,6 @@ const Solid = async()=>{
  }
  Solid()
  Solic()
-/*
- function Greeting() {    
-    Solid()
-    Solic()
-    if(Escu) {
-        console.log('Home')
-      return  <Home id = {route.params.id}/>
-    }else{
-        console.log('prueba2')
-        if(solicitud){
-            console.log('seleccion')
-           return <Seleccion id = {route.params.id}/>
-        }else{
-            console.log('espera si')
-            return <Espera/>
-        }
-    }
-}
-
- a == 5 ? ‘Cinco’ :
-                    a == 7 ? ‘Siete’:
-                    a == 11 ? ‘Once’:
-                    a == 15 ? ‘Quince’:
-                    'Otro Número;*/ 
 
 return(
     (Escu ?  <Home id = {route.params.id}/> :
