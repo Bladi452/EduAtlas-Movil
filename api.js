@@ -7,6 +7,11 @@ export const getSchools = async () =>{
     return await res.json()
 }
 
+export const getMat = async () =>{
+    const res = await fetch(`${API}/auth/getmat`)
+    return await res.json()
+}
+
 export const getUser = async (id) =>{
     const res = await fetch (`${API}/navegacion/${id}`);
     return await res.json();
@@ -64,8 +69,8 @@ export const getDownload = async (id) =>{
     return res;
 }
 
-export const ConecCargo = async() =>{
-    const res = await fetch(`${API}/auth/conec/`,{
+export const ConecCargo = async(newData) =>{
+    const res = await fetch(`${API}/auth/conec/${newData}/1`,{
     method: "POST",
     headers:{
         Accept: 'application/json',

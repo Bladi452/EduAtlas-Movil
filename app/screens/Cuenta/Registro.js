@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {ConecCargo} from "../../../api";
+import {ConecCargo, getMat} from "../../../api";
 
 const API = 'http://10.0.0.37:3000'
 export default function Registro (){
@@ -102,10 +102,12 @@ const signup =  async(newdata) =>{
         Alert.alert('Clave incorrecta')
       } else {
         await signup(data)
-        Alert.alert(`${Message}`)
+      const matnew = await getMat()
+     await ConecCargo(matnew[0].Matricula)
+      Alert.alert(`Tu matricula es: ${matnew[0].Matricula} copiala o tomale una captura`)
+      
         navigation.navigate('Login')
-        ConecCargo()
-         console.log(data)
+      
       }
     
     }
