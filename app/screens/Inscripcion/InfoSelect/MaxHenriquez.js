@@ -12,7 +12,6 @@ export default function MaxHenriquez ({route}){
   const handleChange = (name, value) => setstate({...state, [name] : value});
 
    const [state, setstate] = useState({
-     Fecha: new Date(),
      Estatus: 'null',
      Codigo_Escuelas : route.params.id,
      id_Usu : route.params.usu,
