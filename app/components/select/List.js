@@ -1,4 +1,3 @@
-import {useIsFocused} from '@react-navigation/native'
 
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, FlatList} from 'react-native'
@@ -13,7 +12,6 @@ export const List = (id) =>{
 
 const [task, setTasks] = useState([]);
 
-const isFocused = useIsFocused();
 
 
 const loadSchool = async()=>{

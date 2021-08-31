@@ -1,4 +1,4 @@
-import { useNavigation ,useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React,{useEffect, useState} from 'react';
 import {getUser, getSolicitud} from '../../../api'
 import { Text,View } from 'react-native';
@@ -8,13 +8,12 @@ import CheckEstatus from './CheckEstatus'
 
 const Selec = (({id})=>{
 
-    const isFocused = useIsFocused()
 
 const [Escu, setEscu] = useState()
 
 useEffect(()=>{
     Solid();
-}, [isFocused]);
+}, []);
 
 
 const Solid = async()=>{

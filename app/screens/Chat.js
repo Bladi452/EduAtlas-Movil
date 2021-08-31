@@ -53,7 +53,7 @@ const sendMess = async(newMessage)=>{
     fecha: newMessage[0].createdAt
   }]
   const row = await sendMessage(convert[0])
-  console.log(row)
+  getMess()
 }
 
 const onSend = useCallback((messagess = []) => {

@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {ConecCargo, getMat} from "../../../api";
 
-const API = 'http://10.0.0.37:3000'
+const API = 'http://10.0.0.49:3000'
 export default function Registro (){
 
   const handleChange = (name, value) => setData({...data, [name]: value});

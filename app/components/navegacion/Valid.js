@@ -1,4 +1,4 @@
-import { useNavigation ,useIsFocused } from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 import React,{useEffect, useState} from 'react';
 import { View, Text } from 'react-native'
 import {getSolicitud} from '../../../api'
@@ -12,10 +12,8 @@ const Valid = ({route}) => {
 
   useEffect(()=>{
     Soli();
-}, [isFocused]);
+}, []);
 
-
-    const isFocused = useIsFocused()
     
     const [sol, setSol] = useState()
 
