@@ -7,7 +7,9 @@ import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
 import SendDocs from '../screens/Docs/SendDocs'
 
+import HomeStackAdmin from './HomeStackAdmin'
 import Seleccion from '../screens/Inscripcion/Seleccion';
+import solicitudes from '../screens/Admin/solicitudes';
 import MaxHenriquez from '../screens/Inscripcion/InfoSelect/MaxHenriquez';
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home'
@@ -33,20 +35,25 @@ export default function CuentaStack() {
         },
         
         }}>
-            
+        
  <Stack.Screen
             name="Cuenta"
             component={Cuenta}
         />
-
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}
             options={{title:''}}
-        />        
+        />
         <Stack.Screen
             name="vali"
             component={Valid}
+            options={{title:"", headerLeft: null}}
+/>
+
+<Stack.Screen
+            name="HomeStackAdmin"
+            component={HomeStackAdmin}
             options={{title:"", headerLeft: null}}
 />
 
@@ -79,7 +86,7 @@ export default function CuentaStack() {
          <Stack.Screen
             name="Seleccion"
             component={Seleccion}
-            options={{title:"Elige la escuela"}}
+            options={{title:"Elige la escuela",headerLeft: null}}
         />
         <Stack.Screen
             name="Registro"

@@ -1,19 +1,33 @@
-import React,{useState, useEffect, ReactDOM} from 'react';
+import React,{useState, useEffect} from 'react';
+import { Text } from 'react-native-elements';
 import Cuenta from '../screens/Cuenta/Cuenta';
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home';
+import HomeAdmin from './HomeStackAdmin';
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import {getUser, getSolicitud} from '../../api'
+import HomeStack from './HomeStack';
+import { set } from 'react-native-reanimated';
 
 const Navegacion = (({route})=>{  
-    const [Escu, setEscu] = useState(false)
-    const [solicitud, setSolicitud] = useState(false)
+const Usuario = route.params.datos[0]
+
+    const [Cargo, setCargo] = useState(null)
+    const [Escu, setEscu] = useState(null)
+    const [solicitud, setSolicitud] = useState(null)
     const [Dene, setDene] = useState(false)
 
-const Solid = async()=>{
-    const user = await getUser(route.params.id)
- 
-     if(user[0].Codigo_Escuelas === null){
+
+const SeCargo =()=>{
+     if(Usuario.Nivel >=107){
+         setCargo(false)
+     }else{
+         setCargo(true)
+     }
+ }
+
+const Solid =()=>{
+     if(Usuario.Codigo_Escuelas === null){
          setEscu(false)
      }else{
          setEscu(true)
@@ -21,25 +35,33 @@ const Solid = async()=>{
  }
 
  const Solic = async()=>{
-    const user = await getSolicitud(route.params.id)
+    const user = await getSolicitud(Usuario.Matricula)
+    console.log(user.length)
     if(user.length === 0){
         setSolicitud(false)
-    }else if(user[0].Estatus === 'Denegado'){
+    }else{
+        setSolicitud(true) 
+        if(user[0].Estatus === 'Denegado'){
         setDene(true)
-    }
-    else if(user[0].Estatus === null ){
-        setSolicitud(true)
-    }
  }
- Solid()
- Solic()
+}
+}
+ useEffect(() => {
+    SeCargo()
+    Solid()
+    Solic()
+},[])
 
-return(
-    (Escu ?  <Home id = {route.params.id}/> :
-    solicitud ? <Espera denegado={Dene} id = {route.params.id}/>: <Seleccion id = {route.params.id}/>
-    )
+ if(Cargo === null || Escu === null){
+return <Text>Cargando...</Text>
+ }
+
+ return(
+  (Cargo ? <HomeAdmin id = {Usuario.Matricula} Escuela = {Usuario.Codigo_Escuelas}/>:
+      Escu ?  <Home id = {Usuario.Matricula}/> :
+    solicitud ? <Espera denegado={Dene} id = {Usuario.Matricula}/>: <Seleccion id = {Usuario.Matricula}/>
+    ) 
 )
-
 })
 
 

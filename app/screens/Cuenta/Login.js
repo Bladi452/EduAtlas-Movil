@@ -3,6 +3,7 @@ import {View, TextInput, StyleSheet,Dimensions,Image,Alert} from 'react-native'
 import {Button} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import { showMessage, hideMessage } from "react-native-flash-message";
+import { Message } from 'react-native-gifted-chat';
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
@@ -17,7 +18,7 @@ const navigation = useNavigation()
   })
 
 var nuevo
-  
+var message
 const BotonForm = (()=>{
         return(
           
@@ -54,6 +55,7 @@ const BotonForm = (()=>{
             }else{
               nuevo = 1
               console.log('existe')
+              message = jsonRes.message
             }
         } catch (err) {
             console.log(err)
@@ -69,7 +71,7 @@ const BotonForm = (()=>{
 await signIn(data);
 
   if (nuevo == 1) {
-    navigation.navigate('Navegacion', {id : data.Matricula})
+    navigation.navigate('Navegacion', {datos : message})
   nuevo = 0
  }else{
    Alert.alert('Usuario o contraseña inválidos')

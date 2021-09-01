@@ -15,8 +15,8 @@ import { Container,
   import { getChat } from '../../api.js';
   
 export default function Chatne({route}) {
-
-  useEffect(() => {
+console.log(route)
+ useEffect(() => {
     newChat()
   },[])
   const navigation = useNavigation()

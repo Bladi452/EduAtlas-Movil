@@ -17,6 +17,20 @@ export const getUser = async (id) =>{
     return await res.json();
 }
 
+export const getSolicitudes = async (id) =>{
+    const res = await fetch (`${API}/solicitudes/${id}`);
+    return await res.json();
+}
+export const approveReq = async (id) =>{
+    const res = await fetch (`${API}/apro/${id}`);
+    return await res.json();
+}
+
+export const denyReq = async (id) =>{
+    const res = await fetch (`${API}/dene/${id}`);
+    return await res.json();
+}
+
 export const getSchool = async (id) =>{
     const res = await fetch (`${API}/school/${id}`);
     return res.json();
