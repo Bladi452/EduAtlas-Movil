@@ -1,9 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import {useNavigation} from '@react-navigation/native';
 import {denyReq,approveReq} from '../../../api';
- const Item =({task})=>{
+ const Item =({task, load})=>{
     const navigation = useNavigation()
+const Apro=(id)=>{
+  approveReq(id)
+  load()
+}
+
+const Dene=(id)=>{
+  denyReq(id)
+  load()
+}
+
     return (
       <View style={styles.itemContainer}>
         <TouchableOpacity>
@@ -16,14 +26,14 @@ import {denyReq,approveReq} from '../../../api';
 
           <TouchableOpacity
         style={{ backgroundColor: "#03BB85", padding: 7, borderRadius: 5, marginTop: 15 }}
-        onPress={() => approveReq(task.id)}
+        onPress={() => Apro(task.Id_Solicitud)}
       >
         <Text style={{ color: "#fff", textAlign:"center" }}>Aceptar</Text>
       </TouchableOpacity>
 
           <TouchableOpacity
         style={{ backgroundColor: "#ee5253", padding: 7, borderRadius: 5, marginTop: 15 }}
-        onPress={() => denyReq(task.id)}
+        onPress={() => Dene(task.Id_Solicitud)}
       >
         <Text style={{ color: "#fff", textAlign:"center" }}>Denegar</Text>
       </TouchableOpacity>

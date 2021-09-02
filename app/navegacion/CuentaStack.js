@@ -39,11 +39,12 @@ export default function CuentaStack() {
  <Stack.Screen
             name="Cuenta"
             component={Cuenta}
+        options={{title:'EduAtlas', headerTitleAlign: 'center'}}
         />
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}
-            options={{title:'EduAtlas', headerLeft: null}}
+            options={{title:'EduAtlas', headerLeft: null, headerTitleAlign: 'center'}}
         />
         <Stack.Screen
             name="vali"
