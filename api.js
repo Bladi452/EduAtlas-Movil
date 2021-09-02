@@ -22,13 +22,18 @@ export const getSolicitudes = async (id) =>{
     return await res.json();
 }
 export const approveReq = async (id) =>{
-    const res = await fetch (`${API}/apro/${id}`);
-    return await res.json();
-}
+    const res = await fetch (`${API}/apro/${id}`,{
+        method: "PUT",
+         }
+        );
+      return res;
+    };
 
 export const denyReq = async (id) =>{
-    const res = await fetch (`${API}/dene/${id}`);
-    return await res.json();
+    const res = await fetch (`${API}/dene/${id}`,{
+        method: "PUT",
+         });
+    return  res
 }
 
 export const getSchool = async (id) =>{

@@ -43,7 +43,7 @@ export default function CuentaStack() {
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}
-            options={{title:''}}
+            options={{title:'EduAtlas', headerLeft: null}}
         />
         <Stack.Screen
             name="vali"
@@ -62,7 +62,14 @@ export default function CuentaStack() {
             component={Chatne}
             options={{title:"Lista de chat"}}
 />
- 
+
+<Stack.Screen
+            name="solicitudes"
+            component={solicitudes}
+            options={{title:"Soliticudes"}}
+/>
+
+
 <Stack.Screen
             name="SendDocs"
             component={SendDocs}

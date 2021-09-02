@@ -8,6 +8,7 @@ import Seleccion from '../screens/Inscripcion/Seleccion';
 import {getUser, getSolicitud} from '../../api'
 import HomeStack from './HomeStack';
 import { set } from 'react-native-reanimated';
+import Cargando from '../components/Cargando';
 
 const Navegacion = (({route})=>{  
 const Usuario = route.params.datos[0]
@@ -52,8 +53,8 @@ const Solid =()=>{
     Solic()
 },[])
 
- if(Cargo === null || Escu === null){
-return <Text>Cargando...</Text>
+ if(Cargo === null || Escu === null || solicitud === null){
+return <Cargando isVisible={true} text= "Esta iniciando sesion"/>
  }
 
  return(
