@@ -1,17 +1,34 @@
-import React from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import React, {useEffect} from 'react'
+import { Text, View, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
+import Mascarilla from '../components/Mascarilla';
 
 import uploadFile from '../screens/Docs/DocsEstatus'
 
 import Chatne from './ChatStack'
+import {AdMobInterstitial } from 'expo-ads-admob';
+
+const interstial = async () =>{
+  await AdMobInterstitial.setAdUnitID('ca-app-pub-3127095758669759/3880389007');
+
+  try {
+    await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+    await AdMobInterstitial.showAdAsync(); 
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const Tab = createBottomTabNavigator()
 
 
 export default function HomeStack (route) {
+
+useEffect(() => {
+  interstial();
+}, [])
 
   const navigation = useNavigation()
 return(
@@ -56,15 +73,21 @@ function HomeScreen() {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
+    <View style={styles.Vista2}>
+      <Mascarilla/>
+    </View>
     <View style={styles.Vista}>
-      <Text style={styles.titulo}>Reglas de los documentos</Text>
-      <Text>polque a la banquera le da tanta hambre</Text>
-      <Text>no te impoltaa</Text>
-      <Text>No e obligao rapai</Text>
-      <Text>Polquee</Text>
-      <Text>La creta e tu mama</Text>
+      <Text style={styles.titulo}>Requisitos de inscripción</Text>
+      <Text>Acta de nacimiento</Text>
+      <Text>Acta de culminación de estudios básicos</Text>
+      <Text>Fotos 2x2</Text>
+      <Text>Certificado Médico</Text>
+      <Text>Copia de cédula de ambos padres</Text>
+      <Text>Teléfonos actualizados</Text>
+      <Text>Record de notas</Text>
     </View>
-    </View>
+     </View>
+
   );
 }
 
@@ -106,5 +129,13 @@ Vista:{
     backgroundColor:"#cdcdcd",
     alignSelf:"center",
     borderRadius:10
+},
+Vista2:{
+  marginBottom:90,
+  height:"14%",
+  width: "95%",
+  backgroundColor:"#F7D000",
+  alignSelf:"center",
+  borderRadius:10
 }
 })

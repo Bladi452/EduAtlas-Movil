@@ -7,18 +7,9 @@ import axios from'axios';
 import {useNavigation} from '@react-navigation/native'
 import { AdMobInterstitial } from 'expo-ads-admob';
 
-const API = 'http://10.0.0.49:3000'
+const API = 'http://10.0.0.37:3000'
 
-const interstial = async () =>{
-  await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712'); // Test ID, Replace with your-admob-unit-id
 
-  try {
-    await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
-    await AdMobInterstitial.showAdAsync(); 
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 const uploadFile = ({route}) =>{
 
@@ -33,7 +24,6 @@ const uploadFile = ({route}) =>{
   const handleChange = (name, value) => setpicker({...state, [name] : value});
 
   useEffect(() => {
-    interstial();
     getUs();
   },[])
 

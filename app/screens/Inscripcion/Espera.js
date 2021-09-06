@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native'
 import { AdMobInterstitial } from 'expo-ads-admob';
 
 const interstial = async () =>{
-  await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712'); // Test ID, Replace with your-admob-unit-id
+  await AdMobInterstitial.setAdUnitID('ca-app-pub-3127095758669759/4418610901'); // Test ID, Replace with your-admob-unit-id
 
   try {
     await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});

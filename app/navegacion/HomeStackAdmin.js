@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import solicitudes from '../screens/Admin/solicitudes';
-
+import Mascarilla from '../components/Mascarilla';
 import uploadFile from '../screens/Docs/DocsEstatus'
 
 import Chatne from './ChatStack'
@@ -57,6 +57,10 @@ function HomeScreen() {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff" }}>
+        <View style={styles.Vista2}>
+      <Mascarilla/>
+    </View>
+
     <View style={styles.Vista}>
       <Text style={styles.titulo}>Reglas de los documentos</Text>
       <Text>polque a la banquera le da tanta hambre</Text>
@@ -107,5 +111,13 @@ Vista:{
     backgroundColor:"#cdcdcd",
     alignSelf:"center",
     borderRadius:10
+},
+Vista2:{
+  marginBottom:90,
+  height:"14%",
+  width: "95%",
+  backgroundColor:"#F7D000",
+  alignSelf:"center",
+  borderRadius:10
 }
 })

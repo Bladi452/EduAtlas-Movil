@@ -3,14 +3,10 @@ import { GiftedChat } from 'react-native-gifted-chat'
 import {getMessage, sendMessage} from '../../api'
 
 export default function Chat ({route}){
-console.log(route)
   const [messagesOrigin, setMessagesOrigin] = useState([]);
   const [messages, setMessage] = useState([]);
 
-useEffect(() => {
-  getMess()
-    }, [])
-
+  useEffect(() => {   const reder = setInterval(()=>{   getMess() }, 60000); return () => clearInterval(reder)     }, [])
   class object {
     constructor(id, text, fecha ,id2, nameV) {
 
