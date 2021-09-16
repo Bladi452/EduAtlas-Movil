@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { Text, View, StyleSheet} from 'react-native';
+import { BackHandler,Text, View, StyleSheet, Alert} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
@@ -28,6 +28,24 @@ export default function HomeStack (route) {
 
 useEffect(() => {
   interstial();
+  const backAction = () => {
+    Alert.alert("Oh", "quieres cerrar la aplicacion, presiona cerrar?", [
+      {
+        text: "Cancelar",
+        onPress: () => null,
+        style: "cancel"
+      },
+      { text: "Si", onPress: () => BackHandler.exitApp() }
+    ]);
+    return true;
+  };
+
+  const backHandler = BackHandler.addEventListener(
+    "hardwareBackPress",
+    backAction
+  );
+
+  return () => backHandler.remove();
 }, [])
 
   const navigation = useNavigation()

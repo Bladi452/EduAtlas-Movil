@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import React, {useEffect} from 'react'
+import {BackHandler ,Text, View, StyleSheet, Alert } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
@@ -13,6 +13,29 @@ const Tab = createBottomTabNavigator()
 
 
 export default function HomeStackAdmin (route) {
+
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Oh", "quieres cerrar la aplicacion, presiona cerrar?", [
+        {
+          text: "Cancelar",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "Si", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, [])
+
   const navigation = useNavigation()
 return(
 <Tab.Navigator
@@ -62,12 +85,9 @@ function HomeScreen() {
     </View>
 
     <View style={styles.Vista}>
-      <Text style={styles.titulo}>Reglas de los documentos</Text>
-      <Text>polque a la banquera le da tanta hambre</Text>
-      <Text>no te impoltaa</Text>
-      <Text>No e obligao rapai</Text>
-      <Text>Polquee</Text>
-      <Text>La creta e tu mama</Text>
+      <Text style={styles.titulo}>Bienvenidos a Edu-Atlas</Text>
+      <Text>Recuerda revisar las solicitudes</Text>
+      <Text>Que tengas un excelente día</Text>
     </View>
     </View>
   );

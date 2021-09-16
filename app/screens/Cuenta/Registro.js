@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {ConecCargo, getMat} from "../../../api";
 
-const API = 'http://10.0.0.37:3000'
+const API = 'http://tecnodiaz.es/server-edu/'
 export default function Registro (){
 
   const handleChange = (name, value) => setData({...data, [name]: value});
@@ -99,7 +99,7 @@ const signup =  async(newdata) =>{
     const handleSubmit = async () => {
       const {password, confirmpassword} = data
       if (password !== confirmpassword) {
-        Alert.alert('Clave incorrecta')
+        Alert.alert('La confirmacion y la contraseña son diferentes')
       } else {
         await signup(data)
       const matnew = await getMat()

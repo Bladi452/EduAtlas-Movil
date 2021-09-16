@@ -1,12 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import {getMessage, sendMessage} from '../../api'
+import Cargando from '../components/Cargando';
 
 export default function Chat ({route}){
   const [messagesOrigin, setMessagesOrigin] = useState([]);
-  const [messages, setMessage] = useState([]);
+  const [messages, setMessage] = useState(null);
 
-  useEffect(() => {   const reder = setInterval(()=>{   getMess() }, 60000); return () => clearInterval(reder)     }, [])
+  useEffect(() => { 
+    getMess()
+}, [])
   class object {
     constructor(id, text, fecha ,id2, nameV) {
 
@@ -59,7 +62,10 @@ const onSend = useCallback((messagess = []) => {
  sendMess(messagess)
  getMess();  
 }, [])
-  
+
+if(messages === null){
+  return <Cargando isVisible={true} text= "Esta cargando chat"/>
+   }
 return (
         <GiftedChat
           messages={messages}

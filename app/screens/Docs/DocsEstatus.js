@@ -7,14 +7,14 @@ import axios from'axios';
 import {useNavigation} from '@react-navigation/native'
 import { AdMobInterstitial } from 'expo-ads-admob';
 
-const API = 'http://10.0.0.37:3000'
+const API = 'http://tecnodiaz.es/server-edu/'
 
 
 
 const uploadFile = ({route}) =>{
 
   const [picker, setpicker] = useState({
-    Nombre:'1'
+    Nombre:'Acta de Nacimiento'
   })
 
   const [state, setstate] = useState()

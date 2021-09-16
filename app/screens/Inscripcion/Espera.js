@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Image, StyleSheet,Button,ScrollView , View, Text} from 'react-native'
+import {BackHandler,Image, StyleSheet,Button,ScrollView , View, Text, Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import { AdMobInterstitial } from 'expo-ads-admob';
 
@@ -21,7 +21,26 @@ console.log(route)
     
    useEffect(()=>{
     interstial();
-      },[])
+
+    const backAction = () => {
+      Alert.alert("Oh", "quieres cerrar la aplicacion, presiona cerrar?", [
+        {
+          text: "Cancelar",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "Si", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+        },[])
       
     return(
     <ScrollView style={styles.vista}>
@@ -38,9 +57,9 @@ console.log(route)
             { backgroundColor: '#00a680', color: 'white', borderRadius: 8 },
           ]}
         >
-          Tu solicitud fue denegada, presiona aqui y envia otra a una escuela diferente
-        </Text>
-          : <Text style={styles.text}>Tu solicitud ya fue enviada, espera con paciencia tu respuesta, aún  la solicitud está pendiente</Text>}
+      Tu solicitud fue denegada, presiona aquí y envía otra a una escuela diferente        
+  </Text>
+          : <Text style={styles.text}>Tu solicitud ya fue enviada, espera con paciencia tu respuesta, aún la solicitud está pendiente</Text>}
 
         </View>
     </ScrollView>

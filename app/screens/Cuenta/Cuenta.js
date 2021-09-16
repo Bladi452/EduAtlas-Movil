@@ -45,7 +45,7 @@ function Registrar () {
         style={[styles.sesion, {
           backgroundColor:"#EFAF4F"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continúa tu aventura</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Inicia sesión</Text>
       </TouchableOpacity>
      <View/>
  
@@ -55,7 +55,7 @@ function Registrar () {
         style={[styles.sesion, {
           backgroundColor:"#3C5A9C"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Comienza tu aventura</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
       </TouchableOpacity>  
     </View>
     )

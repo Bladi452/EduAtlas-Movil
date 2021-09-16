@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,11 +17,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "tecnodiaz.com"
     },
     "android": {
+      "permissions" : ["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"],
+      "package": "tecnodiaz.com",
       "config": {
-        
         "googleMobileAdsAppId": "ca-app-pub-3127095758669759~6807999356"
       },
       "adaptiveIcon": {
@@ -32,7 +34,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "",
+    "description": "Version:1.0.0 del proyecto de educacion (inscripcion)",
     "githubUrl": "https://github.com/Bladi452/EduAtlas-Movil"
   }
 }

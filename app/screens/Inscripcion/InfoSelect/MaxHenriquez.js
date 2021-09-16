@@ -1,11 +1,10 @@
 import React,{useState, useEffect} from 'react'
 import { ScrollView } from 'react-native'
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {View,Linking ,Text, Image, StyleSheet, TouchableOpacity,Alert} from 'react-native'
 import {Picker} from '@react-native-community/picker'
 import {useNavigation} from '@react-navigation/native'
-import MapView,{Marker} from 'react-native-maps'
 import {getSchool, solicitud} from '../../../../api'
-
+import {Constants,Location,Permissions} from 'expo'
 export default function MaxHenriquez ({route}){
   const navigation = useNavigation()
 
@@ -35,50 +34,61 @@ useEffect(() => {
 traer()
 }, [])
 
+askPermissions = async () => {
+let {status} = await Permissions.askAsync(Permissions.LOCATION)
+if (status==! 'granted'){
+  Alert.alert('Se necesita permiso para abrir la ubicacion')
+}
+}
 return(
     <ScrollView style={styles.container}>
         <View>
 
 <Text style={styles.titulo}>EduAtlas</Text>
 
-<Image source={require("../../../../assets/Imagen.png")}
-    style={styles.logo}
-/>
+
             
         <Text 
         style={[styles.textsec,{
     fontSize:18,
     color:"#ffffff",
-    marginTop:11,
-    marginBottom:20,
+    marginTop:2,
+    marginBottom:2,
 }]}>{task.Nombre}</Text>
-    
+
+<Text style={[styles.textsec,{
+      color:"#000000",
+      fontSize:18,
+      marginTop:2,
+      marginBottom:2,
+    }]}>{task.Descripcion}</Text>
+
     <Text style={[styles.textsec,{
       fontSize:14,
-      marginTop:11,
-      marginBottom:20,
+      marginTop:2,
+      marginBottom:2,
     }]}>{task.Descripcion}</Text>
             <Text style={[styles.textsec,{fontSize:15, color:"#ffffff"}]}>{task.Modalidad}</Text>
 
         <Text style={[styles.textsec,{
       color:"#000000",
       fontSize:18,
-      marginTop:11,
+      marginTop:2,
       marginBottom:13,
     }]}>Ubicacion</Text>
+    
+    <Text style={{color: 'blue',   alignSelf:"center", alignItems: "center"}}
+      onPress={() => Linking.openURL(task.URL_ubicacion)}>
+  Ubicacion de la escuela
+</Text>
 
-    <MapView style={styles.map} initialRegion={{latitude:18.526341919411482, longitude:-70.05271297194588, latitudeDelta:0.09, longitudeDelta:0.0921 }}>
-<Marker
-  coordinate={{ latitude : 18.525286036836068 , longitude : -70.05256742347363 }} title="Max Henriquez"
-/>
-    </MapView>
-    <Text style={{ marginTop:11, marginBottom:12, fontWeight:"bold" ,fontSize: 15, color: '#EFAF4F'}}>
+    <Text style={{ marginTop:11, marginBottom:12, fontWeight:"bold" ,fontSize: 15, color: '#EFAF4F',   alignSelf:"center", alignItems:"center"}}>
             Selecciona el curso al que aplicaras
         </Text>
 
         <Picker
         selectedValue={state.id_curso}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 50, width: 150,   alignSelf:"center", alignItems:"center" }}
         onValueChange ={(itemValue)=> handleChange('id_curso', itemValue)}
 >
         <Picker.Item label="Primero" value="1" />
@@ -89,7 +99,6 @@ return(
         <Picker.Item label="Sexto" value="6" />
 
       </Picker>
-      <Text>{state.id_curso}</Text>
     
     <TouchableOpacity
         onPress={unir}
