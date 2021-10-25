@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "EduAtlas-Movil",
-    "slug": "EduAtlas-Movil",
-    "version": "1.0.0",
+    "name": "Tecno Atlas",
+    "slug": "Tecno-Atlas",
+    "version": "2.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/adaptive-icon.png",
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./assets/adaptive-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
       "bundleIdentifier": "tecnodiaz.com"
     },
     "android": {
-      "permissions" : ["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"],
+      "versionCode": 3,
       "package": "tecnodiaz.com",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-3127095758669759~6807999356"

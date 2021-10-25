@@ -5,9 +5,7 @@ import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import solicitudes from '../screens/Admin/solicitudes';
 import Mascarilla from '../components/Mascarilla';
-import uploadFile from '../screens/Docs/DocsEstatus'
 
-import Chatne from './ChatStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -50,12 +48,6 @@ return(
       })}
 
     >
-
-<Tab.Screen 
-  name="Chat"
-  component={Chatne}
-  initialParams={route}
-/>
 
 <Tab.Screen
     name="Home"

@@ -44,7 +44,7 @@ return(
     <ScrollView style={styles.container}>
         <View>
 
-<Text style={styles.titulo}>EduAtlas</Text>
+<Text style={styles.titulo}>Tecno Atlas</Text>
 
 
             

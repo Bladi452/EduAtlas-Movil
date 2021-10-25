@@ -5,9 +5,7 @@ import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import Mascarilla from '../components/Mascarilla';
 
-import uploadFile from '../screens/Docs/DocsEstatus'
 
-import Chatne from './ChatStack'
 import {AdMobInterstitial } from 'expo-ads-admob';
 
 const interstial = async () =>{
@@ -63,11 +61,6 @@ return(
 
     >
 
-<Tab.Screen 
-  name="Chat" 
-  component={Chatne}
-  initialParams={route}
-/>
 
 <Tab.Screen
     name="Home"
@@ -76,11 +69,6 @@ return(
     initialParams={route}
 />
 
-<Tab.Screen 
-  name="Docs" 
-  component={uploadFile} 
-  initialParams={route}
-  />
 
         </Tab.Navigator>
 

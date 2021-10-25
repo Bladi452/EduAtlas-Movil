@@ -2,13 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {ConecCargo, getMat} from "../../../api";
 
-const API = 'http://tecnodiaz.es/server-edu/'
 export default function Registro (){
 
   const handleChange = (name, value) => setData({...data, [name]: value});
-  const [Message, setMessage] = useState([]);
   const [data,  setData] = useState({
     Nombre: '',
     Apellidos: '',
@@ -17,81 +14,7 @@ export default function Registro (){
     nivel: '1',
     date: '',
     confirmpassword:''
-  })
-
-const signup =  async(newdata) =>{
-    await fetch(`${API}/auth/regis`,{
-        method: "POST",
-        headers: {
-            Accept: 'application/json',
-            "Content-Type": 'application/json',
-        },
-        body: JSON.stringify(newdata),
-    })    .then(async res => { 
-      try {
-          const jsonRes = await res.json();
-          if (res.status === 200) {
-              setMessage(jsonRes.message);
-          }
-      } catch (err) {
-          console.log(err);
-      };
-  })
-  .catch(err => {
-      console.log(err);
   });
-};
-
-  const Calendario = (()=> {
-
-    const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-    
-    const onChange = (event, selectedDate) => {
-      const currentDate = selectedDate || date;
-      setShow(Platform.OS === 'ios');
-      setDate(currentDate);
-    };
-    
-    const showMode = (currentMode) => {
-      setShow(true);
-      setMode(currentMode);
-    };
-    
-    const showDatepicker = () => {
-      showMode('date');
-    };
-    return(
-  <View>
-        <View>
-        < TouchableOpacity
-            onPress={showDatepicker} 
-            style={[styles.sesion, {
-              backgroundColor:"#F9D44F"
-            }]}
-            >
-    
-    <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>
-      Fecha de Nacimiento
-      </Text>
-            </TouchableOpacity>
-        </View>
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={ data.date = date}
-            mode={mode}
-            display="default"
-            onChange = {onChange}
-            onChangeText = {(text) => handleChange('date', text)}
-
-            />
-        )}
-      </View>
-    )
-  }
-)
 
   const Registrar = ()=>{ 
 
@@ -101,12 +24,8 @@ const signup =  async(newdata) =>{
       if (password !== confirmpassword) {
         Alert.alert('La confirmacion y la contraseña son diferentes')
       } else {
-        await signup(data)
-      const matnew = await getMat()
-     await ConecCargo(matnew[0].Matricula)
-      Alert.alert(`Tu matricula es: ${matnew[0].Matricula} copiala o tomale una captura`)
-      
-        navigation.navigate('Login')
+              
+        navigation.navigate('RegistroC', {Info: data})
       
       }
     
@@ -123,7 +42,7 @@ const signup =  async(newdata) =>{
         style={[styles.sesion, {
           backgroundColor:"#EFAF4F"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Continúa</Text>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
         
       </TouchableOpacity>
      <View/>
@@ -178,10 +97,13 @@ const signup =  async(newdata) =>{
     
     />
 
+<TextInput style={styles.Input}
+      placeholder = "DD/MM/AAAA"
+      secureTextEntry={true}
+      onChangeText = {(text) => handleChange('date', text)}
+      value={data.date}
+    />
 
-
-
-  <Calendario/>
 <Registrar/>
     </View>
     </ScrollView>

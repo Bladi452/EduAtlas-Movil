@@ -1,91 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useNavigation} from '@react-navigation/native';
-import { View, Picker, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import { View, Picker, StyleSheet, Image, Text, TouchableOpacity ,Alert} from "react-native";
+import Cargando from "../../components/Cargando";
+import {ConecCargo, getMat} from "../../../api";
+import Login from "./Login"
+const API = 'http://tecnodiaz.es/server-edu'
 
-const RegistroC = () => {
-  const [selectedValue, setSelectedValue] = useState("java");
-  return (
-    <View style={styles.vista } >
-    <View style={styles.container}>
-<View >
-      <Image source={require('../../../assets/undraw_Scrum_board_re_wk7v.png')}
-          style={styles.logo}
-                resizeMode="contain"
-          />
-              <Text style={styles.text}>Estudiantes</Text>
+const RegistroC = ({route}) => {
 
-        </View>
+const data =  route.params.Info
+console.log(route.params.Info)
+  const [state, setstate] = useState(null)
+  const [Message, setMessage] = useState([]);
+  const signup =  async(newdata) =>{
+    await fetch(`${API}/auth/regis`,{
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(newdata),
+    })    .then(async res => { 
+      try {
+          const jsonRes = await res.json();
+          if (res.status === 200) {
+              setMessage(jsonRes.message);
+          }
+      } catch (err) {
+          console.log(err);
+      };
+  })
+  .catch(err => {
+      console.log(err);
+  });
+};
 
-        <Text style={{ marginTop:11, marginBottom:12, fontWeight:"bold" ,fontSize: 15, color: '#EFAF4F'}}>
-            Selecciona el curso al que aplicaras
-        </Text>
+useEffect(() => {
+  registrar()
+}, [])
 
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 300 }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="Primero" value="1"/>
-        <Picker.Item label="Segundo" value="2"/>
-        <Picker.Item label="Tercero" value="3"/>
-        <Picker.Item label="Cuarto" value="4"/>
-        <Picker.Item label="Quinto" value="5"/>
-        <Picker.Item label="Sexto" value="6"/>
-      </Picker>
-    </View>
-<Registrar/>
-
-</View>
-  );
+ async function registrar (){
+  await signup(data)
+  const matnew = await getMat()
+ await ConecCargo(matnew[0].Matricula)
+ setstate(true)
+  Alert.alert(`Tu matricula es: ${matnew[0].Matricula} copiala o tomale una captura`)
 }
+if(state === null){
+  return <Cargando isVisible={true} text= "Estamos registrándote"/>
+   }
 
-
-function Registrar () {
-
-    const navigation = useNavigation();
-    return(
-    
-    <View>
-
-  <TouchableOpacity
-        onPress={()=>navigation.navigate("Login")}
-        style={[styles.sesion, {
-          backgroundColor:"#EFAF4F"
-        }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
-      </TouchableOpacity>
- 
-    </View>
-    )
+return(
+  <Login/>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 40,
-    alignItems: "center",
-},
-  logo: {
-    marginTop:0, 
-    width: 170,
-    height: 170,
-    alignSelf :"center",
-  },
-  text:{
-    textAlign:"center",
-    color: "#08D5B9",
-    fontWeight: "bold",
-    fontSize: 30,
-  },
-  sesion:{
-    alignItems:"center",
-    height:45,
-    width:200,
-    borderRadius:8,
-    alignSelf:"center",
-    marginTop:15
-  },
-  
-});
-
 export default RegistroC;

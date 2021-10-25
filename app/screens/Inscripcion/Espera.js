@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BackHandler,Image, StyleSheet,Button,ScrollView , View, Text, Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import { AdMobInterstitial } from 'expo-ads-admob';
+import Cargando from '../../components/Cargando';
 
 const interstial = async () =>{
   await AdMobInterstitial.setAdUnitID('ca-app-pub-3127095758669759/4418610901'); // Test ID, Replace with your-admob-unit-id
@@ -18,10 +19,10 @@ const interstial = async () =>{
 export default function Seleccion (route){
 console.log(route)
   const navigation = useNavigation()
-    
+    const [state, setstate] = useState(null)
    useEffect(()=>{
     interstial();
-
+setstate(true)
     const backAction = () => {
       Alert.alert("Oh", "quieres cerrar la aplicacion, presiona cerrar?", [
         {
@@ -42,6 +43,10 @@ console.log(route)
     return () => backHandler.remove();
         },[])
       
+if (state ===null) {
+  return <Cargando isVisible={true} text= "Enviando solicitud"/>
+}
+
     return(
     <ScrollView style={styles.vista}>
         <View>

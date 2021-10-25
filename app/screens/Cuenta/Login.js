@@ -3,11 +3,10 @@ import {View, TextInput, StyleSheet,Dimensions,Image,Alert} from 'react-native'
 import {Button} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import { showMessage, hideMessage } from "react-native-flash-message";
-import { Message } from 'react-native-gifted-chat';
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
-  const API = 'http://tecnodiaz.es/server-edu/'
+  const API = 'http://tecnodiaz.es/server-edu'
 
 const navigation = useNavigation()
 
@@ -17,36 +16,21 @@ const navigation = useNavigation()
     password: ''
   })
 
+
 var nuevo
 var message
-const BotonForm = (()=>{
-        return(
-          
-            <Button style={styles.btnlogin}
-            title="Iniciar sesión
-            "
-            onPress={
-              validar
-              
-            }
-
-        />
-
-        )
-    })
-
 
 
     const signIn = async (newdata) =>{
 
-      await  fetch(`${API}/auth/login`,{
+     const res =  await  fetch(`${API}/auth/login`,{
               method: 'POST',
               headers:{
                   Accept: 'application/json',
                   'Content-Type': 'application/json',
               },
               body: JSON.stringify(newdata),
-          }).then(async res =>{
+          })
         try {
             const jsonRes = await res.json();
             if (res.status !==200) {
@@ -60,16 +44,11 @@ const BotonForm = (()=>{
         } catch (err) {
             console.log(err)
         };
-      })
-      .catch(err =>{
-          console.log(err)
-      })
-  }
+      }
 
    const validar =async()=>{
-    
-await signIn(data);
-
+    const d = await signIn(data);
+console.log(d)
   if (nuevo == 1) {
     navigation.navigate('Navegacion', {datos : message})
   nuevo = 0
@@ -106,8 +85,15 @@ await signIn(data);
           value = {data.password}
 />
          
-          
-            <BotonForm/>
+<Button style={styles.btnlogin}
+            title="Iniciar sesión
+            "
+            onPress={
+              validar
+              
+            }
+
+        />
             
         </View>
     )

@@ -5,7 +5,6 @@ import Registro from '../screens/Cuenta/Registro'
 import Cuenta from '../screens/Cuenta/Cuenta'
 import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
-import SendDocs from '../screens/Docs/SendDocs'
 
 import HomeStackAdmin from './HomeStackAdmin'
 import Seleccion from '../screens/Inscripcion/Seleccion';
@@ -16,8 +15,6 @@ import Home from '../screens/Home'
 import Navegacion from './Navegacion'
 import CheckEstatus from '../components/navegacion/CheckEstatus'
 import Valid from '../components/navegacion/Valid'
-import Chat from '../screens/Chat'
-import Chatne from './ChatStack'
 const Stack = createStackNavigator();
 
 export default function CuentaStack() {
@@ -39,12 +36,12 @@ export default function CuentaStack() {
  <Stack.Screen
             name="Cuenta"
             component={Cuenta}
-        options={{title:'EduAtlas', headerTitleAlign: 'center'}}
+        options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
         />
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}
-            options={{title:'EduAtlas', headerLeft: null, headerTitleAlign: 'center'}}
+            options={{title:'Tecno Atlas', headerLeft: null, headerTitleAlign: 'center'}}
         />
         <Stack.Screen
             name="vali"
@@ -58,11 +55,6 @@ export default function CuentaStack() {
             options={{title:"", headerLeft: null}}
 />
 
-<Stack.Screen
-            name="Chatne"
-            component={Chatne}
-            options={{title:"Lista de chat"}}
-/>
 
 <Stack.Screen
             name="solicitudes"
@@ -71,11 +63,7 @@ export default function CuentaStack() {
 />
 
 
-<Stack.Screen
-            name="SendDocs"
-            component={SendDocs}
-            options={{title:"Lista de Documentos"}}
-/>
+
 
         <Stack.Screen
             name="check"
@@ -117,13 +105,6 @@ export default function CuentaStack() {
         component={Espera}
         options={{title:"Espera",headerLeft: null}}
         />
-                 <Stack.Screen
-        name="chat"
-        component={Chat}
-        options={({route}) => ({
-            title: 'Admisiones',
-            headerBackTitleVisible: false,
-          })}        />
          <Stack.Screen
         name="Home"
         component={Home}

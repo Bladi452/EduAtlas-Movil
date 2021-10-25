@@ -54,7 +54,7 @@ const Solid =()=>{
 },[])
 
  if(Cargo === null || Escu === null || solicitud === null){
-return <Cargando isVisible={true} text= "Esta iniciando sesion"/>
+return <Cargando isVisible={true} text= "Está iniciando sesión"/>
  }
 
  return(
