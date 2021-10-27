@@ -4,7 +4,10 @@ import { View, Picker, StyleSheet, Image, Text, TouchableOpacity ,Alert} from "r
 import Cargando from "../../components/Cargando";
 import {ConecCargo, getMat} from "../../../api";
 import Login from "./Login"
-const API = 'http://tecnodiaz.es/server-edu'
+
+const API = 'http://10.0.0.37:3000/server-edu'
+
+//const API = 'http://tecnodiaz.es/server-edu'
 
 const RegistroC = ({route}) => {
 

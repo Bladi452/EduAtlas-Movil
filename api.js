@@ -1,5 +1,5 @@
-const API = 'http://tecnodiaz.es/server-edu'
-
+//const API = 'http://tecnodiaz.es/server-edu'
+    const API = 'http://10.0.0.37:3000/server-edu'
 //School
 
 export const getSchools = async () =>{
@@ -14,6 +14,11 @@ export const getMat = async () =>{
 
 export const getUser = async (id) =>{
     const res = await fetch (`${API}/navegacion/${id}`);
+    return await res.json();
+}
+
+export const getEvents = async (id) =>{
+    const res = await fetch (`${API}/events/${id}`);
     return await res.json();
 }
 
@@ -53,6 +58,10 @@ export const solicitud = async (newdata) =>{
     });
 }
 
+export const getSchoolLenght = async (id) =>{
+    const res = await fetch(`${API}/school/length/${id}`)
+    return res.json()
+}
 
 export const getSolicitud = async(id) =>{
     const res = await fetch(`${API}/navegacionSel/${id}`)

@@ -6,6 +6,7 @@ import Cuenta from '../screens/Cuenta/Cuenta'
 import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
 
+import Events from '../screens/events/Events'
 import HomeStackAdmin from './HomeStackAdmin'
 import Seleccion from '../screens/Inscripcion/Seleccion';
 import solicitudes from '../screens/Admin/solicitudes';
@@ -38,6 +39,13 @@ export default function CuentaStack() {
             component={Cuenta}
         options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
         />
+
+ <Stack.Screen
+            name="Events"
+            component={Events}
+        options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
+        />
+
  <Stack.Screen
             name="Navegacion"
             component={Navegacion}

@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import Mascarilla from '../components/Mascarilla';
-
+import Events from '../screens/events/Events'
 
 import {AdMobInterstitial } from 'expo-ads-admob';
 
@@ -61,6 +61,11 @@ return(
 
     >
 
+<Tab.Screen 
+  name="Evento" 
+  component={Events}
+  initialParams={route}
+/>
 
 <Tab.Screen
     name="Home"
@@ -68,6 +73,7 @@ return(
     options={{title:"Home"}}
     initialParams={route}
 />
+
 
 
         </Tab.Navigator>
@@ -104,8 +110,8 @@ function screenOptions(route, color) {
     case "Home":
       iconName = "home";
       break;
-    case "Chat":
-      iconName = "chat-outline";
+    case "Evento":
+      iconName = "calendar-multiple";
       break;
     case "Docs":
       iconName = "cloud-upload";

@@ -1,19 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, FlatList, RefreshControl} from 'react-native'
+import {StyleSheet, FlatList, RefreshControl, View, Text} from 'react-native'
 
-import {getSolicitudes} from '../../../api';
+import {getSolicitudes, getSchoolLenght} from '../../../api';
 
 
 import Item from './Item'
 
 export const List = (route) =>{
  const [refreshing, setRefreshing] = React.useState(false);
+ const [cantidad, setcantidad] = useState(null);
 
 const [task, setTasks] = useState([]);
 console.log(route.id)
 
 const load =async()=>{
+  await lengthEstudents()
   await  loadSchool()
+}
+
+const lengthEstudents = async()=>{
+ const asds = await getSchoolLenght(route.id)
+ setcantidad(asds)
 }
 
 const onRefresh = React.useCallback(async () => {
@@ -37,6 +44,12 @@ const renderItem =({item}) =>{
 }
 
 return(
+<View style={{ width: '100%', alignItems: "center"}}>
+
+<Text style={styles.CantidadTitle}>Estudiantes Registrados:</Text>
+<Text style={styles.Cantidad} >{cantidad}</Text>
+
+
 <FlatList
     style={{ width: '100%'}}
 data ={task}
@@ -51,5 +64,23 @@ refreshControl={
     />
   }
 />
+</View>
     )
 }
+
+const styles = StyleSheet.create({
+  Cantidad: {
+    marginTop: 10,
+    marginBottom: 20,
+    color: "#009387",
+    fontWeight: "bold",
+    fontSize: 25
+  },
+  CantidadTitle: {
+    marginTop: 10,
+    color: "#000000",
+    fontWeight: "bold",
+    fontSize: 15
+
+  }
+});
