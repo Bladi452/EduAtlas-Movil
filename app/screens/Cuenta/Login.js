@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {View, TextInput, StyleSheet,Dimensions,Image,Alert} from 'react-native'
 import {Button} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
-import { showMessage, hideMessage } from "react-native-flash-message";
+
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
@@ -22,45 +22,44 @@ var nuevo
 var message
 
 
-    const signIn = async (newdata) =>{
+    const signIn =  (newdata) =>{
 
-     const res =  await  fetch(`${API}/auth/login`,{
+     fetch(`${API}/auth/login`,{
               method: 'POST',
               headers:{
                   Accept: 'application/json',
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(newdata),
+                  'Content-Type': 'application/json'
+                 
+              },  body: JSON.stringify(newdata)   
+
           })
-        try {
-            const jsonRes = await res.json();
-            if (res.status !==200) {
-              nuevo = 0
-              console.log('no existe')
+          .then(res => res.json())  
+          .then(res => {
+            nuevo = res 
+            console.log(nuevo)
+            if(res.status === 'success'){
+            
+              navigation.navigate('navegacion', {datos : nuevo.message})
+            
             }else{
-              nuevo = 1
-              console.log('existe')
-              message = jsonRes.message
-            }
-        } catch (err) {
-            console.log(err)
-        };
+              message = 'Usuario o contraseña incorrecta'
+              Alert.alert(message)
+              
+            } 
+          })  .catch(error => {
+            console.log(error)
+          }
+        )
       }
 
-   const validar =async()=>{
-    const d = await signIn(data);
-console.log(d)
-  if (nuevo == 1) {
-    navigation.navigate('Navegacion', {datos : message})
-  nuevo = 0
- }else{
-   Alert.alert('Usuario o contraseña inválidos')
-   console.log(nuevo)
- }
- 
+   const validar =()=>{
+    if(data.Matricula === '' || data.password === ''){
+      Alert.alert('Todos los campos son obligatorios')
+    }else{
+      signIn(data)
     }
-
-
+  
+}
 
   return (
         <View style={styles.container}>
