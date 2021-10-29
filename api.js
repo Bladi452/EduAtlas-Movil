@@ -4,41 +4,50 @@
 
 export const getSchools = async () =>{
     const res = await fetch(`${API}/school`)
-    return await res.json()
+    const data = await res.json()
+    return data
+   
 }
 
 export const getMat = async () =>{
     const res = await fetch(`${API}/auth/getmat`)
-    return await res.json()
+    const data = await res.json()
+    return data
 }
 
 export const getUser = async (id) =>{
     const res = await fetch (`${API}/navegacion/${id}`);
-    return await res.json();
+    const data = await res.json()
+    return data
 }
 
 export const getEvents = async (id) =>{
     const res = await fetch (`${API}/events/${id}`);
-    return await res.json();
+    const data = await res.json()
+    return data
 }
 
 export const getSolicitudes = async (id) =>{
     const res = await fetch (`${API}/solicitudes/${id}`);
-    return await res.json();
+    const data = await res.json()
+    return data
 }
 export const approveReq = async (id) =>{
     const res = await fetch (`${API}/apro/${id}`,{
         method: "PUT",
          }
         );
-      return res;
+    const data = await res.json()
+    return data
+      
     };
 
 export const denyReq = async (id) =>{
     const res = await fetch (`${API}/dene/${id}`,{
         method: "PUT",
          });
-    return  res
+    const data = await res.json()   
+    return data
 }
 
 export const getSchool = async (id) =>{
@@ -48,14 +57,16 @@ export const getSchool = async (id) =>{
 
 
 export const solicitud = async (newdata) =>{
-    await fetch(`${API}/school/req`,{
+  const res = await fetch(`${API}/school/req`,{
         method: "POST",
         headers: {
             Accept: 'application/json',
             "Content-Type": 'application/json',
         },
-        body: JSON.stringify(newdata),
-    });
+        
+    });     const data = await res.json()
+    return data
+
 }
 
 export const getSchoolLenght = async (id) =>{
@@ -76,4 +87,6 @@ export const ConecCargo = async(newData) =>{
         "Content-Type": 'application/json',
     },
 })
+    return res.json()
+
 }
