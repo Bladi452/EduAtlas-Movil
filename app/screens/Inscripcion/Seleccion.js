@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Text } from 'react-native'
+
 import {List} from '../../components/select/List'
 export default function Seleccion ({id, route}) {
 

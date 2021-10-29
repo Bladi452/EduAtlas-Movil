@@ -4,7 +4,7 @@ import {View,Linking ,Text, Image, StyleSheet, TouchableOpacity,Alert} from 'rea
 import {Picker} from '@react-native-community/picker'
 import {useNavigation} from '@react-navigation/native'
 import {getSchool, solicitud} from '../../../../api'
-import {Constants,Location,Permissions} from 'expo'
+import {Permissions} from 'expo'
 export default function MaxHenriquez ({route}){
   const navigation = useNavigation()
 

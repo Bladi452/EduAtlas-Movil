@@ -1,13 +1,11 @@
 import React,{useState, useEffect} from 'react';
-import { Text } from 'react-native-elements';
-import Cuenta from '../screens/Cuenta/Cuenta';
+
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home';
 import HomeAdmin from './HomeStackAdmin';
 import Seleccion from '../screens/Inscripcion/Seleccion';
-import {getUser, getSolicitud} from '../../api'
-import HomeStack from './HomeStack';
-import { set } from 'react-native-reanimated';
+import { getSolicitud} from '../../api'
+
 import Cargando from '../components/Cargando';
 
 const Navegacion = (({route})=>{  

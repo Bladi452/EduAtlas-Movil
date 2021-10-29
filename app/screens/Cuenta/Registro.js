@@ -22,10 +22,12 @@ export default function Registro (){
     const handleSubmit = async () => {
       const {password, confirmpassword} = data
       if (password !== confirmpassword) {
-        Alert.alert('La confirmacion y la contraseña son diferentes')
+        Alert.alert('Error', 'Las contraseñas no coinciden')
+        return  false 
       } else {
-              
+      
         navigation.navigate('RegistroC', {Info: data})
+          
       
       }
     
