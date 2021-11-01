@@ -6,8 +6,8 @@ import {useNavigation} from '@react-navigation/native'
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
- // const API = 'http://tecnodiaz.es/server-edu'
- const API = 'http://10.0.0.37:3000/server-edu'
+  const API = 'http://tecnodiaz.es/server-edu'
+ //const API = 'http://10.0.0.37:3000/server-edu'
 
 const navigation = useNavigation()
 
