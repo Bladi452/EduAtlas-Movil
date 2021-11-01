@@ -6,8 +6,8 @@ import {useNavigation} from '@react-navigation/native'
 const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
-  const API = 'http://tecnodiaz.es/server-edu'
- //const API = 'http://10.0.0.37:3000/server-edu'
+ // const API = 'http://tecnodiaz.es/server-edu'
+ const API = 'http://10.0.0.8:3000/server-edu'
 
 const navigation = useNavigation()
 
@@ -18,8 +18,7 @@ const navigation = useNavigation()
   })
 
 
-var nuevo
-var message
+
 
 
     const signIn =  (newdata) =>{
@@ -35,16 +34,15 @@ var message
           })
           .then(res => res.json())  
           .then(res => {
-            nuevo = res 
-            console.log(nuevo)
-            if(res.status === 'success'){
             
-              navigation.navigate('navegacion', {datos : nuevo.message})
             
+            if(res.message === 'Usuario validado'){
+             
+              navigation.navigate('Navegacion', {datos : res.user})
+
             }else{
-              message = 'Usuario o contraseña incorrecta'
-              Alert.alert(message)
               
+              Alert.alert(res.message)
             } 
           })  .catch(error => {
             console.log(error)
@@ -53,13 +51,15 @@ var message
       }
 
    const validar =()=>{
-    if(data.Matricula === '' || data.password === ''){
-      Alert.alert('Todos los campos son obligatorios')
-    }else{
+          if(data.Matricula === '' || data.password === ''){
+            Alert.alert('Todos los campos son obligatorios')
+   }
+    else{
       signIn(data)
     }
-  
-}
+    }
+
+
 
   return (
         <View style={styles.container}>

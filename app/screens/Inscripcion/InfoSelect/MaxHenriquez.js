@@ -4,7 +4,6 @@ import {View,Linking ,Text, Image, StyleSheet, TouchableOpacity,Alert} from 'rea
 import {Picker} from '@react-native-community/picker'
 import {useNavigation} from '@react-navigation/native'
 import {getSchool, solicitud} from '../../../../api'
-import {Permissions} from 'expo'
 export default function MaxHenriquez ({route}){
   const navigation = useNavigation()
 
@@ -34,12 +33,6 @@ useEffect(() => {
 traer()
 }, [])
 
-askPermissions = async () => {
-let {status} = await Permissions.askAsync(Permissions.LOCATION)
-if (status==! 'granted'){
-  Alert.alert('Se necesita permiso para abrir la ubicacion')
-}
-}
 return(
     <ScrollView style={styles.container}>
         <View>

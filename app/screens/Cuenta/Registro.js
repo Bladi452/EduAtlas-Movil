@@ -104,6 +104,7 @@ export default function Registro (){
       secureTextEntry={true}
       onChangeText = {(text) => handleChange('date', text)}
       value={data.date}
+
     />
 
 <Registrar/>
