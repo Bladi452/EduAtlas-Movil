@@ -11,30 +11,35 @@ export const ListAd = (route2) =>{
     const [refreshing, setRefreshing] = React.useState(false);
    
    const [tas, setTask] = useState([]);
-   console.log(route2.id)
+  
+
    
    const load =async()=>{
      await loadEvents()
+
    }
    
    const onRefresh = React.useCallback(async () => {
        setRefreshing(true);
-       load()
-       setRefreshing(false);
+        await loadEvents();
+        setRefreshing(false);
+    }, [refreshing]);
+
+    useEffect(() => {
+      
+        load()  
+          
      }, []);
    
    const loadEvents = async()=>{
-       const task = await getEvents(route2.id)
-       console.log(task)
-       setTask(task);
+       const events = await getEvents(route2.id)
+        setTask(...events)
    }
-   
-   useEffect(() => {
-       loadEvents();
-   },[])
+ 
    
    const renderItem =({item}) =>{
        return <Item task = {item}/>
+          
    }
    function form(){
     navigation.navigate('AddEvents', {rou : route2.id})

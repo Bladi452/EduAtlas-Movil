@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-import { color } from 'react-native-reanimated';
- const Item =({task})=>{
+
+ const Item2 =({task})=>{
 
     return (
       <View style={styles.itemContainer}>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     color:"#009387"
   }
 });
-  export default Item;
+  export default Item2;

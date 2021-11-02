@@ -4,9 +4,9 @@ import {StyleSheet, FlatList, RefreshControl} from 'react-native'
 import {getEvents} from '../../../api';
 
 
-import Item from './Item'
+import Item2 from './Item2'
 
-export const List = (route) =>{
+export const List2 = (route) =>{
     const [refreshing, setRefreshing] = React.useState(false);
    
    const [task, setTasks] = useState([]);
@@ -33,13 +33,17 @@ export const List = (route) =>{
    },[])
    
    const renderItem =({item}) =>{
-       return <Item task = {item}/>
+        return(
+            <Item2 item={item}/>
+        )
+       
+
    }
    
    return(
    <FlatList
        style={{ width: '100%', marginBottom: 90}}
-   data ={task}
+   data ={item}
    renderItem={renderItem}
    keyExtractor= {item => item.Id_Solicitud + ''}
    refreshControl={

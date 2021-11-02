@@ -71,7 +71,7 @@ const navigation = useNavigation()
             resizeMode="stretch"
       />
          <TextInput  style={styles.input}
-          placeholder= "matrícula"
+          placeholder= "Matrícula"
           placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
           underlineColorAndroid='transparent'
           onChangeText ={(text)=> handleChange('Matricula', text)}
@@ -80,12 +80,13 @@ const navigation = useNavigation()
             
             
          <TextInput  style={styles.input} 
-          placeholder= "contraseña"
+          placeholder= "Contraseña"
           secureTextEntry={true}
            placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
           underlineColorAndroid='transparent'
           onChangeText = {(text) => handleChange('password', text)}
           value = {data.password}
+
 />
          
 <Button style={styles.btnlogin}
@@ -128,11 +129,16 @@ const styles = StyleSheet.create({
   },
   btnlogin:{
     width: WIDTH -55,
-    height: 45,
-     borderRadius: 25,
- 
-     justifyContent:'center',
-     marginTop:20
+    height: 40,
+    margin: 12,
+   borderRadius: 45,
+  fontSize: 16,
+  paddingLeft: 45,
+  backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  color: 'rgba(255, 255, 255, 0.7)',
+  marginHorizontal: 25,
+  marginTop: 20
+  
   },
 
   logo: {
