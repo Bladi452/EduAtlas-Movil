@@ -16,7 +16,6 @@ export default function MaxHenriquez ({route}){
      id_curso : '1'
    })
 
-
    const [task, setTask] = useState([])
 
 const traer = ( async()=>{
@@ -25,10 +24,16 @@ const traer = ( async()=>{
 })
 
 const unir =async()=>{  
- await solicitud(state)
+ const res = await solicitud(state)
+ console.log(res)
+  if(res.message === 'Solicitud enviada'){
+   
+    
  navigation.navigate('Espera')
+} else {
+  Alert.alert('Error', 'No se pudo enviar la solicitud')
 }
-
+}
 useEffect(() => {
 traer()
 }, [])

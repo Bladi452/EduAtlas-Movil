@@ -106,7 +106,7 @@ export default function Registro (){
       placeholder = "DD/MM/AAAA"
       onChangeText = {(text) => handleChange('date', text)}
       value={data.date}
-      maxLength={9}
+      maxLength={10}
   
 
 

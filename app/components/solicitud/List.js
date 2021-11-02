@@ -11,7 +11,7 @@ export const List = (route) =>{
  const [cantidad, setcantidad] = useState(null);
 
 const [task, setTasks] = useState([]);
-console.log(route.id)
+
 
 const load =async()=>{
 

@@ -10,7 +10,7 @@ export const List2 = (route) =>{
     const [refreshing, setRefreshing] = React.useState(false);
    
    const [task, setTasks] = useState([]);
-   console.log(route.id)
+  
    
    const load =async()=>{
      await loadEvents()

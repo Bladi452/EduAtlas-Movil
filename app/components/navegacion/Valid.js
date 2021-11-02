@@ -8,7 +8,7 @@ import Espera from '../../screens/Inscripcion/Espera'
 
 const Valid = ({route}) => {
   
-  console.log(route.params)
+
 
   useEffect(()=>{
     Soli();

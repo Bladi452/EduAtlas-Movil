@@ -13,7 +13,7 @@ const API = 'http://10.0.0.8:3000/server-edu'
 const RegistroC = ({route}) => {
 
 const data =  route.params.Info
-console.log(route.params.Info)
+
   const [state, setstate] = useState(null)
   const [Message, setMessage] = useState([]);
   const signup =  async(newdata) =>{

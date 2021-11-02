@@ -17,7 +17,7 @@ const interstial = async () =>{
 
 
 export default function Seleccion (route){
-console.log(route)
+//console.log(route)
   const navigation = useNavigation()
     const [state, setstate] = useState(null)
    useEffect(()=>{

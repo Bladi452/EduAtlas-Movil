@@ -60,17 +60,17 @@ export const getSchool = async (id) =>{
 
 
 export const solicitud = async (newdata) =>{
-  const res = await fetch(`${API}/school/req`,{
-        method: "POST",
-        headers: {
-            Accept: 'application/json',
-            "Content-Type": 'application/json',
-        },
-        
-    });     const data = await res.json()
-    return data
-
-}
+    const res = await fetch(`${API}/school/req`,{
+          method: "POST",
+          headers: {
+              Accept: 'application/json',
+              "Content-Type": 'application/json',
+          },
+          body: JSON.stringify(newdata)
+      });     const data = await res.json()
+      return data
+  
+  }
 
 export const AddEvent = async (newdata) =>{
     const res = await fetch(`${API}/events`,{
