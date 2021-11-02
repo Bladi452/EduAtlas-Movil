@@ -20,12 +20,13 @@ export default function MaxHenriquez ({route}){
 
 const traer = ( async()=>{
   const task = await getSchool(route.params.id)
+
   setTask(task[0]);
 })
 
 const unir =async()=>{  
  const res = await solicitud(state)
- console.log(res)
+ 
   if(res.message === 'Solicitud enviada'){
    
     

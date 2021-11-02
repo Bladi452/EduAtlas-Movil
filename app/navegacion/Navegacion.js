@@ -35,7 +35,7 @@ const Solid =()=>{
 
  const Solic = async()=>{
     const user = await getSolicitud(Usuario.Matricula)
-    console.log(user.length)
+   
     if(user.length === 0){
         setSolicitud(false)
     }else{

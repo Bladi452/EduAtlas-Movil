@@ -7,8 +7,8 @@ const {width: WIDTH} = Dimensions.get('window')
 
 export default function Login (){
  // const API = 'http://tecnodiaz.es/server-edu'
-// const API = 'http://10.0.0.8:3000/server-edu'
-const API = 'http://10.0.0.49:3000/server-edu'
+ const API = 'http://10.0.0.8:3000/server-edu'
+//const API = 'http://10.0.0.49:3000/server-edu'
 //const API = 'http://10.0.0.37:3000/server-edu'
 
 

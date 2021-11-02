@@ -33,7 +33,7 @@ const onRefresh = React.useCallback(async () => {
 const loadSchool = async()=>{
     const task = await getSolicitudes(route.id)
     await lengthEstudents()
-    console.log(task)
+   
     setTasks(task);
 }
 
