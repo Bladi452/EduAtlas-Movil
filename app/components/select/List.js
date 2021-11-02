@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, FlatList} from 'react-native'
+import { FlatList} from 'react-native'
 
 import {getSchools} from '../../../api';
 

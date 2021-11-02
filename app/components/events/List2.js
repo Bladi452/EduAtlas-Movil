@@ -43,7 +43,7 @@ export const List2 = (route) =>{
    return(
    <FlatList
        style={{ width: '100%', marginBottom: 90}}
-   data ={item}
+   data ={task}
    renderItem={renderItem}
    keyExtractor= {item => item.Id_Solicitud + ''}
    refreshControl={

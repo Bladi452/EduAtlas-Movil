@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {View, TextInput, StyleSheet,Dimensions,Image,Alert} from 'react-native'
-import {Button} from 'react-native-elements'
+import {View, TextInput, StyleSheet,Dimensions,Image,Alert,TouchableOpacity,Text} from 'react-native'
+
 import {useNavigation} from '@react-navigation/native'
 
 const {width: WIDTH} = Dimensions.get('window')
@@ -89,18 +89,15 @@ const navigation = useNavigation()
 
 />
          
-<Button style={styles.btnlogin}
-            title="Iniciar sesión
-            "
-            onPress={
-              validar
-              
-            }
-
-        />
+<TouchableOpacity 
+style={styles.btn}
+onPress={()=> validar()}
+>
+<Text style={styles.btnText}>Iniciar Sesión</Text>
+</TouchableOpacity>
             
         </View>
-    )
+  )
 }
 
 
@@ -127,18 +124,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  btnlogin:{
+  btn:{
     width: WIDTH -55,
     height: 40,
-    margin: 12,
-   borderRadius: 45,
-  fontSize: 16,
-  paddingLeft: 45,
-  backgroundColor: 'rgba(0, 0, 0, 0.35)',
-  color: 'rgba(255, 255, 255, 0.7)',
-  marginHorizontal: 25,
-  marginTop: 20
+    borderRadius: 45,
+    backgroundColor: '#009387',
+    justifyContent: 'center',
+    marginTop: 20
   
+  },
+  btnText:{
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16
   },
 
   logo: {
