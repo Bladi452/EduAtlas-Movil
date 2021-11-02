@@ -29,7 +29,7 @@ const renderItem =({item}) =>{
 
 return(
 <FlatList
-    style={{ width: '100%'}}
+    style={{ width: '100%', marginBottom: 90}}
 data ={task}
 keyExtractor= {item => item.Codigo_Escuelas + ''}
 renderItem={renderItem}

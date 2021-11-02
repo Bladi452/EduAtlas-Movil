@@ -18,11 +18,11 @@ const Dene=(id)=>{
       <View style={styles.itemContainer}>
         <TouchableOpacity style={{ width: '100%'}}>
           <Text style={styles.itemTitle}> Codigo de solicitud: {task.Id_Solicitud}</Text>         
-          <Text style={{ color: "#000000" }}>{task.Fecha}</Text>
-          <Text style={{ color: "#000000" }}>{task.Matricula}</Text>
-          <Text style={{ color: "#000000" }}>{task.Grado}</Text>
-          <Text style={{ color: "#000000" }}>{task.Escuela}</Text>
-          <Text style={{ color: "#000000" }}>{task.Nombre}</Text>
+          <Text style={{ color: "#000000" }}> Fecha: {task.Fecha}</Text>
+          <Text style={{ color: "#000000" }}> Matricula {task.Matricula}</Text>
+          <Text style={{ color: "#000000" }}> Grado: {task.Grado}</Text>
+          <Text style={{ color: "#000000" }}> Escuela: {task.Escuela}</Text>
+          <Text style={{ color: "#000000" }}> {task.Nombre}</Text>
 
           <TouchableOpacity
         style={{ backgroundColor: "#03BB85", padding: 7, borderRadius:20, marginTop: 15 }}

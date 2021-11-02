@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
-import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function Registro (){
 

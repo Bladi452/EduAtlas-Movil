@@ -5,8 +5,7 @@ import {Icon} from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
 import solicitudes from '../screens/Admin/solicitudes';
 import Mascarilla from '../components/Mascarilla';
-
-
+import EventsAd from '../screens/Admin/events/EventsAd'
 const Tab = createBottomTabNavigator()
 
 
@@ -56,6 +55,12 @@ return(
     initialParams={route}
 />
 
+<Tab.Screen 
+  name="Evento" 
+  component={EventsAd}
+  initialParams={route}
+/>
+
 <Tab.Screen
     name="Solictud"
     component={solicitudes}
@@ -84,7 +89,6 @@ function HomeScreen() {
     </View>
   );
 }
-
 function screenOptions(route, color) {
   let iconName;
 
@@ -92,19 +96,20 @@ function screenOptions(route, color) {
     case "Home":
       iconName = "home";
       break;
-    case "Chat":
-      iconName = "chat-outline";
+    case "Evento":
+      iconName = "calendar-multiple";
       break;
-    case "Solictud":
-      iconName = "format-list-bulleted-type";
-      break;
-    default:
+      case "Solictud":
+        iconName = "format-list-bulleted-type";
+        break;
+     default:
       break;
   }
   return (
     <Icon type="material-community" name={iconName} size={22} color={color} id = {route.id} />
   );
 }
+
 
 const styles = StyleSheet.create({
 titulo:{

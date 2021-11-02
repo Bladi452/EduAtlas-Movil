@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, FlatList, RefreshControl} from 'react-native'
+import {View,Text,StyleSheet, FlatList, RefreshControl, TouchableOpacity} from 'react-native'
 
 import {getEvents} from '../../../api';
+import {useNavigation} from '@react-navigation/native'
 
+import Item from './ItemAd'
 
-import Item from './Item'
-
-export const List = (route) =>{
+export const ListAd = (route2) =>{
+  const navigation = useNavigation()
     const [refreshing, setRefreshing] = React.useState(false);
    
-   const [task, setTasks] = useState([]);
-   console.log(route.id)
+   const [tas, setTask] = useState([]);
+   console.log(route2.id)
    
    const load =async()=>{
      await loadEvents()
@@ -23,9 +24,9 @@ export const List = (route) =>{
      }, []);
    
    const loadEvents = async()=>{
-       const task = await getEvents(route.id)
+       const task = await getEvents(route2.id)
        console.log(task)
-       setTasks(task);
+       setTask(task);
    }
    
    useEffect(() => {
@@ -35,11 +36,20 @@ export const List = (route) =>{
    const renderItem =({item}) =>{
        return <Item task = {item}/>
    }
+   function form(){
+    navigation.navigate('AddEvents', {rou : route2.id})
+   }
    
    return(
+   <View style={{ width: '100%', alignItems: 'center'}}>
+<TouchableOpacity style={[styles.Boton]}
+onPress={form}
+>
+    <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}} >Agregar Eventos</Text>
+    </TouchableOpacity>
    <FlatList
        style={{ width: '100%', marginBottom: 90}}
-   data ={task}
+   data ={tas}
    renderItem={renderItem}
    keyExtractor= {item => item.Id_Solicitud + ''}
    refreshControl={
@@ -51,5 +61,17 @@ export const List = (route) =>{
        />
      }
    />
+   </View>
        )
    }
+   const styles = StyleSheet.create({
+    Boton: {
+      marginTop: 20,
+      backgroundColor: "#EFAF4F",
+      alignItems:"center",
+      height:45,
+      width:300,
+      borderRadius:8
+   
+  }
+})

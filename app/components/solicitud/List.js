@@ -14,13 +14,14 @@ const [task, setTasks] = useState([]);
 console.log(route.id)
 
 const load =async()=>{
-  await lengthEstudents()
+
   await  loadSchool()
 }
 
 const lengthEstudents = async()=>{
  const asds = await getSchoolLenght(route.id)
  setcantidad(asds)
+ console.log(`Es este ${asds}`)
 }
 
 const onRefresh = React.useCallback(async () => {
@@ -31,13 +32,15 @@ const onRefresh = React.useCallback(async () => {
 
 const loadSchool = async()=>{
     const task = await getSolicitudes(route.id)
+    await lengthEstudents()
     console.log(task)
     setTasks(task);
 }
 
 useEffect(() => {
     loadSchool();
-},[])
+
+  },[])
 
 const renderItem =({item}) =>{
     return <Item task = {item} load ={load} />
@@ -51,7 +54,7 @@ return(
 
 
 <FlatList
-    style={{ width: '100%'}}
+    style={{ width: '100%', marginBottom: 140}}
 data ={task}
 renderItem={renderItem}
 keyExtractor= {item => item.Id_Solicitud + ''}

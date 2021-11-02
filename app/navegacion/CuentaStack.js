@@ -16,6 +16,9 @@ import Home from '../screens/Home'
 import Navegacion from './Navegacion'
 import CheckEstatus from '../components/navegacion/CheckEstatus'
 import Valid from '../components/navegacion/Valid'
+import EventsAd from '../screens/Admin/events/EventsAd'
+import AddEvents from '../screens/events/AddEvents' 
+
 const Stack = createStackNavigator();
 
 export default function CuentaStack() {
@@ -45,6 +48,21 @@ export default function CuentaStack() {
             component={Events}
         options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
         />
+
+
+<Stack.Screen
+            name="EventsAd"
+            component={EventsAd}
+        options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
+        />
+
+<Stack.Screen
+            name="AddEvents"
+            component={AddEvents}
+        options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
+        />
+
+
 
  <Stack.Screen
             name="Navegacion"

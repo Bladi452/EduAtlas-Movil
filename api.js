@@ -1,5 +1,7 @@
 //const API = 'http://tecnodiaz.es/server-edu'
-   const API = 'http://10.0.0.8:3000/server-edu'
+//   const API = 'http://10.0.0.8:3000/server-edu'
+//const API = 'http://10.0.0.49:3000/server-edu'
+const API = 'http://10.0.0.37:3000/server-edu'
 //School
 
 export const getSchools = async () =>{
@@ -32,6 +34,7 @@ export const getSolicitudes = async (id) =>{
     const data = await res.json()
     return data
 }
+
 export const approveReq = async (id) =>{
     const res = await fetch (`${API}/apro/${id}`,{
         method: "PUT",
@@ -68,6 +71,19 @@ export const solicitud = async (newdata) =>{
     return data
 
 }
+
+export const AddEvent = async (newdata) =>{
+    const res = await fetch(`${API}/events`,{
+          method: "POST",
+          headers: {
+              Accept: 'application/json',
+              "Content-Type": 'application/json',
+          },
+          body: JSON.stringify(newdata),
+      });     const data = await res.json()
+      return data
+  
+  }
 
 export const getSchoolLenght = async (id) =>{
     const res = await fetch(`${API}/school/length/${id}`)
