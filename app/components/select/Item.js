@@ -1,10 +1,23 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import React, {useEffect} from 'react';
+import {View, Text, StyleSheet,BackHandler, TouchableOpacity } from 'react-native'
 
 import {useNavigation} from '@react-navigation/native';
 
 
+
+
  const Item =({task, id_Usu})=>{
+
+
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true);
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', () => true);
+    };    
+  
+  }, []);
+
     const navigation = useNavigation()
     return (
       <View style={styles.itemContainer}>

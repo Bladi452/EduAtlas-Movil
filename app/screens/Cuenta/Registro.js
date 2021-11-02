@@ -78,7 +78,11 @@ export default function Registro (){
       <TextInput style={styles.Input}
       placeholder = "Email"
       onChangeText = {(text) => handleChange('Email', text)}
-      value={data.Email}
+      value = {data.Email}
+      keyboardType="email-address"
+        
+
+
     
     />
 
@@ -100,9 +104,11 @@ export default function Registro (){
 
 <TextInput style={styles.Input}
       placeholder = "DD/MM/AAAA"
-      secureTextEntry={true}
       onChangeText = {(text) => handleChange('date', text)}
       value={data.date}
+      maxLength={9}
+  
+
 
     />
 
@@ -129,14 +135,19 @@ function Fotos (){
 
 const styles = StyleSheet.create({
  Input:{
-   backgroundColor:"#ffffff",
-   borderColor:"#777777",
-   borderWidth:1,
-   marginTop:40,
-   alignSelf:"center",
-   width:341,
-   height:28.3,
-    borderRadius:4,
+  marginTop:10,
+  marginBottom:10,
+  marginLeft:20,
+  marginRight:20,
+  borderRadius:10,
+  borderWidth:1,
+  borderColor:'#EFAF4F',
+  height:50,
+  fontSize:15,
+  paddingLeft:10,
+  paddingRight:10,
+  color:'#000'
+              
   },
 
   sesion:{
@@ -164,12 +175,22 @@ const styles = StyleSheet.create({
     alignSelf :"center",
   },
   vista:{
-    backgroundColor:"#08D5B9"
+    backgroundColor:"#fff",
+    flex:1,
+    paddingTop:20,
+    paddingLeft:20,
+    paddingRight:20,
+    paddingBottom:20,
+    marginTop:20
+  
   },
   text:{
-    textAlign:"center",
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 30,
+    fontSize:20,
+    color:'#EFAF4F',
+    marginTop:10,
+    marginBottom:10,
+    alignSelf:"center",
+  fontWeight:"bold" 
+    
   },
 })
