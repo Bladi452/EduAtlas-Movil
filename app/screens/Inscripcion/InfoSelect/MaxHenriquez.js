@@ -26,7 +26,7 @@ const traer = ( async()=>{
 
 const unir =async()=>{  
  await solicitud(state)
- navigation.navigate('Espera')
+// navigation.navigate('Espera')
 }
 
 useEffect(() => {

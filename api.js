@@ -1,6 +1,6 @@
 //const API = 'http://tecnodiaz.es/server-edu'
-  const API = 'http://10.0.0.8:3000/server-edu'
-//const API = 'http://10.0.0.49:3000/server-edu'
+//  const API = 'http://10.0.0.8:3000/server-edu'
+const API = 'http://10.0.0.49:3000/server-edu'
 //const API = 'http://10.0.0.37:3000/server-edu'
 //School
 
@@ -66,7 +66,7 @@ export const solicitud = async (newdata) =>{
             Accept: 'application/json',
             "Content-Type": 'application/json',
         },
-        
+        body: JSON.stringify(newdata)
     });     const data = await res.json()
     return data
 
