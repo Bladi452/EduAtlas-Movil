@@ -134,11 +134,22 @@ titulo:{
 },
 
 Vista:{
-    height:300,
-    width: "80%",
-    backgroundColor:"#cdcdcd",
-    alignSelf:"center",
-    borderRadius:10
+  width:"90%",
+  alignSelf:"center",
+  marginTop:10,
+  marginBottom:10,
+  backgroundColor:"#ffffff",
+  borderRadius:10,
+  padding:10,
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 2,
+
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+elevation: 5,
 },
 Vista2:{
   marginBottom:90,
