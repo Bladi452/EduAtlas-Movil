@@ -2,9 +2,10 @@ import React, {useEffect} from 'react'
 import { BackHandler,Text, View, StyleSheet, Alert} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
-import {useNavigation} from '@react-navigation/native'
+
 import Mascarilla from '../components/Mascarilla';
 import Events from '../screens/events/Events'
+import Profile from '../screens/Profile'
 
 import {AdMobInterstitial } from 'expo-ads-admob';
 
@@ -46,7 +47,7 @@ useEffect(() => {
   return () => backHandler.remove();
 }, [])
 
-  const navigation = useNavigation()
+ 
 return(
 <Tab.Navigator
     initialRouteName="Home"
@@ -62,7 +63,7 @@ return(
     >
 
 <Tab.Screen 
-  name="Evento" 
+  name="Evento"
   component={Events}
   initialParams={route}
 />
@@ -71,6 +72,12 @@ return(
     name="Home"
     component={HomeScreen}
     options={{title:"Home"}}
+    initialParams={route}
+/>
+<Tab.Screen
+    name="Profile"
+    component={Profile}
+    options={{title:"Perfil"}}
     initialParams={route}
 />
 
@@ -113,8 +120,8 @@ function screenOptions(route, color) {
     case "Evento":
       iconName = "calendar-multiple";
       break;
-    case "Docs":
-      iconName = "cloud-upload";
+    case "Profile":
+      iconName = "account-circle";
       break;
     default:
       break;

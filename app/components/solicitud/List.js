@@ -21,12 +21,13 @@ const load =async()=>{
 const lengthEstudents = async()=>{
  const asds = await getSchoolLenght(route.id)
  setcantidad(asds)
- console.log(`Es este ${asds}`)
+ 
 }
 
 const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
-    load()
+    await load();
+
     setRefreshing(false);
   }, []);
 

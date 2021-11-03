@@ -6,6 +6,8 @@ import {useNavigation} from '@react-navigation/native'
 import solicitudes from '../screens/Admin/solicitudes';
 import Mascarilla from '../components/Mascarilla';
 import EventsAd from '../screens/Admin/events/EventsAd'
+import Profile from '../screens/Profile'
+
 const Tab = createBottomTabNavigator()
 
 
@@ -67,6 +69,12 @@ return(
     options={{title:"Solicitud"}}
     initialParams={route}
 />
+<Tab.Screen
+    name="Profile"
+    component={Profile}
+    options={{title:"Perfil"}}
+    initialParams={route}
+/>
 
         </Tab.Navigator>
 
@@ -102,6 +110,9 @@ function screenOptions(route, color) {
       case "Solictud":
         iconName = "format-list-bulleted-type";
         break;
+        case "Profile":
+      iconName = "account-circle";
+      break;
      default:
       break;
   }

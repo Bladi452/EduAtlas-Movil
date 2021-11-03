@@ -48,6 +48,8 @@ export default function CuentaStack() {
             component={Events}
         options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
         />
+       
+
 
 
 <Stack.Screen
