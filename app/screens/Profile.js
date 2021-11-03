@@ -1,20 +1,35 @@
 import React,{useState, useEffect}from 'react'
 import { View, Text, StyleSheet} from 'react-native'
 import {getUser} from '../../api'
+import {useNavigation} from '@react-navigation/native'
+
 
 const Profile = ({route}) => {
 const [user, setUser] = useState([])
+
+const navigation = useNavigation()
+
+
+const loadUser = async () =>{
+    const data =await getUser(route.params.id)
+    console.log(data)
+}
+
+
 useEffect(() => {
  
-        setUser(route.params.id)
+    loadUser()   
+
+    
     
     
 }, [])
 
+
     return (
 
         <View style={styles.container}>
-            <Text>{user}</Text>
+            <Text>profile</Text>
 
         </View>
     )
