@@ -56,7 +56,8 @@ export const List2 = (route) =>{
       let newId = id + 1
       return newId
     }
-  return (
+    console.log(events)
+    return (
       <FlatList
         data={events}
         renderItem={({ item }) => <Item2 task={item} />}
