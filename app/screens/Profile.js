@@ -4,6 +4,7 @@ import {getUser} from '../../api'
 import {useNavigation} from '@react-navigation/native'
 
 
+
 const Profile = ({route}) => {
 const [user, setUser] = useState({})
 
@@ -36,7 +37,7 @@ useEffect(() => {
 
         <View style={styles.container}>
             
-                <Image style={styles.image} source={{uri:user.Foto}}/>
+                <Image style={styles.image} source={require('../../assets/avatar.png')}/>
                             
             <Text style={styles.title}>Perfil</Text>
             <Text style={styles.text}>Nombre: {user.Nombre}</Text>
@@ -55,18 +56,23 @@ useEffect(() => {
 const styles = StyleSheet.create({   
  container: {  
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
+    padding: 20,
+    paddingTop: 50,
+    paddingBottom: 50,
+            
 
     },
     title: {    
-        fontSize: 20,       
-        color: '#000',
+        fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 20,
         marginTop: 20,
+        color: '#000',
         textAlign: 'center',
+
     
     },
     button: {
@@ -77,6 +83,7 @@ const styles = StyleSheet.create({
         width: '50%',
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     buttonText: {
         color: '#fff',
@@ -85,11 +92,11 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 20,
-        color: '#000',
         fontWeight: 'bold',
         marginBottom: 20,
-        marginTop: 20,
+        color: '#000',
         textAlign: 'center',
+
     },
     image: {
         width: 150,
