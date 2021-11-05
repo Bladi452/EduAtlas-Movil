@@ -2,23 +2,9 @@ import React, {useState}from 'react';
 import {View, StyleSheet, Text, TextInput, TouchableOpacity, Alert, ScrollView, Image } from 'react-native';
 import { AddEvent } from '../../../api';
 
-const AddEvents = (rou) => {
-    const handleChange = (name, value) => setData({...data, [name]: value});
-
-    const [data,  setData] = useState({
-      Nombre: '',
-      Fecha_Ini: '',
-      Descripcion: '',
-      Codigo_Escuelas: rou.route.params.rou
-    });
-
-   async function eventsAdd(){
-   await AddEvent(data)
-    Alert.alert('Evento Agregado')
-}
-
-    const Registrar = ()=>{ 
+ const Registrar = ({eventsAdd})=>{ 
       //AddEvent(data)
+    
         return(
         
         <View>
@@ -35,6 +21,23 @@ const AddEvents = (rou) => {
         )
       }
      
+
+const AddEvents = (rou) => {
+    const handleChange = (name, value) => setData({...data, [name]: value});
+
+    const [data,  setData] = useState({
+      Nombre: '',
+      Fecha_Ini: '',
+      Descripcion: '',
+      Codigo_Escuelas: rou.route.params.rou
+    });
+
+ 
+    async function eventsAdd(){
+        await AddEvent(data)
+         Alert.alert('Evento Agregado')
+     }
+   
 
     return (
             <ScrollView>
@@ -76,7 +79,7 @@ const AddEvents = (rou) => {
             onChangeText={(text)=> handleChange('Descripcion', text)}
             value={data.Descripcion}
         />        
-        <Registrar/>    
+        <Registrar eventsAdd={eventsAdd}/>    
         </View>
             </ScrollView>
     );

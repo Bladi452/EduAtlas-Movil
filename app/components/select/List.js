@@ -16,7 +16,7 @@ const [task, setTasks] = useState([]);
 
 const loadSchool = async()=>{
     const task = await getSchools();
-    console.log(task)
+    
     setTasks(task);
 }
 

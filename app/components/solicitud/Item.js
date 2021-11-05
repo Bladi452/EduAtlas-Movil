@@ -1,15 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-import {useNavigation} from '@react-navigation/native';
+
 import {denyReq,approveReq} from '../../../api';
  const Item =({task, load})=>{
-    const navigation = useNavigation()
-const Apro=(id)=>{
+ 
+const apro=(id)=>{
   approveReq(id)
   load()
 }
 
-const Dene=(id)=>{
+const dene=(id)=>{
   denyReq(id)
   load()
 }
@@ -26,14 +26,14 @@ const Dene=(id)=>{
 
           <TouchableOpacity
         style={{ backgroundColor: "#03BB85", padding: 7, borderRadius:20, marginTop: 15 }}
-        onPress={() => Apro(task.Id_Solicitud)}
+        onPress={() => apro(task.Id_Solicitud)}
       >
         <Text style={{ color: "#fff", textAlign:"center" }}>Aceptar</Text>
       </TouchableOpacity>
 
           <TouchableOpacity
         style={{ backgroundColor: "#ee5253", padding: 7, borderRadius: 20, marginTop: 15 }}
-        onPress={() => Dene(task.Id_Solicitud)}
+        onPress={() => dene(task.Id_Solicitud)}
       >
         <Text style={{ color: "#fff", textAlign:"center" }}>Denegar</Text>
       </TouchableOpacity>

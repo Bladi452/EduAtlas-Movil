@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
 
 import Mascarilla from '../components/Mascarilla';
-import Events from '../screens/events/Events'
+import Requests from '../screens/events/Events'
 import Profile from '../screens/Profile'
 
 import {AdMobInterstitial } from 'expo-ads-admob';
@@ -64,7 +64,7 @@ return(
 
 <Tab.Screen 
   name="Evento"
-  component={Events}
+  component={Requests}
   initialParams={route}
 />
 

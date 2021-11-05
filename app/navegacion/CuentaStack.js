@@ -6,10 +6,10 @@ import Cuenta from '../screens/Cuenta/Cuenta'
 import Login from '../screens/Cuenta/Login'
 import RegistroC from '../screens/Cuenta/RegistroC' 
 
-import Events from '../screens/events/Events'
+import Requests from '../screens/events/Events'
 import HomeStackAdmin from './HomeStackAdmin'
 import Seleccion from '../screens/Inscripcion/Seleccion';
-import solicitudes from '../screens/Admin/solicitudes';
+import Solicitudes from '../screens/Admin/solicitudes';
 import MaxHenriquez from '../screens/Inscripcion/InfoSelect/MaxHenriquez';
 import Espera from '../screens/Inscripcion/Espera';
 import Home from '../screens/Home'
@@ -45,7 +45,7 @@ export default function CuentaStack() {
 
  <Stack.Screen
             name="Events"
-            component={Events}
+            component={Requests}
         options={{title:'Tecno Atlas', headerTitleAlign: 'center'}}
         />
        
@@ -86,7 +86,7 @@ export default function CuentaStack() {
 
 <Stack.Screen
             name="solicitudes"
-            component={solicitudes}
+            component={Solicitudes}
             options={{title:"Soliticudes"}}
 />
 

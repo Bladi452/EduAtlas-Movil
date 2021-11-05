@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform,Alert} from 'react-native'
+import {View,Image ,Text, TextInput, StyleSheet, TouchableOpacity,ScrollView,Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
 export default function Registro (){
@@ -15,41 +15,7 @@ export default function Registro (){
     confirmpassword:''
   });
 
-  const Registrar = ()=>{ 
-
-
-    const handleSubmit = async () => {
-      const {password, confirmpassword} = data
-      if (password !== confirmpassword) {
-        Alert.alert('Error', 'Las contraseñas no coinciden')
-        return  false 
-      } else {
-      
-        navigation.navigate('RegistroC', {Info: data})
-          
-      
-      }
-    
-    }
-  
-    const navigation = useNavigation();
-  
-    return(
-    
-    <View>
-  <TouchableOpacity
-  disabled={!data.Nombre,!data.Apellidos,!data.Email,!data.password}
-        onPress={handleSubmit}
-        style={[styles.sesion, {
-          backgroundColor:"#EFAF4F"
-        }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
-        
-      </TouchableOpacity>
-     <View/>
-    </View>
-    )
-  }
+ 
   
 
   return(
@@ -107,12 +73,13 @@ export default function Registro (){
       onChangeText = {(text) => handleChange('date', text)}
       value={data.date}
       maxLength={10}
+      
   
 
 
     />
 
-<Registrar/>
+<Registrar data={data}/>
     </View>
     </ScrollView>
   )
@@ -128,6 +95,42 @@ function Fotos (){
               resizeMode="contain"
         />
       </View>
+    )
+  }
+
+  const Registrar = ({data})=>{ 
+
+
+    const handleSubmit = async () => {
+      const {password, confirmpassword} = data
+      if (password !== confirmpassword) {
+        Alert.alert('Error', 'Las contraseñas no coinciden')
+        return  false 
+      } else {
+      
+        navigation.navigate('RegistroC', {Info: data})
+          
+      
+      }
+    
+    }
+  
+    const navigation = useNavigation();
+  
+    return(
+    
+    <View>
+  <TouchableOpacity
+  disabled={!data.Nombre,!data.Apellidos,!data.Email,!data.password}
+        onPress={handleSubmit}
+        style={[styles.sesion, {
+          backgroundColor:"#EFAF4F"
+        }]}>
+        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
+        
+      </TouchableOpacity>
+     <View/>
+    </View>
     )
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
  const Item2 =({task})=>{
-//console.log(task)
+
 
 return (
   <View style={styles.itemContainer}>

@@ -11,13 +11,13 @@ import Cargando from '../components/Cargando';
 const Navegacion = (({route})=>{  
 const Usuario = route.params.datos[0]
 
-    const [Cargo, setCargo] = useState(null)
-    const [Escu, setEscu] = useState(null)
+    const [cargo, setCargo] = useState(null)
+    const [escu, setEscu] = useState(null)
     const [solicitud, setSolicitud] = useState(null)
     const [Dene, setDene] = useState(false)
 
 
-const SeCargo =()=>{
+const seCargo =()=>{
      if(Usuario.Nivel >=107){
          setCargo(false)
      }else{
@@ -25,7 +25,7 @@ const SeCargo =()=>{
      }
  }
 
-const Solid =()=>{
+const solid =()=>{
      if(Usuario.Codigo_Escuelas === null){
          setEscu(false)
      }else{
@@ -33,7 +33,7 @@ const Solid =()=>{
      }
  }
 
- const Solic = async()=>{
+ const solic = async()=>{
     const user = await getSolicitud(Usuario.Matricula)
    
     if(user.length === 0){
@@ -46,18 +46,18 @@ const Solid =()=>{
 }
 }
  useEffect(() => {
-    SeCargo()
-    Solid()
-    Solic()
+    seCargo()
+    solid()
+    solic()
 },[])
 
- if(Cargo === null || Escu === null || solicitud === null){
+ if(cargo === null || escu === null || solicitud === null){
 return <Cargando isVisible={true} text= "Está iniciando sesión"/>
  }
 
  return(
-  (Cargo ? <HomeAdmin id = {Usuario.Matricula} Escuela = {Usuario.Codigo_Escuelas}/>:
-      Escu ?  <Home id = {Usuario.Matricula}/> :
+  (cargo ? <HomeAdmin id = {Usuario.Matricula} Escuela = {Usuario.Codigo_Escuelas}/>:
+      escu ?  <Home id = {Usuario.Matricula}/> :
     solicitud ? <Espera denegado={Dene} id = {Usuario.Matricula}/>: <Seleccion id = {Usuario.Matricula}/>
     ) 
 )

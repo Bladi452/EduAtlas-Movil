@@ -1,11 +1,11 @@
 import React,{useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import { List2 } from '../../components/events/List2';
 import {getUser} from '../../../api';
 import { useIsFocused } from "@react-navigation/native";
 import Cargando from '../../components/Cargando';
 
-export default function solicitudes ({route}) {
+export default function Requests ({route}) {
 
   const isFocused = useIsFocused();
 

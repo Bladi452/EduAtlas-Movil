@@ -11,13 +11,13 @@ const Valid = ({route}) => {
 
 
   useEffect(()=>{
-    Soli();
+    soli();
 }, []);
 
     
     const [sol, setSol] = useState()
 
-    const Soli = async()=>{
+    const soli = async()=>{
         const user = await getSolicitud(route.params.id)
         if(user[0].Estatus === 'null'){
             setSol(true)

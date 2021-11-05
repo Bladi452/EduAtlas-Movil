@@ -2,8 +2,8 @@ import React, {useEffect} from 'react'
 import {BackHandler ,Text, View, StyleSheet, Alert } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Icon} from 'react-native-elements'
-import {useNavigation} from '@react-navigation/native'
-import solicitudes from '../screens/Admin/solicitudes';
+
+import Solicitudes from '../screens/Admin/solicitudes';
 import Mascarilla from '../components/Mascarilla';
 import EventsAd from '../screens/Admin/events/EventsAd'
 import Profile from '../screens/Profile'
@@ -35,7 +35,7 @@ export default function HomeStackAdmin (route) {
     return () => backHandler.remove();
   }, [])
 
-  const navigation = useNavigation()
+ 
 return(
 <Tab.Navigator
     initialRouteName="Home"
@@ -65,7 +65,7 @@ return(
 
 <Tab.Screen
     name="Solictud"
-    component={solicitudes}
+    component={Solicitudes}
     options={{title:"Solicitud"}}
     initialParams={route}
 />

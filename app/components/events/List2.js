@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View,StyleSheet, FlatList, RefreshControl} from 'react-native'
+import {StyleSheet, FlatList, RefreshControl} from 'react-native'
 
 import {getEvents} from '../../../api';
 
 
 import Item2 from './Item2'
 
-export const List2 = (route) =>{
+ const List2 = (route) =>{
 
   const [refreshing, setRefreshing] = React.useState(false);
   const [events, setEvents] = useState([]);
@@ -56,7 +56,7 @@ export const List2 = (route) =>{
       let newId = id + 1
       return newId
     }
-    console.log(events)
+    
     return (
       <FlatList
         data={events}
@@ -98,4 +98,6 @@ buttonText: {
   fontWeight: 'bold',
 },
 });
+
+export default List2;
 

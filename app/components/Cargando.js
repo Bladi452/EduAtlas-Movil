@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import { Overlay } from 'react-native-elements';
 

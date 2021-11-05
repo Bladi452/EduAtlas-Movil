@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { ScrollView } from 'react-native'
-import {View,Linking ,Text, Image, StyleSheet, TouchableOpacity,Alert} from 'react-native'
+import {View,Linking ,Text,StyleSheet, TouchableOpacity,Alert} from 'react-native'
 import {Picker} from '@react-native-community/picker'
 import {useNavigation} from '@react-navigation/native'
 import {getSchool, solicitud} from '../../../../api'

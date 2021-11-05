@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
+
 import React,{useEffect, useState} from 'react';
-import {getUser, getSolicitud} from '../../../api'
-import { Text,View } from 'react-native';
+import {getUser} from '../../../api'
+
 
 import Home from '../../screens/Home'
 import CheckEstatus from './CheckEstatus'
@@ -12,11 +12,11 @@ const Selec = (({id})=>{
 const [Escu, setEscu] = useState()
 
 useEffect(()=>{
-    Solid();
+    solid();
 }, []);
 
 
-const Solid = async()=>{
+const solid = async()=>{
    const user = await getUser(id)
 
     if(user[0].Codigo_Escuelas == null){
