@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import Item from './ItemAd'
 
- const ListAd = (route2) =>{
+ export const ListAd = (route2) =>{
   const navigation = useNavigation()
     const [refreshing, setRefreshing] = React.useState(false);
     const [events, setEvents] = useState([]);
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export default ListAd;
+

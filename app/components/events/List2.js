@@ -6,7 +6,7 @@ import {getEvents} from '../../../api';
 
 import Item2 from './Item2'
 
- const List2 = (route) =>{
+ export const List2 = (route) =>{
 
   const [refreshing, setRefreshing] = React.useState(false);
   const [events, setEvents] = useState([]);
@@ -99,5 +99,5 @@ buttonText: {
 },
 });
 
-export default List2;
+
 
