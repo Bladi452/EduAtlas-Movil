@@ -123,10 +123,10 @@ function Fotos (){
   <TouchableOpacity
   disabled={!data.Nombre,!data.Apellidos,!data.Email,!data.password}
         onPress={handleSubmit}
-        style={[styles.sesion, {
+        style={[styles.button, {
           backgroundColor:"#EFAF4F"
         }]}>
-        <Text style={{ marginTop:11,fontSize: 15, color: '#fff'}}>Registrate</Text>
+        <Text style={styles.buttontxt}>Registrate</Text>
         
       </TouchableOpacity>
      <View/>
@@ -153,13 +153,23 @@ const styles = StyleSheet.create({
               
   },
 
-  sesion:{
-    alignItems:"center",
-    height:45,
-    width:200,
-    borderRadius:8,
-    alignSelf:"center",
-    marginTop:15
+  button:{
+    marginTop:10,
+    marginBottom:10,
+    marginLeft:20,
+    marginRight:20,
+    borderRadius:10,
+    borderWidth:1,
+    borderColor:'#EFAF4F',
+    height:50,
+    fontSize:15,
+    paddingLeft:10,
+    paddingRight:10,
+    color:'#000'
+              
+  
+              
+  
   },
 
   sesionC:{
@@ -178,13 +188,12 @@ const styles = StyleSheet.create({
     alignSelf :"center",
   },
   vista:{
-    backgroundColor:"#fff",
+    backgroundColor:'#fff',
     flex:1,
     paddingTop:20,
     paddingLeft:20,
     paddingRight:20,
-    paddingBottom:20,
-    marginTop:20
+    paddingBottom:20
   
   },
   text:{
@@ -196,4 +205,11 @@ const styles = StyleSheet.create({
   fontWeight:"bold" 
     
   },
+  buttontxt: {
+    fontSize:20,
+    color:'#fff',
+    alignSelf:"center",
+    fontWeight:"bold" ,  
+    marginTop:8
+  }
 })
